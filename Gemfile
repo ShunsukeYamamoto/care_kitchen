@@ -65,4 +65,3 @@ gem 'pry-rails'
 gem 'jquery-rails'
 gem 'haml-rails'
 gem 'font-awesome-sass'
-
