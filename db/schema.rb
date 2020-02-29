@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 2020_02_23_084255) do
     t.float "height", null: false
     t.float "weight", null: false
     t.string "gender", null: false
+    t.date "birthday", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"

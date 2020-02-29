@@ -1,0 +1,31 @@
+.birthday{
+  position: relative;
+  &__form{
+    width: 100%;
+    outline: none;
+    padding: 10px 180px 10px 10px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    color: rgb(122, 122, 122);
+    border-style: groove;
+  }
+  &__title{
+    top: 13px;
+    right: 40px;
+    position: absolute;
+    color: #7a7a7a;
+  }
+}
+
+#person_gender{
+  display: inline-block;
+  -webkit-appearance: none;
+  background: none transparent;
+  width: 100%;
+  outline: none;
+  padding: 10px 10px 10px 10px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+  color: #7a7a7a;
+  border-style: groove;
+}

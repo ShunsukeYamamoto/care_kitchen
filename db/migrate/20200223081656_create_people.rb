@@ -5,6 +5,7 @@ class CreatePeople < ActiveRecord::Migration[5.2]
       t.float :height, null: false
       t.float :weight, null:false
       t.string :gender, null: false
+      t.date :birthday,null: false
 
       t.timestamps
     end
