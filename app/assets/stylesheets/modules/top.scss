@@ -1,7 +1,7 @@
 header{
   .head-vidual{
     width: 100vw;
-    height: 400px;
+    height: 500px;
     background-image: url(kitchenapp16.jpg);
     // 11 8 5 1 12 13 14 16
     background-size: cover;
@@ -26,11 +26,16 @@ header{
         position: absolute;
         bottom: 0;
         right: 20px;
+        li:hover{
+          transform: translateY(-2px);
+          transition: all .3s;
+        }
         &__btn{
           text-decoration: none;
           color: white;
-          padding-right: 15px;
+          padding-right: 40px;
           font-weight: bold;
+          font-size: 15px;
         }
       }
     }
@@ -38,13 +43,17 @@ header{
       padding-top: 50px;
       padding-left: 100px;
       &__subtitle{
-        font-size: 40px;
+        font-size: 50px;
         font-weight: bold;
       }
       &__text{
         margin-top: 10px;
         font-size: 20px;
         font-weight: bold;
+      }
+      &__message{
+        margin-top: 10px;
+        font-size: 15px;
       }
     }
     .search{
@@ -94,38 +103,71 @@ header{
 }
 .main{
   width: 100vw;
-  padding-top: 50px;
+  padding-top: 30px;
   border-top: solid 100px #ffd200;
+  background-color: #f5f7f8;
+  .top-page-title{
+    display: flex;
+    h2{
+      margin-left: 12vw;
+      margin-bottom: 20px;
+      font-family: 'Ubuntu Mono', monospace;
+      font-size: 70px;
+      color: black;
+    }
+    h4{
+      font-size: 40px;
+      font-family: 'Ubuntu Mono', monospace;
+      color: #f5bf1e;
+      padding-top: 18px;
+      padding-left: 20px;
+    }
+  }
   .person{
     width: 80vw;
     height: 350px;
     margin: 0 auto;
     margin-bottom: 50px;
     display: flex;
-    border: solid 1px #ffd200;
+    border: solid 2px black;
     border-radius: 6px;
+    box-shadow: 20px 20px 30px rgba(50, 50, 50, 0.17);
+    background-color: white;
+    &:hover{
+      transform: translateY(-5px);
+      transition: all .3s;
+    }
+    // .background{
+    //   z-index: -1;
+    //   height: 200px;
+    //   width: 100%;
+    //   background-color: #ffd200;
+    // }
     &-info{
       margin-top: 100px;
       margin-left: 70px;
       position: relative;
       &__image{
         border-radius: 10px;
-        width: 130px;
-        height: 130px;
-        background-image: url(kitchenapp2.jpg);
+        width: 100px;
+        height: 100px;
+        background-image: url(test1.png);
         background-size: cover;
         background-position: center center;
+        box-shadow: 0 2px 20px rgba(50, 50, 50, 0.17);
+        margin: 0 auto;
       }
       &__name{
-        background-color: rgb(190, 184, 184);
+        background-color: #ffd200;
         border-radius: 2px;
         margin: auto;
         margin-top: 10px;
         line-height: 30px;
-        width: 100%;
+        width: 120px;
         text-align: center;
         color: white;
         font-weight: bold;
+        font-size: 14px;
       }
     }
     &__grapf-nutrients{
