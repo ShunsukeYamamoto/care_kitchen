@@ -106,8 +106,10 @@ header{
   padding-top: 30px;
   border-top: solid 100px #ffd200;
   background-color: #f5f7f8;
+  padding-bottom: 100px;
   .top-page-title{
     display: flex;
+    border-top: solid 1px #ffd200;
     h2{
       margin-left: 12vw;
       margin-bottom: 20px;
@@ -129,20 +131,14 @@ header{
     margin: 0 auto;
     margin-bottom: 50px;
     display: flex;
-    border: solid 2px black;
+    border: solid 3px black;
     border-radius: 6px;
-    box-shadow: 20px 20px 30px rgba(50, 50, 50, 0.17);
+    box-shadow: 20px 20px 30px rgba(204, 178, 48, 0.17);
     background-color: white;
     &:hover{
       transform: translateY(-5px);
       transition: all .3s;
     }
-    // .background{
-    //   z-index: -1;
-    //   height: 200px;
-    //   width: 100%;
-    //   background-color: #ffd200;
-    // }
     &-info{
       margin-top: 100px;
       margin-left: 70px;
@@ -197,6 +193,7 @@ header{
       font-size: 25px;
       font-weight: bold;
       margin-bottom: 5px;
+      border-bottom: solid 2px #ffd200;
     }
     .new-topic__box{
       width: 80vw;
@@ -259,9 +256,19 @@ header{
   }
 }
 footer{
-  background-color: #faf8f5;
-  height: 200px;
+  background-image: linear-gradient(112deg, #ffd200, #f2b100);
+  height: 300px;
   width: 100vw;
   text-align: center;
-  margin-top: 60px;
+  .footer-nav{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 50vw;
+    padding-top: 70px;
+    .box{
+      padding-bottom: 10px;
+      font-weight: bold;
+    }
+  }
 }
