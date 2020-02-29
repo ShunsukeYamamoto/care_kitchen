@@ -94,7 +94,8 @@ header{
 }
 .main{
   width: 100vw;
-  padding-top: 120px;
+  padding-top: 50px;
+  border-top: solid 100px #ffd200;
   .person{
     width: 80vw;
     height: 350px;
@@ -130,7 +131,7 @@ header{
     &__grapf-nutrients{
       width: 25vw;
       height: 300px;
-      background-image: url(仮グラフ.png);
+      background-image: url(grapf.png);
       background-size: contain;
       margin-top: 30px;
       margin-left: 30px;
@@ -139,7 +140,7 @@ header{
     &__grapf-bmi{
       width: 40vw;
       height: 300px;
-      background-image: url(仮グラフ２.png);
+      background-image: url(grapf2.png);
       background-size: contain;
       margin-top: 30px;
       margin-right: 20px;
