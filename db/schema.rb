@@ -10,7 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_23_084255) do
+ActiveRecord::Schema.define(version: 2020_03_01_071207) do
+
+  create_table "ingredients", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "energy_kcal", null: false
+    t.float "protein", null: false
+    t.float "fat", null: false
+    t.float "carbon", null: false
+    t.float "dietary_fiber", null: false
+    t.integer "natrium", null: false
+    t.integer "kalium", null: false
+    t.integer "calcium", null: false
+    t.integer "magnesium", null: false
+    t.float "iron", null: false
+    t.float "zinc", null: false
+    t.integer "vitamin_a", null: false
+    t.integer "vitamin_d", null: false
+    t.integer "vitamin_k", null: false
+    t.float "vitamin_b1", null: false
+    t.float "vitamin_b2", null: false
+    t.float "vitamin_b6", null: false
+    t.float "vitamin_b12", null: false
+    t.integer "folic_acid", null: false
+    t.integer "vitamin_c", null: false
+    t.float "salt", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "people", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
