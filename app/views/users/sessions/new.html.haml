@@ -1,17 +1,24 @@
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "current-password"
-  - if devise_mapping.rememberable?
+.form_header
+  .form_header--title
+    =link_to "CARE KITCHEN",root_path
+  .form_header--icon
+    =link_to new_user_registration_path do
+      %i.fas.fa-door-open
+      %p 新規登録
+
+.form
+  %h2.form__title ログインページ
+  .error_logs
+    = flash[:alert]
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
     .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "users/shared/links"
+      = f.email_field :email,placeholder: "メールアドレス", autofocus: true, autocomplete: "email",class:"field--form"
+    .field
+      = f.password_field :password,placeholder: "パスワード", autocomplete: "current-password",class:"field--form"
+    - if devise_mapping.rememberable?
+      .field.remember_info_field
+        = f.check_box :remember_me
+        = f.label :remember_me
+    .actions
+      = f.submit "ログイン",class: "form--submit"
+  -# = render "users/shared/links"
