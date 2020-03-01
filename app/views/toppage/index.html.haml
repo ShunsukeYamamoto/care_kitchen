@@ -1,0 +1,104 @@
+%header
+  .head-vidual
+    .header-wrap
+      .header-logo
+        CARE KITCHEN
+      %ul.header-nav
+        %li
+          =link_to "#",class: "header-nav__btn" do
+            CareKitchenの使い方
+        %li
+          =link_to "#",class: "header-nav__btn" do
+            健康管理
+        %li
+          =link_to "#",class: "header-nav__btn" do
+            ログイン
+        %li
+          =link_to "#",class: "header-nav__btn" do
+            新規登録
+    .content
+      %h2.content__subtitle
+        毎日の栄養管理を
+        %br アプリ１つで簡単に
+      %h4.content__text
+        グラフで日々の栄養バランスをすぐに把握!!
+      %h6.content__message
+        CARE KITCHEN は日々の健康を蓄積し、データ化。
+        %br 食の安全を考え、happyを提供します。
+    .search
+      = form_with url: "#", method: 'get', local: true do |f|
+        .search-box
+          = f.text_field :search, class: "search-box__input", placeholder: '料理名で調べる'
+          = f.submit '検索', class: "search-box__btn"
+.main
+  .top-page-title 
+    %h2 Data
+    %h4 person
+  .person
+    .person-info
+      .person-info__image
+      .person-info__name
+        しゅん
+    .person__grapf-nutrients
+    .person__grapf-bmi
+  .person
+    .person-info
+      .person-info__image
+      .person-info__name
+        ママ
+    .person__grapf-nutrients
+    .person__grapf-bmi
+  .person
+    .person-info
+      .person-info__image
+      .person-info__name
+        パパ
+    .person__grapf-nutrients
+    .person__grapf-bmi
+  .new-topic
+    %h3.new-topic__title
+      特集
+    .new-topic__box
+      .article.news
+        = image_tag "kitchenapp10.jpg"
+        %h4 水道水が健康に与える影響？？！1ヶ月でこんなに変わる
+      .article.news
+        = image_tag "kitchenapp15.jpg"
+        %h4 人類は野菜とともに進化してきた
+      .article.news
+        = image_tag "kitchenapp20.jpg"
+        %h4 秋の味覚。今話題のフルーツダイエット！フルーツがもたらす栄養とは??
+  .new-topic
+    %h3.new-topic__title
+      新着レシピ
+    .new-topic__box
+      .article
+        .article__image
+          = image_tag "kitchenapp3.jpg"
+        %p
+          ヘルシーサラダ！暑い夏はこれで決まり。地域の野菜を混ぜ合わせた新鮮野菜のパーティ！カロリーを抑えて健康的に
+      .article
+        .article__image
+          = image_tag "kitchenapp19.jpg"
+        %p
+          朝はさくさくトーストで始めよう！簡単レンジでヘルシートースト。脂質と糖質を抑えてエネルギー補充。
+      .article
+        .article__image
+          = image_tag "kitchenapp1.jpg"
+        %p
+          南国フルーツでさっぱり！Hawaiiのフルーツが今熱い！！
+      .article
+        .article__image
+          = image_tag "kitchenapp11.jpg"
+        %p
+          salt&pepperで簡単味付け。忙しいママのための簡単レシピ公開
+%footer
+  .footer-nav
+    .box
+      会社概容
+    .box
+      e-mail
+      %br care_kitchen@gmail.com
+    .box
+      TEL
+      %br 050-XXXX-XXXX
