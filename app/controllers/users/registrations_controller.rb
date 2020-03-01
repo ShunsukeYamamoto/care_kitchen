@@ -19,7 +19,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     session["create_acount"] = { user: @user.attributes}
     session["create_acount"][:user]["password"] = params[:user][:password] 
     @person = @user.people.build
-    # binding.pry
     render :new_first_person
   end
 
@@ -31,11 +30,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
       render :new_first_person and return
     end
     @user.people.build(@person.attributes)
-    # binding.pry
     @user.save
     @person[:user_id] = @user.id
     sign_in(:user, @user)
-    binding.pry
     redirect_to root_path
   end
 
