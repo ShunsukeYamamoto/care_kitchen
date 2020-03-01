@@ -120,4 +120,20 @@ legend {
 
 a{
 	text-decoration: none;
+	color: black;
+}
+.hidden{
+	display: none;
+}
+input{
+	outline: none;
+	padding-left: 5px;
+	border: solid 1px #e1e1e1;
+}
+::placeholder {
+	color: rgb(168, 166, 166);
+}
+textarea{
+	outline: none;
+	padding: 0 5px;
 }

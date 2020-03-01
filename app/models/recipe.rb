@@ -1,0 +1,5 @@
+class Recipe < ApplicationRecord
+
+  
+
+end

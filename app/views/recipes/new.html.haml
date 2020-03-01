@@ -1,0 +1,43 @@
+= render "shared/header"
+.main
+  = form_with url: "#", method: 'get', local: true do |f|
+    .post-board
+      .left-box
+        = f.text_field :title, class: "recipe-title", placeholder: '料理名'
+        = f.label :image, class: 'recipe-image' do
+          = icon('fas', 'image', class: 'icon')
+          %p 料理の完成イメージ
+          = f.file_field :image, class: 'hidden'
+      .middle-box
+        = f.text_area :text, class: "recipe-catch", placeholder: 'キャッチコピーを入力'
+        %ul.recipe-ingredients
+          %li
+            = f.text_field :ingredient_id, class: "recipe-ingredient", placeholder: '材料'
+            = f.text_field :quantity, class: "ingredient-quantity", placeholder: '分量(g)'
+          %li
+            = f.text_field :ingredient_id, class: "recipe-ingredient", placeholder: '材料'
+            = f.text_field :quantity, class: "ingredient-quantity", placeholder: '分量(g)'
+          %li
+            = f.text_field :ingredient_id, class: "recipe-ingredient", placeholder: '材料'
+            = f.text_field :quantity, class: "ingredient-quantity", placeholder: '分量(g)'
+          %li
+            = f.text_field :ingredient_id, class: "recipe-ingredient", placeholder: '材料'
+            = f.text_field :quantity, class: "ingredient-quantity", placeholder: '分量(g)'
+          %li
+            = f.text_field :ingredient_id, class: "recipe-ingredient", placeholder: '材料'
+            = f.text_field :quantity, class: "ingredient-quantity", placeholder: '分量(g)'
+          %li
+            = f.text_field :ingredient_id, class: "recipe-ingredient", placeholder: '材料'
+            = f.text_field :quantity, class: "ingredient-quantity", placeholder: '分量(g)'
+          %li
+            = f.text_field :ingredient_id, class: "recipe-ingredient", placeholder: '材料'
+            = f.text_field :quantity, class: "ingredient-quantity", placeholder: '分量(g)'
+          %li
+            = f.text_field :ingredient_id, class: "recipe-ingredient", placeholder: '材料'
+            = f.text_field :quantity, class: "ingredient-quantity", placeholder: '分量(g)'
+      .right-box
+        ※ここにはグラフが入ります
+      .process-box
+        ※ここには工程がeachで入ります
+      = f.submit '登録', class: "post-btn"
+= render "shared/footer"

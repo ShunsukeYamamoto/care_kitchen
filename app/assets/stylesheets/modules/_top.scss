@@ -1,4 +1,5 @@
 header{
+  border-bottom: solid 100px #ffd200;
   .head-vidual{
     width: 100vw;
     height: 500px;
@@ -31,7 +32,6 @@ header{
           transition: all .3s;
         }
         &__btn{
-          text-decoration: none;
           color: white;
           padding-right: 40px;
           font-weight: bold;
@@ -81,9 +81,6 @@ header{
           border: none;
           outline: 0;
           margin-left: 10px;
-          &::placeholder {
-            color: rgb(168, 166, 166);
-          }
         }
         &__btn{
           border: none;
@@ -104,7 +101,6 @@ header{
 .main{
   width: 100vw;
   padding-top: 30px;
-  border-top: solid 100px #ffd200;
   background-color: #f5f7f8;
   padding-bottom: 100px;
   .top-page-title{
