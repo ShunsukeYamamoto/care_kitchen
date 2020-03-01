@@ -10,6 +10,7 @@
 html{
 	color:#000;
 	background:#FFF;
+	font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
 }
 /*
 	TODO remove settings on BODY since we can't namespace it.
@@ -115,4 +116,8 @@ select {
 /*because legend doesn't inherit in IE */
 legend {
 	color:#000;
+}
+
+a{
+	text-decoration: none;
 }

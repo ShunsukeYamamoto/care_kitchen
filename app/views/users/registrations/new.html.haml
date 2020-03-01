@@ -1,0 +1,24 @@
+.form_header
+  .form_header--title
+    =link_to "CARE KITCHEN","#"
+  .form_header--icon
+    =link_to new_user_session_path do
+      %i.fas.fa-door-open
+      %p ログイン
+
+
+.form
+  %h1.form__title 新しいアカウントを作成
+  = form_for(@user, url: user_registration_path) do |f|
+    = render "devise/shared/error_messages", resource: resource
+    .field
+      = f.text_field :name,placeholder: "アカウント名", autofocus: true, autocomplete: "email",class:"field--form"
+    .field
+      = f.email_field :email,placeholder: "メールアドレス", autofocus: true, autocomplete: "email",class:"field--form"
+    .field
+      = f.password_field :password,placeholder: "パスワード（半角英数字６文字以上）", autocomplete: "new-password",class:"field--form"
+    .field
+      = f.password_field :password_confirmation,placeholder: "パスワード（確認）", autocomplete: "new-password",class:"field--form"
+    .actions
+      = f.submit "新しいアカウントを作成",class: "form--submit"
+  -# = render "users/shared/links"
