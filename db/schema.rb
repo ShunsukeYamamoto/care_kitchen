@@ -41,14 +41,21 @@ ActiveRecord::Schema.define(version: 2020_03_02_065816) do
 
   create_table "people", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
-    t.float "height", null: false
-    t.float "weight", null: false
     t.string "gender", null: false
     t.date "birthday", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.index ["user_id"], name: "index_people_on_user_id"
+  end
+
+  create_table "personal_informations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.float "weight", null: false
+    t.float "height", null: false
+    t.bigint "person_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["person_id"], name: "index_personal_informations_on_person_id"
   end
 
   create_table "recipe_ingredients", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -95,6 +102,7 @@ ActiveRecord::Schema.define(version: 2020_03_02_065816) do
   end
 
   add_foreign_key "people", "users"
+  add_foreign_key "personal_informations", "people"
   add_foreign_key "recipe_ingredients", "ingredients"
   add_foreign_key "recipe_ingredients", "recipes"
   add_foreign_key "recipes", "users"
