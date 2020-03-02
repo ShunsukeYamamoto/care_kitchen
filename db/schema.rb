@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_01_071207) do
+ActiveRecord::Schema.define(version: 2020_03_02_060846) do
 
   create_table "ingredients", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -41,14 +41,21 @@ ActiveRecord::Schema.define(version: 2020_03_01_071207) do
 
   create_table "people", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
-    t.float "height", null: false
-    t.float "weight", null: false
     t.string "gender", null: false
     t.date "birthday", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.index ["user_id"], name: "index_people_on_user_id"
+  end
+
+  create_table "personal_informations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.float "weight", null: false
+    t.float "height", null: false
+    t.bigint "person_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["person_id"], name: "index_personal_informations_on_person_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -65,4 +72,5 @@ ActiveRecord::Schema.define(version: 2020_03_01_071207) do
   end
 
   add_foreign_key "people", "users"
+  add_foreign_key "personal_informations", "people"
 end

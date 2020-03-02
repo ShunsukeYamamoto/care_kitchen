@@ -1,6 +1,6 @@
 .form_header
   .form_header--title
-    =link_to "CARE KITCHEN","#"
+    =link_to "CARE KITCHEN",root_path
   .form_header--icon
     =link_to new_user_session_path do
       %i.fas.fa-door-open
@@ -20,10 +20,13 @@
 
     .field
       = f.select :gender,[["性別を選択してください",""],["男性","0"],["女性","1"]],class: "select_gender"
-    .field
-      = f.number_field :height,placeholder: "身長(m)　例:165.5kg",class:"field--form",step: "0.1"
-    .field
-      = f.number_field :weight,placeholder: "体重(kg)　例:55.5kg",class:"field--form",step: "0.1"
+
+    = f.fields_for :personal_informations,@person.personal_informations.build do |i|
+      .field
+        = i.number_field :height,placeholder: "身長(m)　例:165.5kg",class:"field--form",step: "0.1"
+      .field
+        = i.number_field :weight,placeholder: "体重(kg)　例:55.5kg",class:"field--form",step: "0.1"
+        
     .actions
       = f.submit "入力完了",class: "form--submit"
   -# = render "users/shared/links"

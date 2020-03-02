@@ -32,6 +32,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user.people.build(@person.attributes)
     @user.save
     @person[:user_id] = @user.id
+    @person.save
+    personal_informations = @person.personal_informations[0]
+    personal_informations[:person_id] = @person.id
+    personal_informations.save
     sign_in(:user, @user)
     redirect_to root_path
   end
@@ -70,7 +74,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def person_params
-    params.require(:person).permit(:name,:birthday,:gender,:height,:weight)
+    params.require(:person).permit(:name,:birthday,:gender,personal_informations_attributes: [:height,:weight,:id])
+    # binding.pry
   end
 
   # If you have extra params to permit, append them to the sanitizer.

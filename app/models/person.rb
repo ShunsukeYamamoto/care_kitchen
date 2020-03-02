@@ -1,6 +1,8 @@
 class Person < ApplicationRecord
-  validates :name,:height,:weight,:gender,presence: true
+  validates :name,:gender,presence: true
   belongs_to :user,optional: true
+  has_many :personal_informations
+  accepts_nested_attributes_for :personal_informations,allow_destroy: true
 
   enum gender: {
     "男性": "0",
