@@ -1,0 +1,76 @@
+.global-header{
+  border-bottom: 1px solid #eeece4;
+  box-shadow: 0 2px 2px -1px #eeece4;
+  background-image: url(kitchenapp8.jpg);
+  //8 12 18 1 候補
+  background-size: cover;
+  background-position: center center;
+  &__wrapper{
+    border-top: 2px solid #ffd200;
+    height: 45px;
+    width: 100vw;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    &--nav{
+      display: flex;
+      padding-right: 100px;
+      padding-bottom: 10px;
+      li{
+        padding-left: 10px;
+        padding-right: 10px;
+        font-size: 13px;
+        border-left: 1px solid #e4cd71;
+        &:hover{
+          transform: translateY(-2px);
+          transition: all .3s;
+        }
+      }
+    }
+  }
+  &__search{
+    height: 55px;
+    width: 100vw;
+    display: flex;
+    padding-top: 5px;
+    .logo{
+      font-size: 30px;
+      font-weight: bold;
+      font-family: 'Roboto Condensed', sans-serif;
+      margin-left: 110px;
+      margin-right: 50px;
+      line-height: 40px;
+      .logo1{
+        color: white;
+        text-shadow: 0 5px 10px rgb(0, 0, 0);
+      }
+    }
+    .search-box{
+      width: 60vw;
+      height: 40px;
+      border: 1px solid #d6ceb4;
+      border-radius: 2px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      background-color: white;
+      &__input{
+        width: 50vw;
+        line-height: 40px;
+        border: none;
+      }
+      &__btn{
+        border: none;
+        line-height: 40px;
+        background-image: linear-gradient(112deg, #ffd200, #f2b100);
+        padding: 0 15px;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        outline: 0;
+        font-size: 15px;
+        letter-spacing: 3px;
+      }
+    }
+  }
+}

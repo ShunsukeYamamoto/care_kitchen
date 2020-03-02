@@ -1,0 +1,30 @@
+.global-header
+  .global-header__wrapper
+    %ul.global-header__wrapper--nav
+      %li
+        =link_to "#",class: "header-nav__btn" do
+          CareKitchenの使い方
+      - if user_signed_in?
+        %li
+          =link_to destroy_user_session_path,method: :delete,class: "header-nav__btn" do
+            ログアウト
+        %li
+          =link_to "#",class: "header-nav__btn" do
+            マイページ
+        %li
+          =link_to "#",class: "header-nav__btn" do
+            健康管理
+      - else
+        %li
+          =link_to new_user_session_path,class: "header-nav__btn" do
+            ログイン
+        %li
+          =link_to new_user_registration_path,class: "header-nav__btn" do
+            新規登録
+  .global-header__search
+    .logo
+      =link_to "CARE KITCHEN",root_path, class: "logo1"
+    = form_with url: "#", method: 'get', local: true do |f|
+      .search-box
+        = f.text_field :search, class: "search-box__input", placeholder: '料理名で調べる'
+        = f.submit '検索', class: "search-box__btn"
