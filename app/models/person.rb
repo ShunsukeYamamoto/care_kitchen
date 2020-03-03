@@ -1,7 +1,7 @@
 class Person < ApplicationRecord
   validates :name,:gender,presence: true
   belongs_to :user,optional: true
-  has_many :personal_informations
+  has_many :personal_informations,inverse_of: :person
   accepts_nested_attributes_for :personal_informations,allow_destroy: true
 
   enum gender: {
