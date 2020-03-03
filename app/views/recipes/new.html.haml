@@ -11,13 +11,13 @@
       .middle-box
         = f.text_area :text, class: "recipe-catch", placeholder: 'キャッチコピーを入力'
         %ul.recipe-ingredients
-          %li
-            = f.fields_for :recipe_ingredients do |q|
-              = q.number_field :ingredient_id, class: "recipe-ingredient", placeholder: '材料'
+          = f.fields_for :recipe_ingredients do |q|
+            %li
+              = q.number_field :ingredient_ids, class: "recipe-ingredient", placeholder: '材料'
               = q.number_field :quantity, class: "ingredient-quantity", placeholder: '分量(g)'
-          -# %li
-          -#   = f.text_field :ingredient_id, class: "recipe-ingredient", placeholder: '材料'
-          -#   = f.text_field :quantity, class: "ingredient-quantity", placeholder: '分量(g)'
+            %li
+              = q.number_field :ingredient_ids, class: "recipe-ingredient", placeholder: '材料'
+              = q.number_field :quantity, class: "ingredient-quantity", placeholder: '分量(g)'
           -# %li
           -#   = f.text_field :ingredient_id, class: "recipe-ingredient", placeholder: '材料'
           -#   = f.text_field :quantity, class: "ingredient-quantity", placeholder: '分量(g)'
@@ -42,5 +42,5 @@
         = f.fields_for :steps do |s|
           = s.file_field :image
           = s.text_field :description
-    = f.submit '登録', class: "post-btn"
+      = f.submit '登録', class: "post-btn"
 = render "shared/footer"

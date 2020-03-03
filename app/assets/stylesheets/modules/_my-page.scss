@@ -1,0 +1,127 @@
+.my-page-header{
+  height: 10vh;
+  width: 100vw;
+  background-color: #ffd200;
+  display: flex;
+  justify-content: space-between;
+  .logo{
+    font-size: 30px;
+    font-weight: bold;
+    font-family: 'Prompt';
+    margin-left: 110px;
+    margin-right: 50px;
+    line-height: 10vh;
+    .logo1{
+      color: white;
+      text-shadow: 0 5px 10px rgb(0, 0, 0);
+    }
+  }
+  &__nav{
+    display: flex;
+    padding-top: 3vh;
+    padding-right: 100px;
+    li{
+      padding-left: 10px;
+      padding-right: 10px;
+      font-size: 13px;
+      border-left: 1px solid #ffae00;
+      line-height: 4vh;
+      height: 4vh;
+      &:hover{
+        transform: translateY(-2px);
+        transition: all .3s;
+      }
+    }
+  }
+}
+.information{
+  display: flex;
+}
+.left-bar{
+  max-height: 90vh;
+  overflow-y: scroll;
+  width: 90px;
+  .btn-box{
+    height: 80px;
+    width: 80px;
+    background-color: #ffd200;
+    border-top: solid 1px #ffae00;
+    border-right: solid 1px #ffae00;
+    line-height: 80px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    &:hover{
+      background-color: #ffbb00;
+      width: 90px;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+    &__person{
+      padding-top: 10px;
+      .image-box{
+        width: 60px;
+        height: 60px;
+        border: dashed 2px #ffae00;
+        border-radius: 5px;
+        .person-image{
+          width: 60px;
+        }
+      }
+    }
+  } 
+}
+.main-content{
+  padding: 20px;
+  .profile{
+    display: flex;
+    height: 100px;
+    .image-box{
+      width: 100px;
+      height: 100px;
+      border-radius: 5px;
+      border: solid 1px #ffae00;
+      .person-image{
+        width: 100px;
+      }
+    }
+    .info-box{
+      margin-left: 10px;
+      &__text{
+        font-size: 15px;
+        text-align: center;
+        line-height: 30px;
+        width: 15vw;
+        border: solid 1px rgb(201, 197, 197);
+        border-radius: 3px;
+        margin-bottom: 3px;
+      }
+    }
+    .information-form{
+      height: 150px;
+      width: 30vw;
+      margin-left: 10px;
+      background-color: wheat;
+      .text{
+        line-height: 30px;
+        width: 160px;
+        text-align: center;
+        border: solid 1px rgb(201, 197, 197);
+        border-radius: 3px;
+      }
+    }
+  }
+}
+
+
+.image-box{
+  margin: auto;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+  .person-image{
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}

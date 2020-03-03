@@ -5,4 +5,6 @@ class Recipe < ApplicationRecord
   has_many :ingredients, through: :recipe_ingredient
   has_many :steps
   accepts_nested_attributes_for :steps
+
+  mount_uploader :image, ImageUploader
 end

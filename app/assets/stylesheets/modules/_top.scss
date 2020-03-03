@@ -99,10 +99,8 @@ header{
 }
 .main{
   width: 100vw;
-  padding-top: 30px;
-  background-color: #f5f7f8;
-  padding-bottom: 100px;
   .top-page-title{
+    margin-top: 30px;
     display: flex;
     border-top: solid 1px #ffd200;
     h2{
@@ -142,7 +140,7 @@ header{
         border-radius: 10px;
         width: 100px;
         height: 100px;
-        background-image: url(test1.png);
+        background-image: url(icon1.png);
         background-size: cover;
         background-position: center center;
         box-shadow: 0 2px 20px rgba(50, 50, 50, 0.17);
@@ -252,15 +250,16 @@ header{
 }
 footer{
   background-image: linear-gradient(112deg, #ffd200, #f2b100);
-  height: 300px;
+  height: 150px;
   width: 100vw;
   text-align: center;
+  margin-top: 100px;
   .footer-nav{
     display: flex;
     justify-content: space-between;
     margin: 0 auto;
-    width: 50vw;
-    padding-top: 70px;
+    width: 40vw;
+    padding-top: 40px;
     .box{
       padding-bottom: 10px;
       font-weight: bold;

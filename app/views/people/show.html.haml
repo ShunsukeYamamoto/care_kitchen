@@ -1,0 +1,85 @@
+.my-page-header
+  .logo
+    =link_to "CareKitchen",root_path, class: "logo1"
+  %ul.my-page-header__nav
+    %li
+      =link_to "#",class: "header-nav__btn" do
+        CareKitchenの使い方
+    - if user_signed_in?
+      %li
+        =link_to destroy_user_session_path,method: :delete,class: "header-nav__btn" do
+          ログアウト
+      %li
+        =link_to "#",class: "header-nav__btn" do
+          マイページ
+      %li
+        =link_to "#",class: "header-nav__btn" do
+          健康管理
+    - else
+      %li
+        =link_to new_user_session_path,class: "header-nav__btn" do
+          ログイン
+      %li
+        =link_to new_user_registration_path,class: "header-nav__btn" do
+          新規登録
+.information
+  .left-bar
+    =link_to root_path do
+      .btn-box
+        TOP
+    =link_to "#" do
+      .btn-box
+        MY PAGE
+    =link_to "#" do
+      .btn-box.btn-box__person
+        .image-box
+          =image_tag "icon1.png", class: "person-image"
+    =link_to "#" do
+      .btn-box.btn-box__person
+        .image-box
+          =image_tag "icon2.png", class: "person-image"
+    =link_to "#" do
+      .btn-box.btn-box__person
+        .image-box
+          =image_tag "icon3.png", class: "person-image"
+    =link_to "#" do
+      .btn-box.btn-box__person
+        .image-box
+          =image_tag "icon4.png", class: "person-image"
+    =link_to "#" do
+      .btn-box.btn-box__person
+        .image-box
+          =image_tag "icon5.png", class: "person-image"
+    =link_to "#" do
+      .btn-box.btn-box__person
+        .image-box
+          =image_tag "icon6.png", class: "person-image"
+    =link_to "#" do
+      .btn-box.btn-box__person
+        .image-box
+          =image_tag "icon7.png", class: "person-image"
+    =link_to "#" do
+      .btn-box.btn-box__person
+        .image-box
+          =image_tag "icon8.png", class: "person-image"
+    =link_to "#" do
+      .btn-box.btn-box__person
+        .image-box
+          =image_tag "icon9.png", class: "person-image"
+  .main-content
+    .profile
+      .image-box
+        =image_tag "icon4.png", class: "person-image"
+      .info-box
+        .info-box__text
+          = "name : #{@person.name}"
+        .info-box__text
+          = "BMI : #{@new_bmi}"
+      = form_with model: @person, url: "#", method: :get, local: true do |f|
+        .information-form
+          .text
+            Today's Information
+          = f.fields_for :personal_informations do |info|
+            = info.number_field :weight, class: "weight", placeholder: '体重(KG)'
+            = info.number_field :height, class: "height", placeholder: '身長(cm)'
+      
