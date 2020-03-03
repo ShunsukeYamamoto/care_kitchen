@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 2020_03_02_065816) do
   create_table "personal_informations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.float "weight", null: false
     t.float "height", null: false
+    t.float "bmi", null: false
     t.bigint "person_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
