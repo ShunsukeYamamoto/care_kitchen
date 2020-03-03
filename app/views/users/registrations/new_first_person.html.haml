@@ -11,6 +11,7 @@
   %h1.form__title 一人目のユーザー登録
   = form_for(@person, url: create_first_person_path) do |f|
     -# = render "devise/shared/error_messages", resource: resource
+    = flash[:alert]
     .field
       = f.text_field :name,placeholder: "ユーザー名", autofocus: true,class:"field--form"
 
