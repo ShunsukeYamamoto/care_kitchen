@@ -8,5 +8,7 @@ Rails.application.routes.draw do
   end
   root "toppage#index"
   resources :recipes, only: [:new, :create]
-  resources :people, only: [:show]
+  resources :people, only: [:show] do
+    resources :personal_informations, only: [:create]
+  end
 end

@@ -67,19 +67,156 @@
         .image-box
           =image_tag "icon9.png", class: "person-image"
   .main-content
-    .profile
-      .image-box
-        =image_tag "icon4.png", class: "person-image"
-      .info-box
-        .info-box__text
-          = "name : #{@person.name}"
-        .info-box__text
-          = "BMI : #{@new_bmi}"
-      = form_with model: @person, url: "#", method: :get, local: true do |f|
+    .top-wrapper
+      .profile
+        .image-box
+          =image_tag "icon4.png", class: "person-image"
+        .info-box
+          .info-box__text
+            = "name : #{@person.name}"
+      = form_with model: [@person, @personalinformation], method: :post, local: true do |f|
         .information-form
           .text
-            Today's Information
-          = f.fields_for :personal_informations do |info|
-            = info.number_field :weight, class: "weight", placeholder: '体重(KG)'
-            = info.number_field :height, class: "height", placeholder: '身長(cm)'
-      
+            =Date.current.strftime('%Y/%m/%d')
+          .information-container
+            .box
+              %p 身長(m)
+              = f.number_field :height, class: "input-info", placeholder: '(m)',value: @new_height,step: "0.01"
+            .box
+              %p 体重(kg)
+              = f.number_field :weight, class: "input-info", placeholder: '(kg)',step: "0.1"
+              = f.submit '登録', class: "post-btn"
+      .bmi-chart
+        %canvas#bmi-chart
+          :javascript
+            var w = $('.bmi-chart').width();
+            var h = $('.bmi-chart').height();
+            $('#bmi-chart').attr('width', w);
+            $('#bmi-chart').attr('height', h);
+
+            var ctx = document.getElementById("bmi-chart");
+            var myLineChart = new Chart(ctx, {
+              type: 'line',
+              data: {
+                labels: ['8/1', '8/2', '8/3', '8/4', '8/5', '8/6', '8/7', '8/8', '8/9'],
+                datasets: [
+                  {
+                    label: 'BMI',
+                    data: [35, 34, 37, 35, 34, 35, 34, 25, 29, 33],
+                    borderColor: "#de6764",
+                    pointBackgroundColor : "#fff",
+                    pointBorderColor : "#de6764",
+                    lineTension: 0,
+                    borderWidth: 2,
+                    pointBorderWidth: 3,
+                    backgroundColor: "rgba(0,0,0,0)",
+                    
+                  },
+                ],
+              },
+              options: {
+                title: {
+                  display: false,
+                },
+                scales: {
+                  yAxes: [{
+                    ticks: {
+                      suggestedMax: 40,
+                      suggestedMin: 10,
+                      stepSize: 10,
+                    }
+                  }]
+                },
+              }
+            });
+      .right-box
+        .text-box.text-box__title
+          30日前のデータ
+        .text-box
+          BMI : 25.5
+        .text-box
+          体重 : 80kg
+    .middle-wrapper
+      .nutrients-chart
+        %canvas#nutrients-chart
+          :javascript
+            var w = $('.nutrients-chart').width();
+            var h = $('.nutrients-chart').height();
+            $('#nutrients-chart').attr('width', w);
+            $('#nutrients-chart').attr('height', h);
+
+            var ctx = document.getElementById("nutrients-chart");
+            var myLineChart = new Chart(ctx, {
+              type: 'line',
+              data: {
+                labels: ['8/1', '8/2', '8/3', '8/4', '8/5', '8/6', '8/7', '8/8', '8/9'],
+                datasets: [
+                  {
+                    label: '栄養素',
+                    data: [35, 34, 37, 35, 34, 35, 34, 25, 29, 33],
+                    borderColor: "#de6764",
+                    pointBackgroundColor : "#fff",
+                    pointBorderColor : "#de6764",
+                    lineTension: 0,
+                    borderWidth: 2,
+                    pointBorderWidth: 3,
+                    backgroundColor: "rgba(0,0,0,0)",
+                    
+                  },
+                ],
+              },
+              options: {
+                title: {
+                  display: false,
+                },
+                scales: {
+                  yAxes: [{
+                    ticks: {
+                      suggestedMax: 40,
+                      suggestedMin: 10,
+                      stepSize: 10,
+                    }
+                  }]
+                },
+              }
+            });
+      .calorie-chart
+        %canvas#calorie-chart
+          :javascript
+            var w = $('.calorie-chart').width();
+            var h = $('.calorie-chart').height();
+            $('#calorie-chart').attr('width', w);
+            $('#calorie-chart').attr('height', h);
+
+            var ctx = document.getElementById("calorie-chart");
+            var myLineChart = new Chart(ctx, {
+              type: 'line',
+              data: {
+                labels: ['8/1', '8/2', '8/3', '8/4', '8/5', '8/6', '8/7'],
+                datasets: [
+                  {
+                    label: '摂取カロリー',
+                    data: [1500, 4500, 2000, 2500, 800, 1800, 4000],
+                    borderColor: "#de6764",
+                    lineTension: 0,
+                    borderWidth: 4,
+                    pointRadius: 0,
+                    backgroundColor: 'rgba(240,230,228,0.5)',
+                  },
+                ],
+              },
+              options: {
+                title: {
+                  display: false,
+                },
+                scales: {
+                  yAxes: [{
+                    ticks: {
+                      suggestedMax: 6000,
+                      suggestedMin: 0,
+                      stepSize: 1000,
+                    }
+                  }]
+                },
+              }
+            });

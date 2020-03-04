@@ -38,7 +38,7 @@
   display: flex;
 }
 .left-bar{
-  max-height: 90vh;
+  max-height: 65vh;
   overflow-y: scroll;
   width: 90px;
   .btn-box{
@@ -73,42 +73,127 @@
 }
 .main-content{
   padding: 20px;
-  .profile{
+  .top-wrapper{
     display: flex;
-    height: 100px;
-    .image-box{
-      width: 100px;
-      height: 100px;
-      border-radius: 5px;
-      border: solid 1px #ffae00;
-      .person-image{
+    height: 155px;
+    .profile{
+      .image-box{
         width: 100px;
+        height: 100px;
+        border-radius: 5px;
+        border: solid 1px #ffae00;
+        box-shadow: 5px 5px 10px rgba(204, 178, 48, 0.17);
+        .person-image{
+          width: 100px;
+        }
       }
-    }
-    .info-box{
-      margin-left: 10px;
-      &__text{
-        font-size: 15px;
-        text-align: center;
-        line-height: 30px;
-        width: 15vw;
-        border: solid 1px rgb(201, 197, 197);
-        border-radius: 3px;
-        margin-bottom: 3px;
+      .info-box{
+        margin-left: 10px;
+        margin-top: 15px;
+        &__text{
+          font-weight: bold;
+          font-size: 15px;
+          text-align: center;
+          line-height: 35px;
+          width: 15vw;
+          border: solid 1px rgb(201, 197, 197);
+          border-radius: 2px;
+          margin-bottom: 10px;
+          box-shadow: 3px 3px 10px rgba(59, 55, 35, 0.17);
+        }
       }
     }
     .information-form{
       height: 150px;
-      width: 30vw;
-      margin-left: 10px;
-      background-color: wheat;
+      margin-left: 40px;
       .text{
-        line-height: 30px;
         width: 160px;
+        font-size: 25px;
+        line-height: 35px;
+        text-align: left;
+        margin-bottom: 10px;
+        padding-left: 10px;
+        border: solid 1px rgb(201, 197, 197);
+        background-color: white;
+        border-radius: 2px;
+        font-family: 'Oxanium', cursive;
+      }
+      .information-container{
+        .box{
+          .input-info{
+            line-height: 30px;
+            margin-right: 10px;
+            width: 80px;
+            font-family: 'Oxanium', cursive;
+            font-size: 20px;
+          }
+          p{
+            font-size: 14px;
+            padding-left: 5px;
+          }
+          .post-btn{
+            padding: 0 1.5vw;
+            line-height: 30px;
+            background: #fd9535;
+            color: white;
+            border: solid 1px #d27d00;
+          }
+        }
+      }
+    }
+    .bmi-chart{
+      background-color: white;
+      position: relative;
+      margin: auto;
+      margin-left: 30px;
+      height: 155px;
+      width: 500px;
+      border: solid 1px rgb(201, 197, 197);
+      border-radius: 2px;
+      box-shadow: 3px 3px 10px rgba(121, 115, 90, 0.17);
+    }
+    .right-box{
+      padding-top: 10px;
+      .text-box{
+        margin: 0 auto;
         text-align: center;
         border: solid 1px rgb(201, 197, 197);
-        border-radius: 3px;
+        border-radius: 2px;
+        width: 120px;
+        margin-bottom: 20px;
+        line-height: 30px;
+        background-color: white;
+        box-shadow: 3px 3px 10px rgba(121, 115, 90, 0.17);
+        &__title{
+          width: 155px;
+        }
       }
+    }    
+  }
+  .middle-wrapper{
+    margin-top: 30px;
+    display: flex;
+    .nutrients-chart{
+      background-color: white;
+      position: relative;
+      margin: auto;
+      margin-left: 10px;
+      height: 300px;
+      width: 650px;
+      border: solid 1px rgb(201, 197, 197);
+      border-radius: 2px;
+      box-shadow: 3px 3px 10px rgba(121, 115, 90, 0.17);
+    }
+    .calorie-chart{
+      background-color: white;
+      position: relative;
+      margin: auto;
+      margin-left: 10px;
+      height: 300px;
+      width: 450px;
+      border: solid 1px rgb(201, 197, 197);
+      border-radius: 2px;
+      box-shadow: 3px 3px 10px rgba(121, 115, 90, 0.17);
     }
   }
 }
