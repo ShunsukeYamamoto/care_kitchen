@@ -1,18 +1,23 @@
 class RecipesController < ApplicationController
 
   def new
-    @recipe = Recipe.new
+    @recipe = current_user.recipes.new
     @recipe.steps.new
     @recipe.recipe_ingredients.new
   end
 
   def create
+    binding.pry
     @recipe = Recipe.new(recipe_params)
     if @recipe.save
       redirect_to root_path
     else
       render :new
     end
+  end
+
+  def index
+    @recipe = Recipe.new
   end
 
   private
