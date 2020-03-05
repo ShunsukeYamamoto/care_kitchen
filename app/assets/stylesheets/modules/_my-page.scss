@@ -154,7 +154,9 @@
     }
     .right-box{
       padding-top: 10px;
+      margin-left: 30px;
       .text-box{
+        font-family: 'Oxanium', cursive;
         margin: 0 auto;
         text-align: center;
         border: solid 1px rgb(201, 197, 197);
@@ -173,28 +175,47 @@
   .middle-wrapper{
     margin-top: 30px;
     display: flex;
-    .nutrients-chart{
-      background-color: white;
-      position: relative;
+    border: solid 1px rgb(201, 197, 197);
+    border-radius: 2px;
+    box-shadow: 3px 3px 10px rgba(121, 115, 90, 0.17);
+    background-color: white;
+    padding: 10px 0;
+    .nutrient-box{
       margin: auto;
-      margin-left: 10px;
-      height: 300px;
-      width: 650px;
-      border: solid 1px rgb(201, 197, 197);
-      border-radius: 2px;
-      box-shadow: 3px 3px 10px rgba(121, 115, 90, 0.17);
+      .nutrient-name{
+        width: 80px;
+        line-height: 20px;
+        text-align: center;
+        border-radius: 2px;
+        font-size: 13px;
+        font-family: 'Oxanium', cursive;
+      }
+      .nutrients-chart{
+        position: relative;
+        height: 80px;
+        width: 80px;
+        .inner-value{
+          position: absolute;
+          top:25px;
+          left: 17.5px;
+          line-height: 30px;
+          width: 45px;
+          text-align: center;
+          font-family: 'Oxanium', cursive;
+          font-size: 15px;
+        }
+      }
     }
-    .calorie-chart{
-      background-color: white;
-      position: relative;
-      margin: auto;
-      margin-left: 10px;
-      height: 300px;
-      width: 450px;
-      border: solid 1px rgb(201, 197, 197);
-      border-radius: 2px;
-      box-shadow: 3px 3px 10px rgba(121, 115, 90, 0.17);
-    }
+  }
+  .calorie-chart{
+    background-color: white;
+    position: relative;
+    margin-top: 30px;
+    height: 200px;
+    width: 500px;
+    border: solid 1px rgb(201, 197, 197);
+    border-radius: 2px;
+    box-shadow: 3px 3px 10px rgba(121, 115, 90, 0.17);
   }
 }
 
