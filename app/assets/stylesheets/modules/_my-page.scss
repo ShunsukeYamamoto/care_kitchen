@@ -73,7 +73,7 @@
 }
 .main-content{
   padding: 20px;
-  .top-wrapper{
+  .upper-wrapper{
     display: flex;
     height: 155px;
     .profile{
@@ -179,7 +179,26 @@
     border-radius: 2px;
     box-shadow: 3px 3px 10px rgba(121, 115, 90, 0.17);
     background-color: white;
-    padding: 10px 0;
+    padding: 60px 0 40px 0;
+    position: relative;
+    .title{
+      position: absolute;
+      top: 13px;
+      left: 25px;
+      display: flex;
+      font-size: 20px;
+      p{
+        padding-top: 5px;
+        font-size: 15px;
+        padding-left: 5px;
+      }
+    }
+    .coment{
+      position: absolute;
+      bottom: 10px;
+      right: 25px;
+      font-size: 10px;
+    }
     .nutrient-box{
       margin: auto;
       .nutrient-name{
