@@ -130,7 +130,7 @@
             .recipe_ingredients--form
               = form_with url: search_ingredients_recipes_path ,local: true do |t|
                 -# .recipe_ingredients--form--name
-                = t.text_field :name,class: "recipe_ingredients--form--name",placeholder: "食材名"
+                = t.autocomplete_field :ingredient_name,autocomplete_ingredient_name_recipes_path,class: "recipe_ingredients--form--name",placeholder: "食材名"
                 -# .recipe_ingredients--form--quantity
                 = t.number_field :quantity,class: "recipe_ingredients--form--quantity",placeholder: "分量(g)"
                 -# .recipe_ingredients--form--submit

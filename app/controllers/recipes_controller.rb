@@ -1,4 +1,5 @@
 class RecipesController < ApplicationController
+  autocomplete :ingredient,:name,full: true
 
   def new
     @recipe = current_user.recipes.new
@@ -20,10 +21,12 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new
   end
 
+
   private
 
   def recipe_params
     params.require(:recipe).permit(:title, :image, :text, steps_attributes: [:image, :description], recipe_ingredients_attributes: [:ingredient_id, :quantity]).merge(user_id: current_user.id)
   end
+  
   
 end

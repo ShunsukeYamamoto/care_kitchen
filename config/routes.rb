@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :recipes, only: [:new, :create,:index] do
     collection do
       get 'search_ingredients'
+      get 'autocomplete_ingredient_name'
     end
   end
 end
