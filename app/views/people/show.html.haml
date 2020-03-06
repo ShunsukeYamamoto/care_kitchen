@@ -25,59 +25,29 @@
 .information
   .left-bar
     =link_to root_path do
-      .btn-box
+      .btn-box.btn-box__top
         TOP
     =link_to "#" do
       .btn-box
         MY PAGE
-    =link_to "#" do
-      .btn-box.btn-box__person
-        .image-box
-          =image_tag "icon1.png", class: "person-image"
-    =link_to "#" do
-      .btn-box.btn-box__person
-        .image-box
-          =image_tag "icon2.png", class: "person-image"
-    =link_to "#" do
-      .btn-box.btn-box__person
-        .image-box
-          =image_tag "icon3.png", class: "person-image"
-    =link_to "#" do
-      .btn-box.btn-box__person
-        .image-box
-          =image_tag "icon4.png", class: "person-image"
-    =link_to "#" do
-      .btn-box.btn-box__person
-        .image-box
-          =image_tag "icon5.png", class: "person-image"
-    =link_to "#" do
-      .btn-box.btn-box__person
-        .image-box
-          =image_tag "icon6.png", class: "person-image"
-    =link_to "#" do
-      .btn-box.btn-box__person
-        .image-box
-          =image_tag "icon7.png", class: "person-image"
-    =link_to "#" do
-      .btn-box.btn-box__person
-        .image-box
-          =image_tag "icon8.png", class: "person-image"
-    =link_to "#" do
-      .btn-box.btn-box__person
-        .image-box
-          =image_tag "icon9.png", class: "person-image"
+    -current_user.people.each do |person|
+      =link_to person_path(person.id) do
+        .btn-box.btn-box__person
+          .image-box
+            =image_tag person.image, class: "person-image"
+          %p 
+            =person.name
   .main-content
     .upper-wrapper
       .profile
         .image-box
-          =image_tag "icon4.png", class: "person-image"
+          =image_tag @person.image, class: "person-image"
         .info-box
           .info-box__text
             = "name : #{@person.name}"
       = form_with model: [@person, @personalinformation], method: :post, local: true do |f|
         .information-form
-          .text
-            =Date.current.strftime('%Y/%m/%d')
+          =f.date_field :date, class:'text', value: Date.today
           .information-container
             .box
               %p 身長(m)
@@ -202,7 +172,7 @@
                   labels: ['タンパク質','不足分'],
                   datasets: [
                     {
-                      data: [77,23],
+                      data: [19,20-19],
                       borderWidth: 1,
                       backgroundColor: ["#c54e44","rgba(0,0,0,0)"],
                       hoverBackgroundColor: ["#df5f4a","#fff"],
@@ -240,7 +210,7 @@
                   labels: ['脂質','不足分'],
                   datasets: [
                     {
-                      data: [55,23],
+                      data: [22,30-22],
                       borderWidth: 1,
                       backgroundColor: ["#c54e44","rgba(0,0,0,0)"],
                       hoverBackgroundColor: ["#df5f4a","#fff"],
@@ -278,7 +248,7 @@
                   labels: ['炭水化物','不足分'],
                   datasets: [
                     {
-                      data: [11,23],
+                      data: [120,145-120],
                       borderWidth: 1,
                       backgroundColor: ["#c54e44","rgba(0,0,0,0)"],
                       hoverBackgroundColor: ["#df5f4a","#fff"],
@@ -316,7 +286,7 @@
                   labels: ['ビタミンA','不足分'],
                   datasets: [
                     {
-                      data: [200,23],
+                      data: [200,300-200],
                       borderWidth: 1,
                       backgroundColor: ["#c54e44","rgba(0,0,0,0)"],
                       hoverBackgroundColor: ["#df5f4a","#fff"],
@@ -354,7 +324,7 @@
                   labels: ['ビタミンB1','不足分'],
                   datasets: [
                     {
-                      data: [10,23],
+                      data: [0.35,0.45-0.35],
                       borderWidth: 1,
                       backgroundColor: ["#c54e44","rgba(0,0,0,0)"],
                       hoverBackgroundColor: ["#df5f4a","#fff"],
@@ -392,7 +362,7 @@
                   labels: ['ビタミンC','不足分'],
                   datasets: [
                     {
-                      data: [577,23],
+                      data: [22,33-22],
                       borderWidth: 1,
                       backgroundColor: ["#c54e44","rgba(0,0,0,0)"],
                       hoverBackgroundColor: ["#df5f4a","#fff"],
@@ -430,7 +400,7 @@
                   labels: ['食塩','不足分'],
                   datasets: [
                     {
-                      data: [90,23],
+                      data: [2.2,2.7-2.2],
                       borderWidth: 1,
                       backgroundColor: ["#c54e44","rgba(0,0,0,0)"],
                       hoverBackgroundColor: ["#df5f4a","#fff"],
@@ -468,7 +438,7 @@
                   labels: ['食物繊維','不足分'],
                   datasets: [
                     {
-                      data: [200,23],
+                      data: [5,7-5],
                       borderWidth: 1,
                       backgroundColor: ["#c54e44","rgba(0,0,0,0)"],
                       hoverBackgroundColor: ["#df5f4a","#fff"],
@@ -506,7 +476,7 @@
                   labels: ['カルシウム','不足分'],
                   datasets: [
                     {
-                      data: [5,23],
+                      data: [250,270-250],
                       borderWidth: 1,
                       backgroundColor: ["#c54e44","rgba(0,0,0,0)"],
                       hoverBackgroundColor: ["#df5f4a","#fff"],
