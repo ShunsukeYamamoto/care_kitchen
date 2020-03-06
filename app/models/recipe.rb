@@ -7,4 +7,5 @@ class Recipe < ApplicationRecord
   accepts_nested_attributes_for :steps
 
   mount_uploader :image, ImageUploader
+
 end

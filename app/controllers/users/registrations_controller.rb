@@ -25,22 +25,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create_first_person
     @user = User.new(session["create_acount"]["user"])
     @person = Person.new(person_params)
-    unless @person.valid?
-      flash.now[:alert] = @address.errors.full_messages
+    @personal_information = PersonalInformation.new(@person.personal_informations[0].attributes)
+    @user.people.build(@person.attributes)
+    @user.people[0].personal_informations.build(@person.personal_informations[0].attributes)
+    unless @person.valid? && @personal_information.valid?
+      flash[:alert] = "入力が誤っています"
       render :new_first_person and return
     end
-    @user.people.build(@person.attributes)
     @user.save
-    @person[:user_id] = @user.id
-    @person.save
-    personal_informations = @person.personal_informations[0]
-    personal_informations[:person_id] = @person.id
-    personal_informations.save
     sign_in(:user, @user)
     redirect_to root_path
   end
 
-  
+
 
   # GET /resource/edit
   # def edit
@@ -74,9 +71,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def person_params
-    params.require(:person).permit(:name,:birthday,:gender,personal_informations_attributes: [:height,:weight,:id])
-    # binding.pry
+    params.require(:person).permit(:name,:birthday,:gender,:image,personal_informations_attributes: [:height,:weight,:date,:id])
   end
+  # personal_informations_attributes: [:height,:weight,:id]
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
