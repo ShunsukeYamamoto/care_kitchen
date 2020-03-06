@@ -26,8 +26,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new(session["create_acount"]["user"])
     @person = Person.new(person_params)
     @personal_information = PersonalInformation.new(@person.personal_informations[0].attributes)
+    weight = @personal_information[:weight]
+    height = @personal_information[:height]
+    bmi = (weight/height/height).round(1)
+    @personal_information[:bmi] = bmi
+    binding.pry
     @user.people.build(@person.attributes)
-    @user.people[0].personal_informations.build(@person.personal_informations[0].attributes)
+    @user.people[0].personal_informations.build(@personal_information.attributes)
     unless @person.valid? && @personal_information.valid?
       flash[:alert] = "入力が誤っています"
       render :new_first_person and return

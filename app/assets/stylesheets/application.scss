@@ -1,4 +1,5 @@
 @import 'reset';
+@import 'jquery-ui';
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 @import 'devise/sign_up';
@@ -7,3 +8,4 @@
 @import 'modules/recipes';
 @import 'modules/my-page';
 @import 'devise/new_first_person';
+@import 'modules/post_recipe';

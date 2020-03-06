@@ -11,8 +11,9 @@
 // about supported directives.
 //
 //= require Chart.min
-//= require rails-ujs
-//= require activestorage
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
+//= require autocomplete-rails
+//= require activestorage
 //= require_tree .
