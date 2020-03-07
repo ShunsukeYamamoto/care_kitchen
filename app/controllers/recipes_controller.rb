@@ -22,6 +22,15 @@ class RecipesController < ApplicationController
   end
 
 
+  def search_ingredients
+    ingredient = Ingredient.where(name: "#{params[:name]}").first
+    quantity = params[:quantity]
+    if ingredient.present? && quantity.present?
+      @data = {id: ingredient.id,name: ingredient.name,quantity: quantity}
+    end
+  end
+
+
   private
 
   def recipe_params

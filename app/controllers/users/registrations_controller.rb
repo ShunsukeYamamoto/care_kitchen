@@ -30,7 +30,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     height = @personal_information[:height]
     bmi = (weight/height/height).round(1)
     @personal_information[:bmi] = bmi
-    binding.pry
     @user.people.build(@person.attributes)
     @user.people[0].personal_informations.build(@personal_information.attributes)
     unless @person.valid? && @personal_information.valid?
@@ -78,7 +77,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def person_params
 
     params.require(:person).permit(:name,:birthday,:gender,personal_informations_attributes: [:height,:weight,:id])
-    # binding.pry
   end
   # personal_informations_attributes: [:height,:weight,:id]
 

@@ -98,25 +98,11 @@
               = s.label :image do
                 .recipe_step--image
                   = s.file_field :image,class: "image_label"
-                  -# .recipe_step--image--icon
-                  -#   %i.fas.fa-image
-                  -#   %p 作り方イメージ(任意)
-                  .recipe_step--image--preview
-                    =image_tag 'images (2).jpeg'
-              .recipe_step__description
-                = s.text_area :description,class: "recipe_step__description--form",placeholder: "作り方"
-          
-          .recipe_step
-            .recipe_step--delete
-              %i.fas.fa-trash-alt
-            = f.fields_for :steps,@recipe.steps.new do |s|
-              = s.label :image do
-                .recipe_step--image
-                  = s.file_field :image,class: "image_label"
                   .recipe_step--image--icon
                     %i.fas.fa-image
                     %p 作り方イメージ(任意)
-                  -# =image_tag ''
+                  -# .recipe_step--image--preview
+                  -#   =image_tag 'images (2).jpeg'
               .recipe_step__description
                 = s.text_area :description,class: "recipe_step__description--form",placeholder: "作り方"
 
@@ -126,18 +112,14 @@
               %p 次の工程(最大6個)
 
         .recipe_ingredients
-          = f.fields_for :recipe_ingredients,@recipe.recipe_ingredients.new do |i|
-            .recipe_ingredients--form
-              = form_with url: search_ingredients_recipes_path ,local: true do |t|
-                -# .recipe_ingredients--form--name
-                = t.autocomplete_field :ingredient_name,autocomplete_ingredient_name_recipes_path,class: "recipe_ingredients--form--name",placeholder: "食材名"
-                -# .recipe_ingredients--form--quantity
-                = t.number_field :quantity,class: "recipe_ingredients--form--quantity",placeholder: "分量(g)"
-                -# .recipe_ingredients--form--submit
-                %button{class: "recipe_ingredients--form--submit"}
-                  %p 追加
-            .recipe_ingredients--area
-              .recipe_ingreient
+          .recipe_ingredients--form
+            = form_with url: search_ingredients_recipes_path ,local: true do |t|
+              = t.autocomplete_field :ingredient_name,autocomplete_ingredient_name_recipes_path,class: "recipe_ingredients--form--name",placeholder: "食材名"
+              = t.number_field :quantity,class: "recipe_ingredients--form--quantity",placeholder: "分量(g)"
+              %button{class: "recipe_ingredients--form--submit"}
+                %p 追加
+          .recipe_ingredients--area
+            
 
 
 
