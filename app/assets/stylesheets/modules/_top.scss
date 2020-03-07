@@ -135,16 +135,19 @@ header{
     &-info{
       margin-top: 100px;
       margin-left: 70px;
-      position: relative;
       &__image{
         border-radius: 10px;
         width: 100px;
         height: 100px;
-        background-image: url(icon1.png);
-        background-size: cover;
-        background-position: center center;
         box-shadow: 0 2px 20px rgba(50, 50, 50, 0.17);
         margin: 0 auto;
+        position: relative;
+        .person-image{
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100px;
+        }
       }
       &__name{
         background-color: #ffd200;
