@@ -17,10 +17,10 @@ $(function(){
                     <div class="recipe_ingredient--delete">
                       <i class="fas fa-trash-alt delete_ingredient"></i>
                     </div>
-                    <input value="${data.id}" type="hidden" name="recipe[recipe_ingredients_attributes][${ingredient_count}][ingredient_id]" id="recipe_recipe_ingredients_attributes_${index}_ingredient_id">
-                    <input value="${data.quantity}" type="hidden" name="recipe[recipe_ingredients_attributes][${ingredient_count}][quantity]" id="recipe_recipe_ingredients_attributes_${index}_quantity">
+                    <input value="${data.id}" type="hidden" name="recipe[recipe_ingredients_attributes][${ingredient_count}][ingredient_id]" id="recipe_recipe_ingredients_attributes_${ingredient_count}_ingredient_id">
+                    <input value="${data.quantity}" type="hidden" name="recipe[recipe_ingredients_attributes][${ingredient_count}][quantity]" id="recipe_recipe_ingredients_attributes_${ingredient_count}_quantity">
                   </div>`
-      index += 1;
+      ingredient_count += 1;
 
       $('.recipe_ingredients--area').append(html);
 

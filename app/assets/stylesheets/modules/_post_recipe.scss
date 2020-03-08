@@ -269,6 +269,18 @@
   }
 }
 
+.submit_recipe{
+  display: block;
+  width: 400px;
+  height: 80px;
+  background-color: orange;
+  margin: 0 auto;
+  cursor: pointer;
+  color: white;
+  margin-top: 30px;
+  font-size: 30px;
+}
+
 .ui-menu-item{
   width: 200px;
   border-bottom: 1px solid black;

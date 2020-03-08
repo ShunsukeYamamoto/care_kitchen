@@ -26,3 +26,6 @@ CSV.foreach('db/csv/ingredients.csv',headers: true) do |row|
     salt:          row['salt']
   )
 end
+
+User.create(id: 1,name: "testuser",email: "shun@gmail.com",password: "shun0113")
+Person.create(id: 1,name: "testperson1",gender: "0",birthday: "1990-01-01",user_id: 1)

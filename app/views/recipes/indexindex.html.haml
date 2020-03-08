@@ -1,0 +1,29 @@
+= render "shared/header"
+.main
+  = form_with model: @recipe, url: recipes_path, method: :post, local: true do |f|
+    .post-board
+      .left-box
+        = f.text_field :title, class: "recipe-title", placeholder: '料理名'
+        = f.label :image, class: 'recipe-image' do
+          = icon('fas', 'image', class: 'icon')
+          %p 料理の完成イメージ
+          = f.file_field :image, class: 'hidden'
+      .middle-box
+        = f.text_area :text, class: "recipe-catch", placeholder: 'キャッチコピーを入力'
+        %ul.recipe-ingredients
+          %li
+            = f.fields_for :recipe_ingredients do |q|
+              = q.number_field :ingredient_id, class: "recipe-ingredient", placeholder: '材料'
+              = q.number_field :quantity, class: "ingredient-quantity", placeholder: '分量(g)'
+            = f.fields_for :recipe_ingredients do |q|
+              = q.number_field :ingredient_id, class: "recipe-ingredient", placeholder: '材料'
+              = q.number_field :quantity, class: "ingredient-quantity", placeholder: '分量(g)'
+          
+      .right-box
+        ※ここにはグラフが入ります
+      .step-box
+        = f.fields_for :steps do |s|
+          = s.file_field :image
+          = s.text_field :description
+      = f.submit '登録', class: "post-btn"
+= render "shared/footer"
