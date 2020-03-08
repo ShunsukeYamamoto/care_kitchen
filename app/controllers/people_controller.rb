@@ -7,13 +7,16 @@ class PeopleController < ApplicationController
     @days=[]
     informations.each do |information|
       @bmis << information.bmi
-      @days << information.date.strftime("%m/%d") 
+      @days << information.date.strftime("%-m/%d") 
     end
     new_information = informations.last
     new_weight = new_information.weight
     @new_height = new_information.height
     @new_bmi = (new_weight/@new_height/@new_height).round(1)
     @personalinformation=@person.personal_informations.new
+
+    gon.bmis = @bmis
+    gon.days = @days
   end
 
 

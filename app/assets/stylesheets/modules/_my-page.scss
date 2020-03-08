@@ -1,16 +1,17 @@
 .my-page-header{
-  height: 10vh;
+  height: 60px;
   width: 100vw;
   background-color: #ffd200;
   display: flex;
   justify-content: space-between;
+  border-bottom: solid 1px #ffae00;
   .logo{
     font-size: 30px;
     font-weight: bold;
     font-family: 'Prompt';
     margin-left: 110px;
     margin-right: 50px;
-    line-height: 10vh;
+    line-height: 70px;
     .logo1{
       color: white;
       text-shadow: 0 5px 10px rgb(0, 0, 0);
@@ -18,15 +19,15 @@
   }
   &__nav{
     display: flex;
-    padding-top: 3vh;
+    padding-top: 20px;
     padding-right: 100px;
     li{
       padding-left: 10px;
       padding-right: 10px;
       font-size: 13px;
       border-left: 1px solid #ffae00;
-      line-height: 4vh;
-      height: 4vh;
+      line-height: 30px;
+      height: 30px;
       &:hover{
         transform: translateY(-2px);
         transition: all .3s;
@@ -38,9 +39,11 @@
   display: flex;
 }
 .left-bar{
-  max-height: 100vh;
-  overflow-y: scroll;
   width: 90px;
+  .people-bar{
+    overflow-y: scroll;
+    height: 300px;
+  }
   .btn-box{
     height: 80px;
     width: 80px;
@@ -51,9 +54,6 @@
     text-align: center;
     color: white;
     font-weight: bold;
-    &__top{
-      border-top: solid 1px #ffae00;
-    }
     &:hover{
       background-color: #ffbb00;
       width: 90px;
@@ -93,20 +93,16 @@
           width: 100px;
         }
       }
-      .info-box{
-        margin-left: 10px;
+      &__name{
+        font-weight: bold;
+        font-size: 15px;
+        text-align: center;
+        line-height: 35px;
+        width: 15vw;
+        border: solid 1px rgb(201, 197, 197);
+        border-radius: 2px;
+        box-shadow: 3px 3px 10px rgba(59, 55, 35, 0.17);
         margin-top: 15px;
-        &__text{
-          font-weight: bold;
-          font-size: 15px;
-          text-align: center;
-          line-height: 35px;
-          width: 15vw;
-          border: solid 1px rgb(201, 197, 197);
-          border-radius: 2px;
-          margin-bottom: 10px;
-          box-shadow: 3px 3px 10px rgba(59, 55, 35, 0.17);
-        }
       }
     }
     .information-form{
