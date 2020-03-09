@@ -10,10 +10,11 @@ Rails.application.routes.draw do
   resources :people, only: [:show] do
     resources :personal_informations, only: [:create]
   end
-  resources :recipes, only: [:new, :create,:index] do
+  resources :recipes, only: [:index, :new, :create] do
     collection do
       get 'search_ingredients'
       get 'autocomplete_ingredient_name'
+      get 'search'
     end
   end
 end

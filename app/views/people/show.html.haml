@@ -1,496 +1,505 @@
-.my-page-header
-  .logo
-    =link_to "CareKitchen",root_path, class: "logo1"
-  %ul.my-page-header__nav
-    %li
-      =link_to "#",class: "header-nav__btn" do
-        CareKitchenの使い方
-    - if user_signed_in?
-      %li
-        =link_to destroy_user_session_path,method: :delete,class: "header-nav__btn" do
-          ログアウト
+.main
+  .my-page-header
+    .logo
+      =link_to "CareKitchen",root_path, class: "logo1"
+    %ul.my-page-header__nav
       %li
         =link_to "#",class: "header-nav__btn" do
-          マイページ
-      %li
-        =link_to "#",class: "header-nav__btn" do
-          健康管理
-    - else
-      %li
-        =link_to new_user_session_path,class: "header-nav__btn" do
-          ログイン
-      %li
-        =link_to new_user_registration_path,class: "header-nav__btn" do
-          新規登録
-.information
-  .left-bar
-    =link_to root_path do
-      .btn-box
-        TOP
-    =link_to "#" do
-      .btn-box
-        MY PAGE
-    .people-bar
-      -current_user.people.each do |person|
-        =link_to person_path(person.id) do
-          .btn-box.btn-box__person
-            .image-box
-              =image_tag person.image, class: "person-image"
-            %p 
-              =person.name
-  .main-content
-    .upper-wrapper
-      .profile
-        .image-box
-          =image_tag @person.image, class: "person-image"
-        .profile__name
-          = "name : #{@person.name}"
-      = form_with model: [@person, @personalinformation], method: :post, local: true do |f|
-        .information-form
-          =f.date_field :date, class:'text', value: Date.today
-          .information-container
-            .box
-              %p 身長(m)
-              = f.number_field :height, class: "input-info", placeholder: '(m)',value: @new_height,step: "0.01"
-            .box
-              %p 体重(kg)
-              = f.number_field :weight, class: "input-info", placeholder: '(kg)',step: "0.1"
-              = f.submit '登録', class: "post-btn"
-      .bmi-chart
-        %canvas#bmi-chart
-          :javascript
-            var w = $('.bmi-chart').width();
-            var h = $('.bmi-chart').height();
-            $('#bmi-chart').attr('width', w);
-            $('#bmi-chart').attr('height', h);
+          CareKitchenの使い方
+      - if user_signed_in?
+        %li
+          =link_to destroy_user_session_path,method: :delete,class: "header-nav__btn" do
+            ログアウト
+        %li
+          =link_to "#",class: "header-nav__btn" do
+            マイページ
+        %li
+          =link_to "#",class: "header-nav__btn" do
+            健康管理
+      - else
+        %li
+          =link_to new_user_session_path,class: "header-nav__btn" do
+            ログイン
+        %li
+          =link_to new_user_registration_path,class: "header-nav__btn" do
+            新規登録
+  .information
+    .left-bar
+      =link_to root_path do
+        .btn-box
+          TOP
+      =link_to "#" do
+        .btn-box
+          MY PAGE
+      .people-bar
+        -current_user.people.each do |person|
+          =link_to person_path(person.id) do
+            .btn-box.btn-box__person
+              .image-box
+                =image_tag person.image, class: "image-box__inside"
+              %p 
+                =person.name
+    .main-content
+      .upper-wrapper
+        .profile
+          .image-box
+            =image_tag @person.image, class: "image-box__inside"
+          .profile__name
+            = "name : #{@person.name}"
+        .info-container
+          = form_with model: [@person, @personalinformation], method: :post, local: true do |f|
+            .information-form
+              =f.date_field :date, class:'text', value: Date.today
+              .box
+                %p 身長(m)
+                = f.number_field :height, class: "input-info", placeholder: '(m)',value: @new_height,step: "0.01"
+              .box
+                %p 体重(kg)
+                = f.number_field :weight, class: "input-info", placeholder: '(kg)',step: "0.1"
+                = f.submit '登録', class: "post-btn"
+          .bmi-chart
+            %canvas#bmi-chart
+              :javascript
+                var w = $('.bmi-chart').width();
+                var h = $('.bmi-chart').height();
+                $('#bmi-chart').attr('width', w);
+                $('#bmi-chart').attr('height', h);
 
-            var ctx = document.getElementById("bmi-chart");
-            var myLineChart = new Chart(ctx, {
-              type: 'line',
-              data: {
-                labels: gon.days,
-                datasets: [
-                  {
-                    label: 'BMI',
-                    data: gon.bmis,
-                    borderColor: "#df5f4a",
-                    pointBackgroundColor : "#fff",
-                    pointBorderColor : "#2a324e",
-                    lineTension: 0,
-                    borderWidth: 2,
-                    pointBorderWidth: 3,
-                    backgroundColor: "rgba(0,0,0,0)",
+                var ctx = document.getElementById("bmi-chart");
+                var myLineChart = new Chart(ctx, {
+                  type: 'line',
+                  data: {
+                    labels: gon.days,
+                    datasets: [
+                      {
+                        label: 'BMI',
+                        data: gon.bmis,
+                        borderColor: "#df5f4a",
+                        pointBackgroundColor : "#fff",
+                        pointBorderColor : "#2a324e",
+                        lineTension: 0,
+                        borderWidth: 2,
+                        pointBorderWidth: 3,
+                        backgroundColor: "rgba(0,0,0,0)",
+                      },
+                    ],
                   },
-                ],
-              },
-              options: {
-                title: {
-                  display: false,
-                },
-                legend: {
-                  labels: {
-                    fontFamily:'Oxanium',
-                  },
-                },
-                scales: {
-                  yAxes: [{
-                    ticks: {
-                      stepSize: 0.5,
+                  options: {
+                    title: {
+                      display: false,
                     },
-                  }]
-                },
-              }
-            });
-      .right-box
-        .text-box.text-box__title
-          30日前のデータ
-        .text-box
-          BMI : 25.5
-        .text-box
-          体重 : 80kg
-    .calorie-chart
-      %canvas#calorie-chart
-        :javascript
-          var w = $('.calorie-chart').width();
-          var h = $('.calorie-chart').height();
-          $('#calorie-chart').attr('width', w);
-          $('#calorie-chart').attr('height', h);
-
-          var ctx = document.getElementById("calorie-chart");
-          var myLineChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-              labels: ['8/1', '8/2', '8/3', '8/4', '8/5', '8/6', '8/7', '8/8', '8/9', '8/10', '8/11', '8/12', '8/13', '8/14'],
-              datasets: [
-                {
-                  label: '摂取カロリー',
-                  data: [1500, 4500, 2000, 2500, 800, 1800, 4000, 3989, 2090, 3097, 2999, 1000, 5033, 2999],
-                  borderColor: "#df5f4a",
-                  lineTension: 0,
-                  borderWidth: 2,
-                  pointRadius: 0,
-                  backgroundColor: 'rgba(240,230,228,0.5)',
-                },
-              ],
-            },
-            options: {
-              title: {
-                display: false,
-              },
-              scales: {
-                yAxes: [{
-                  ticks: {
-                    stepSize: 500,
+                    legend: {
+                      labels: {
+                        fontFamily:'Oxanium',
+                      },
+                    },
+                    scales: {
+                      yAxes: [{
+                        ticks: {
+                          stepSize: 0.5,
+                        },
+                      }]
+                    },
                   }
-                }]
-              },
-            }
-          });
-    .middle-wrapper
-      .title
-        １食当たりの摂取量
-        %p (過去14日間の平均)
-      .coment
-        ※このグラフは各栄養素の1食当たりの摂取量の基準値を100%として算出しています
-      .nutrient-box
-        .nutrient-name
-          タンパク質
-        .nutrients-chart
-          .inner-value
-            77%
-          %canvas#protein-chart
+                });
+          .right-box
+            .text-box.text-box__title
+              30日前のデータ
+            .text-box
+              BMI : 25.5
+            .text-box
+              体重 : 80kg
+      .middle-wrapper
+        .btn-box
+          =link_to "#" do
+            .post-btn.post-btn__meal
+              食べたものを入力
+          =link_to "#" do
+            .post-btn.post-btn__recipe
+              レシピを投稿する
+        .calorie-chart
+          %canvas#calorie-chart
             :javascript
-              var w = $('.nutrients-chart').width();
-              var h = $('.nutrients-chart').height();
-              $('#protein-chart').attr('width', w);
-              $('#protein-chart').attr('height', h);
+              var w = $('.calorie-chart').width();
+              var h = $('.calorie-chart').height();
+              $('#calorie-chart').attr('width', w);
+              $('#calorie-chart').attr('height', h);
 
-              var ctx = document.getElementById("protein-chart");
+              var ctx = document.getElementById("calorie-chart");
               var myLineChart = new Chart(ctx, {
-                type: 'doughnut',
+                type: 'line',
                 data: {
-                  labels: ['タンパク質','不足分'],
+                  labels: ['8/1', '8/2', '8/3', '8/4', '8/5', '8/6', '8/7', '8/8', '8/9', '8/10', '8/11', '8/12', '8/13', '8/14', '8/1', '8/2', '8/3', '8/4', '8/5', '8/6', '8/7', '8/8', '8/9', '8/10', '8/11', '8/12', '8/13', '8/14'],
                   datasets: [
                     {
-                      data: [19,20-19],
-                      borderWidth: 1,
-                      backgroundColor: ["#c54e44","rgba(0,0,0,0)"],
-                      hoverBackgroundColor: ["#df5f4a","#fff"],
-                      borderColor: "#2a324e",
+                      label: '摂取カロリー',
+                      data: [1500, 4500, 2000, 2500, 800, 1800, 4000, 3989, 2090, 3097, 2999, 1000, 5033, 2999, 1500, 4500, 2000, 2500, 800, 1800, 4000, 3989, 2090, 3097, 2999, 1000, 5033, 2999],
+                      borderColor: "#df5f4a",
+                      lineTension: 0,
+                      borderWidth: 2,
+                      pointRadius: 0,
+                      backgroundColor: 'rgba(240,230,228,0.5)',
                     },
                   ],
                 },
                 options: {
-                  cutoutPercentage:60,
                   title: {
                     display: false,
                   },
-                  legend: {
-                    display: false,
+                  scales: {
+                    yAxes: [{
+                      ticks: {
+                        stepSize: 500,
+                      }
+                    }]
                   },
                 }
               });
-      .nutrient-box
-        .nutrient-name
-          脂質
-        .nutrients-chart
-          .inner-value
-            55%
-          %canvas#lipid-chart
-            :javascript
-              var w = $('.nutrients-chart').width();
-              var h = $('.nutrients-chart').height();
-              $('#lipid-chart').attr('width', w);
-              $('#lipid-chart').attr('height', h);
+      .downer-wrapper
+        .title
+          １食当たりの摂取量
+          %p (過去14日間の平均)
+        .coment
+          ※このグラフは各栄養素の1食当たりの摂取量の基準値を100%として算出しています
+        .nutrient-box
+          .nutrient-name
+            タンパク質
+          .nutrients-chart
+            .inner-value
+              77%
+            %canvas#protein-chart
+              :javascript
+                var w = $('.nutrients-chart').width();
+                var h = $('.nutrients-chart').height();
+                $('#protein-chart').attr('width', w);
+                $('#protein-chart').attr('height', h);
 
-              var ctx = document.getElementById("lipid-chart");
-              var myLineChart = new Chart(ctx, {
-                type: 'doughnut',
-                data: {
-                  labels: ['脂質','不足分'],
-                  datasets: [
-                    {
-                      data: [22,30-22],
-                      borderWidth: 1,
-                      backgroundColor: ["#c54e44","rgba(0,0,0,0)"],
-                      hoverBackgroundColor: ["#df5f4a","#fff"],
-                      borderColor: "#2a324e",
+                var ctx = document.getElementById("protein-chart");
+                var myLineChart = new Chart(ctx, {
+                  type: 'doughnut',
+                  data: {
+                    labels: ['タンパク質','不足分'],
+                    datasets: [
+                      {
+                        data: [19,20-19],
+                        borderWidth: 1,
+                        backgroundColor: ["#c54e44","rgba(0,0,0,0)"],
+                        hoverBackgroundColor: ["#df5f4a","#fff"],
+                        borderColor: "#2a324e",
+                      },
+                    ],
+                  },
+                  options: {
+                    cutoutPercentage:60,
+                    title: {
+                      display: false,
                     },
-                  ],
-                },
-                options: {
-                  cutoutPercentage:60,
-                  title: {
-                    display: false,
-                  },
-                  legend: {
-                    display: false,
-                  },
-                }
-              });
-      .nutrient-box
-        .nutrient-name
-          炭水化物
-        .nutrients-chart
-          .inner-value
-            55%
-          %canvas#carbohydrate-chart
-            :javascript
-              var w = $('.nutrients-chart').width();
-              var h = $('.nutrients-chart').height();
-              $('#carbohydrate-chart').attr('width', w);
-              $('#carbohydrate-chart').attr('height', h);
+                    legend: {
+                      display: false,
+                    },
+                  }
+                });
+        .nutrient-box
+          .nutrient-name
+            脂質
+          .nutrients-chart
+            .inner-value
+              55%
+            %canvas#lipid-chart
+              :javascript
+                var w = $('.nutrients-chart').width();
+                var h = $('.nutrients-chart').height();
+                $('#lipid-chart').attr('width', w);
+                $('#lipid-chart').attr('height', h);
 
-              var ctx = document.getElementById("carbohydrate-chart");
-              var myLineChart = new Chart(ctx, {
-                type: 'doughnut',
-                data: {
-                  labels: ['炭水化物','不足分'],
-                  datasets: [
-                    {
-                      data: [120,145-120],
-                      borderWidth: 1,
-                      backgroundColor: ["#c54e44","rgba(0,0,0,0)"],
-                      hoverBackgroundColor: ["#df5f4a","#fff"],
-                      borderColor: "#2a324e",
+                var ctx = document.getElementById("lipid-chart");
+                var myLineChart = new Chart(ctx, {
+                  type: 'doughnut',
+                  data: {
+                    labels: ['脂質','不足分'],
+                    datasets: [
+                      {
+                        data: [22,30-22],
+                        borderWidth: 1,
+                        backgroundColor: ["#c54e44","rgba(0,0,0,0)"],
+                        hoverBackgroundColor: ["#df5f4a","#fff"],
+                        borderColor: "#2a324e",
+                      },
+                    ],
+                  },
+                  options: {
+                    cutoutPercentage:60,
+                    title: {
+                      display: false,
                     },
-                  ],
-                },
-                options: {
-                  cutoutPercentage:60,
-                  title: {
-                    display: false,
-                  },
-                  legend: {
-                    display: false,
-                  },
-                }
-              });
-      .nutrient-box
-        .nutrient-name
-          ビタミンA
-        .nutrients-chart
-          .inner-value
-            55%
-          %canvas#vitamina-chart
-            :javascript
-              var w = $('.nutrients-chart').width();
-              var h = $('.nutrients-chart').height();
-              $('#vitamina-chart').attr('width', w);
-              $('#vitamina-chart').attr('height', h);
+                    legend: {
+                      display: false,
+                    },
+                  }
+                });
+        .nutrient-box
+          .nutrient-name
+            炭水化物
+          .nutrients-chart
+            .inner-value
+              55%
+            %canvas#carbohydrate-chart
+              :javascript
+                var w = $('.nutrients-chart').width();
+                var h = $('.nutrients-chart').height();
+                $('#carbohydrate-chart').attr('width', w);
+                $('#carbohydrate-chart').attr('height', h);
 
-              var ctx = document.getElementById("vitamina-chart");
-              var myLineChart = new Chart(ctx, {
-                type: 'doughnut',
-                data: {
-                  labels: ['ビタミンA','不足分'],
-                  datasets: [
-                    {
-                      data: [200,300-200],
-                      borderWidth: 1,
-                      backgroundColor: ["#c54e44","rgba(0,0,0,0)"],
-                      hoverBackgroundColor: ["#df5f4a","#fff"],
-                      borderColor: "#2a324e",
+                var ctx = document.getElementById("carbohydrate-chart");
+                var myLineChart = new Chart(ctx, {
+                  type: 'doughnut',
+                  data: {
+                    labels: ['炭水化物','不足分'],
+                    datasets: [
+                      {
+                        data: [120,145-120],
+                        borderWidth: 1,
+                        backgroundColor: ["#c54e44","rgba(0,0,0,0)"],
+                        hoverBackgroundColor: ["#df5f4a","#fff"],
+                        borderColor: "#2a324e",
+                      },
+                    ],
+                  },
+                  options: {
+                    cutoutPercentage:60,
+                    title: {
+                      display: false,
                     },
-                  ],
-                },
-                options: {
-                  cutoutPercentage:60,
-                  title: {
-                    display: false,
-                  },
-                  legend: {
-                    display: false,
-                  },
-                }
-              });
-      .nutrient-box
-        .nutrient-name
-          ビタミンB1
-        .nutrients-chart
-          .inner-value
-            55%
-          %canvas#vitaminb1-chart
-            :javascript
-              var w = $('.nutrients-chart').width();
-              var h = $('.nutrients-chart').height();
-              $('#vitaminb1-chart').attr('width', w);
-              $('#vitaminb1-chart').attr('height', h);
+                    legend: {
+                      display: false,
+                    },
+                  }
+                });
+        .nutrient-box
+          .nutrient-name
+            ビタミンA
+          .nutrients-chart
+            .inner-value
+              55%
+            %canvas#vitamina-chart
+              :javascript
+                var w = $('.nutrients-chart').width();
+                var h = $('.nutrients-chart').height();
+                $('#vitamina-chart').attr('width', w);
+                $('#vitamina-chart').attr('height', h);
 
-              var ctx = document.getElementById("vitaminb1-chart");
-              var myLineChart = new Chart(ctx, {
-                type: 'doughnut',
-                data: {
-                  labels: ['ビタミンB1','不足分'],
-                  datasets: [
-                    {
-                      data: [0.35,0.45-0.35],
-                      borderWidth: 1,
-                      backgroundColor: ["#c54e44","rgba(0,0,0,0)"],
-                      hoverBackgroundColor: ["#df5f4a","#fff"],
-                      borderColor: "#2a324e",
+                var ctx = document.getElementById("vitamina-chart");
+                var myLineChart = new Chart(ctx, {
+                  type: 'doughnut',
+                  data: {
+                    labels: ['ビタミンA','不足分'],
+                    datasets: [
+                      {
+                        data: [200,300-200],
+                        borderWidth: 1,
+                        backgroundColor: ["#c54e44","rgba(0,0,0,0)"],
+                        hoverBackgroundColor: ["#df5f4a","#fff"],
+                        borderColor: "#2a324e",
+                      },
+                    ],
+                  },
+                  options: {
+                    cutoutPercentage:60,
+                    title: {
+                      display: false,
                     },
-                  ],
-                },
-                options: {
-                  cutoutPercentage:60,
-                  title: {
-                    display: false,
-                  },
-                  legend: {
-                    display: false,
-                  },
-                }
-              });
-      .nutrient-box
-        .nutrient-name
-          ビタミンC
-        .nutrients-chart
-          .inner-value
-            55%
-          %canvas#vitaminc-chart
-            :javascript
-              var w = $('.nutrients-chart').width();
-              var h = $('.nutrients-chart').height();
-              $('#vitaminc-chart').attr('width', w);
-              $('#vitaminc-chart').attr('height', h);
+                    legend: {
+                      display: false,
+                    },
+                  }
+                });
+        .nutrient-box
+          .nutrient-name
+            ビタミンB1
+          .nutrients-chart
+            .inner-value
+              55%
+            %canvas#vitaminb1-chart
+              :javascript
+                var w = $('.nutrients-chart').width();
+                var h = $('.nutrients-chart').height();
+                $('#vitaminb1-chart').attr('width', w);
+                $('#vitaminb1-chart').attr('height', h);
 
-              var ctx = document.getElementById("vitaminc-chart");
-              var myLineChart = new Chart(ctx, {
-                type: 'doughnut',
-                data: {
-                  labels: ['ビタミンC','不足分'],
-                  datasets: [
-                    {
-                      data: [22,33-22],
-                      borderWidth: 1,
-                      backgroundColor: ["#c54e44","rgba(0,0,0,0)"],
-                      hoverBackgroundColor: ["#df5f4a","#fff"],
-                      borderColor: "#2a324e",
+                var ctx = document.getElementById("vitaminb1-chart");
+                var myLineChart = new Chart(ctx, {
+                  type: 'doughnut',
+                  data: {
+                    labels: ['ビタミンB1','不足分'],
+                    datasets: [
+                      {
+                        data: [0.35,0.45-0.35],
+                        borderWidth: 1,
+                        backgroundColor: ["#c54e44","rgba(0,0,0,0)"],
+                        hoverBackgroundColor: ["#df5f4a","#fff"],
+                        borderColor: "#2a324e",
+                      },
+                    ],
+                  },
+                  options: {
+                    cutoutPercentage:60,
+                    title: {
+                      display: false,
                     },
-                  ],
-                },
-                options: {
-                  cutoutPercentage:60,
-                  title: {
-                    display: false,
-                  },
-                  legend: {
-                    display: false,
-                  },
-                }
-              });
-      .nutrient-box
-        .nutrient-name
-          食塩
-        .nutrients-chart
-          .inner-value
-            55%
-          %canvas#salt-chart
-            :javascript
-              var w = $('.nutrients-chart').width();
-              var h = $('.nutrients-chart').height();
-              $('#salt-chart').attr('width', w);
-              $('#salt-chart').attr('height', h);
+                    legend: {
+                      display: false,
+                    },
+                  }
+                });
+        .nutrient-box
+          .nutrient-name
+            ビタミンC
+          .nutrients-chart
+            .inner-value
+              55%
+            %canvas#vitaminc-chart
+              :javascript
+                var w = $('.nutrients-chart').width();
+                var h = $('.nutrients-chart').height();
+                $('#vitaminc-chart').attr('width', w);
+                $('#vitaminc-chart').attr('height', h);
 
-              var ctx = document.getElementById("salt-chart");
-              var myLineChart = new Chart(ctx, {
-                type: 'doughnut',
-                data: {
-                  labels: ['食塩','不足分'],
-                  datasets: [
-                    {
-                      data: [2.2,2.7-2.2],
-                      borderWidth: 1,
-                      backgroundColor: ["#c54e44","rgba(0,0,0,0)"],
-                      hoverBackgroundColor: ["#df5f4a","#fff"],
-                      borderColor: "#2a324e",
+                var ctx = document.getElementById("vitaminc-chart");
+                var myLineChart = new Chart(ctx, {
+                  type: 'doughnut',
+                  data: {
+                    labels: ['ビタミンC','不足分'],
+                    datasets: [
+                      {
+                        data: [22,33-22],
+                        borderWidth: 1,
+                        backgroundColor: ["#c54e44","rgba(0,0,0,0)"],
+                        hoverBackgroundColor: ["#df5f4a","#fff"],
+                        borderColor: "#2a324e",
+                      },
+                    ],
+                  },
+                  options: {
+                    cutoutPercentage:60,
+                    title: {
+                      display: false,
                     },
-                  ],
-                },
-                options: {
-                  cutoutPercentage:60,
-                  title: {
-                    display: false,
-                  },
-                  legend: {
-                    display: false,
-                  },
-                }
-              });
-      .nutrient-box
-        .nutrient-name
-          食物繊維
-        .nutrients-chart
-          .inner-value
-            55%
-          %canvas#dietaryFiber-chart
-            :javascript
-              var w = $('.nutrients-chart').width();
-              var h = $('.nutrients-chart').height();
-              $('#dietaryFiber-chart').attr('width', w);
-              $('#dietaryFiber-chart').attr('height', h);
+                    legend: {
+                      display: false,
+                    },
+                  }
+                });
+        .nutrient-box
+          .nutrient-name
+            食塩
+          .nutrients-chart
+            .inner-value
+              55%
+            %canvas#salt-chart
+              :javascript
+                var w = $('.nutrients-chart').width();
+                var h = $('.nutrients-chart').height();
+                $('#salt-chart').attr('width', w);
+                $('#salt-chart').attr('height', h);
 
-              var ctx = document.getElementById("dietaryFiber-chart");
-              var myLineChart = new Chart(ctx, {
-                type: 'doughnut',
-                data: {
-                  labels: ['食物繊維','不足分'],
-                  datasets: [
-                    {
-                      data: [5,7-5],
-                      borderWidth: 1,
-                      backgroundColor: ["#c54e44","rgba(0,0,0,0)"],
-                      hoverBackgroundColor: ["#df5f4a","#fff"],
-                      borderColor: "#2a324e",
+                var ctx = document.getElementById("salt-chart");
+                var myLineChart = new Chart(ctx, {
+                  type: 'doughnut',
+                  data: {
+                    labels: ['食塩','不足分'],
+                    datasets: [
+                      {
+                        data: [2.2,2.7-2.2],
+                        borderWidth: 1,
+                        backgroundColor: ["#c54e44","rgba(0,0,0,0)"],
+                        hoverBackgroundColor: ["#df5f4a","#fff"],
+                        borderColor: "#2a324e",
+                      },
+                    ],
+                  },
+                  options: {
+                    cutoutPercentage:60,
+                    title: {
+                      display: false,
                     },
-                  ],
-                },
-                options: {
-                  cutoutPercentage:60,
-                  title: {
-                    display: false,
-                  },
-                  legend: {
-                    display: false,
-                  },
-                }
-              });
-      .nutrient-box
-        .nutrient-name
-          カルシウム
-        .nutrients-chart
-          .inner-value
-            55%
-          %canvas#calcium-chart
-            :javascript
-              var w = $('.nutrients-chart').width();
-              var h = $('.nutrients-chart').height();
-              $('#calcium-chart').attr('width', w);
-              $('#calcium-chart').attr('height', h);
+                    legend: {
+                      display: false,
+                    },
+                  }
+                });
+        .nutrient-box
+          .nutrient-name
+            食物繊維
+          .nutrients-chart
+            .inner-value
+              55%
+            %canvas#dietaryFiber-chart
+              :javascript
+                var w = $('.nutrients-chart').width();
+                var h = $('.nutrients-chart').height();
+                $('#dietaryFiber-chart').attr('width', w);
+                $('#dietaryFiber-chart').attr('height', h);
 
-              var ctx = document.getElementById("calcium-chart");
-              var myLineChart = new Chart(ctx, {
-                type: 'doughnut',
-                data: {
-                  labels: ['カルシウム','不足分'],
-                  datasets: [
-                    {
-                      data: [250,270-250],
-                      borderWidth: 1,
-                      backgroundColor: ["#c54e44","rgba(0,0,0,0)"],
-                      hoverBackgroundColor: ["#df5f4a","#fff"],
-                      borderColor: "#2a324e",
+                var ctx = document.getElementById("dietaryFiber-chart");
+                var myLineChart = new Chart(ctx, {
+                  type: 'doughnut',
+                  data: {
+                    labels: ['食物繊維','不足分'],
+                    datasets: [
+                      {
+                        data: [5,7-5],
+                        borderWidth: 1,
+                        backgroundColor: ["#c54e44","rgba(0,0,0,0)"],
+                        hoverBackgroundColor: ["#df5f4a","#fff"],
+                        borderColor: "#2a324e",
+                      },
+                    ],
+                  },
+                  options: {
+                    cutoutPercentage:60,
+                    title: {
+                      display: false,
                     },
-                  ],
-                },
-                options: {
-                  cutoutPercentage:60,
-                  title: {
-                    display: false,
+                    legend: {
+                      display: false,
+                    },
+                  }
+                });
+        .nutrient-box
+          .nutrient-name
+            カルシウム
+          .nutrients-chart
+            .inner-value
+              55%
+            %canvas#calcium-chart
+              :javascript
+                var w = $('.nutrients-chart').width();
+                var h = $('.nutrients-chart').height();
+                $('#calcium-chart').attr('width', w);
+                $('#calcium-chart').attr('height', h);
+
+                var ctx = document.getElementById("calcium-chart");
+                var myLineChart = new Chart(ctx, {
+                  type: 'doughnut',
+                  data: {
+                    labels: ['カルシウム','不足分'],
+                    datasets: [
+                      {
+                        data: [250,270-250],
+                        borderWidth: 1,
+                        backgroundColor: ["#c54e44","rgba(0,0,0,0)"],
+                        hoverBackgroundColor: ["#df5f4a","#fff"],
+                        borderColor: "#2a324e",
+                      },
+                    ],
                   },
-                  legend: {
-                    display: false,
-                  },
-                }
-              });
+                  options: {
+                    cutoutPercentage:60,
+                    title: {
+                      display: false,
+                    },
+                    legend: {
+                      display: false,
+                    },
+                  }
+                });

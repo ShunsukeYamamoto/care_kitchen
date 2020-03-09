@@ -1,10 +1,10 @@
 .my-page-header{
   height: 60px;
-  width: 100vw;
   background-color: #ffd200;
   display: flex;
   justify-content: space-between;
   border-bottom: solid 1px #ffae00;
+  width: 100vw;
   .logo{
     font-size: 30px;
     font-weight: bold;
@@ -37,219 +37,247 @@
 }
 .information{
   display: flex;
-}
-.left-bar{
-  width: 90px;
-  .people-bar{
-    overflow-y: scroll;
-    height: 300px;
-  }
-  .btn-box{
-    height: 80px;
-    width: 80px;
-    background-color: #ffd200;
-    border-bottom: solid 1px #ffae00;
-    border-right: solid 1px #ffae00;
-    line-height: 80px;
-    text-align: center;
-    color: white;
-    font-weight: bold;
-    &:hover{
-      background-color: #ffbb00;
-      width: 90px;
-      border-top-right-radius: 5px;
-      border-bottom-right-radius: 5px;
+  .left-bar{
+    width: 90px;
+    height: 100vh;
+    .people-bar{
+      overflow-y: scroll;
+      max-height: 600px
     }
-    &__person{
-      padding-top: 10px;
-      .image-box{
-        width: 40px;
-        height: 40px;
-        border: dashed 2px #ffae00;
-        border-radius: 5px;
-        .person-image{
+    .btn-box{
+      height: 80px;
+      width: 80px;
+      background-color: #ffd200;
+      border-bottom: solid 1px #ffae00;
+      border-right: solid 1px #ffae00;
+      line-height: 80px;
+      text-align: center;
+      color: white;
+      font-weight: bold;
+      &:hover{
+        background-color: #ffbb00;
+        width: 90px;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+      }
+      &__person{
+        padding-top: 10px;
+        .image-box{
           width: 40px;
-        }
-      }
-      p{
-        line-height: 25px;
-      }
-    }
-  } 
-}
-.main-content{
-  padding: 20px;
-  .upper-wrapper{
-    display: flex;
-    height: 155px;
-    .profile{
-      .image-box{
-        width: 100px;
-        height: 100px;
-        border-radius: 5px;
-        border: solid 1px #ffae00;
-        box-shadow: 5px 5px 10px rgba(204, 178, 48, 0.17);
-        .person-image{
-          width: 100px;
-        }
-      }
-      &__name{
-        font-weight: bold;
-        font-size: 15px;
-        text-align: center;
-        line-height: 35px;
-        width: 15vw;
-        border: solid 1px rgb(201, 197, 197);
-        border-radius: 2px;
-        box-shadow: 3px 3px 10px rgba(59, 55, 35, 0.17);
-        margin-top: 15px;
-      }
-    }
-    .information-form{
-      height: 150px;
-      margin-left: 40px;
-      .text{
-        width: 190px;
-        font-size: 20px;
-        line-height: 35px;
-        text-align: left;
-        margin-bottom: 10px;
-        padding-left: 10px;
-        border: solid 1px rgb(201, 197, 197);
-        background-color: white;
-        border-radius: 2px;
-        font-family: 'Oxanium', cursive;
-      }
-      .information-container{
-        .box{
-          .input-info{
-            line-height: 30px;
-            width: 80px;
-            font-family: 'Oxanium', cursive;
-            font-size: 20px;
-            margin-left: 5px;
-          }
-          p{
-            font-size: 14px;
-            padding-left: 5px;
-          }
-          .post-btn{
-            padding: 0 20px;
-            line-height: 30px;
-            background: #fd9535;
-            color: white;
-            border: solid 1px #d27d00;
-            margin-left: 25px;
+          height: 40px;
+          border: dashed 2px #ffae00;
+          &__inside{
+            width: 40px;
           }
         }
+        p{
+          line-height: 25px;
+        }
       }
-    }
-    .bmi-chart{
-      background-color: white;
-      position: relative;
-      margin: auto;
-      margin-left: 30px;
+    } 
+  }
+  .main-content{
+    padding: 20px;
+    .upper-wrapper{
+      display: flex;
       height: 155px;
-      width: 500px;
+      .profile{
+        .image-box{
+          width: 100px;
+          height: 100px;
+          border: solid 1px #ffae00;
+          box-shadow: 5px 5px 10px rgba(204, 178, 48, 0.17);
+          &__inside{
+            width: 100px;
+          }
+        }
+        &__name{
+          font-weight: bold;
+          font-size: 15px;
+          text-align: center;
+          line-height: 37px;
+          width: 200px;
+          border: solid 1px rgb(201, 197, 197);
+          border-radius: 2px;
+          box-shadow: 3px 3px 10px rgba(59, 55, 35, 0.17);
+          margin-top: 15px;
+        }
+      }
+      .info-container{
+        border: solid 1px rgb(201, 197, 197);
+        border-radius: 2px;
+        display: flex;
+        margin-left: 20px;
+        .information-form{
+          height: 150px;
+          margin-left: 15px;
+          padding: 5px 0;
+          .text{
+            width: 190px;
+            font-size: 20px;
+            line-height: 35px;
+            text-align: left;
+            margin-bottom: 2px;
+            padding-left: 10px;
+            border: solid 1px rgb(201, 197, 197);
+            background-color: white;
+            border-radius: 2px;
+            font-family: 'Oxanium', cursive;
+          }
+          .box{
+            .input-info{
+              line-height: 28px;
+              width: 80px;
+              font-family: 'Oxanium', cursive;
+              font-size: 20px;
+            }
+            p{
+              font-size: 14px;
+              padding-left: 5px;
+            }
+            .post-btn{
+              padding: 0 20px;
+              line-height: 28px;
+              background: #fd9535;
+              color: white;
+              border: solid 1px #d27d00;
+              margin-left: 25px;
+              &:hover{
+                background: #fd7e35;
+              }
+            }
+          }
+        }
+        .bmi-chart{
+          background-color: white;
+          position: relative;
+          margin: auto;
+          margin-left: 15px;
+          height: 145px;
+          width: 490px;
+          border: solid 1px rgb(201, 197, 197);
+          border-radius: 2px;
+          box-shadow: 3px 3px 10px rgba(121, 115, 90, 0.17);
+        }
+        .right-box{
+          padding-top: 10px;
+          margin-left: 15px;
+          margin-right: 15px;
+          .text-box{
+            font-family: 'Oxanium', cursive;
+            margin: 0 auto;
+            text-align: center;
+            border: solid 1px rgb(201, 197, 197);
+            border-radius: 2px;
+            width: 120px;
+            margin-bottom: 20px;
+            line-height: 30px;
+            background-color: white;
+            box-shadow: 3px 3px 10px rgba(121, 115, 90, 0.17);
+            &__title{
+              width: 155px;
+            }
+          }
+        }  
+      }  
+    }
+    .middle-wrapper{
+      display: flex;
+      height: 200px;
+      margin-top: 30px;
+      .btn-box{
+        margin-right: 20px;
+        border: solid 1px rgb(201, 197, 197);
+        border-radius: 2px;
+        background-color: white;
+        padding-top: 10px;
+        .post-btn{
+          line-height: 40px;
+          height: 40px;
+          width: 190px;
+          bottom: 20px;
+          right: 2vw;
+          background: #fd9535;
+          color: white;
+          border: solid 1px #d27d00;
+          margin: 30px 5px;
+          &:hover{
+            background: #fd7e35;
+          }
+        }
+      }
+      .calorie-chart{
+        background-color: white;
+        position: relative;
+        height: 200px;
+        width: 900px;
+        border: solid 1px rgb(201, 197, 197);
+        border-radius: 2px;
+        box-shadow: 3px 3px 10px rgba(121, 115, 90, 0.17);
+      }
+    }
+    .downer-wrapper{
+      margin-top: 30px;
+      display: flex;
       border: solid 1px rgb(201, 197, 197);
       border-radius: 2px;
       box-shadow: 3px 3px 10px rgba(121, 115, 90, 0.17);
-    }
-    .right-box{
-      padding-top: 10px;
-      margin-left: 30px;
-      .text-box{
-        font-family: 'Oxanium', cursive;
-        margin: 0 auto;
-        text-align: center;
-        border: solid 1px rgb(201, 197, 197);
-        border-radius: 2px;
-        width: 120px;
-        margin-bottom: 20px;
-        line-height: 30px;
-        background-color: white;
-        box-shadow: 3px 3px 10px rgba(121, 115, 90, 0.17);
-        &__title{
-          width: 155px;
-        }
-      }
-    }    
-  }
-  .middle-wrapper{
-    margin-top: 30px;
-    display: flex;
-    border: solid 1px rgb(201, 197, 197);
-    border-radius: 2px;
-    box-shadow: 3px 3px 10px rgba(121, 115, 90, 0.17);
-    background-color: white;
-    padding: 60px 0 40px 0;
-    position: relative;
-    .title{
-      position: absolute;
-      top: 13px;
-      left: 25px;
-      display: flex;
-      font-size: 20px;
-      p{
-        padding-top: 5px;
-        font-size: 15px;
-        padding-left: 5px;
-      }
-    }
-    .coment{
-      position: absolute;
-      bottom: 10px;
-      right: 25px;
-      font-size: 10px;
-    }
-    .nutrient-box{
-      margin: auto;
-      .nutrient-name{
-        width: 120px;
-        line-height: 20px;
-        text-align: center;
-        border-radius: 2px;
-        font-size: 13px;
-        font-family: 'Oxanium', cursive;
-      }
-      .nutrients-chart{
-        position: relative;
-        height: 80px;
-        width: 120px;
-        .inner-value{
-          position: absolute;
-          top:25px;
-          left: 37px;
-          line-height: 30px;
-          width: 45px;
-          text-align: center;
-          font-family: 'Oxanium', cursive;
+      background-color: white;
+      padding: 60px 0 40px 0;
+      position: relative;
+      .title{
+        position: absolute;
+        top: 13px;
+        left: 25px;
+        display: flex;
+        font-size: 20px;
+        p{
+          padding-top: 5px;
           font-size: 15px;
+          padding-left: 5px;
+        }
+      }
+      .coment{
+        position: absolute;
+        bottom: 10px;
+        right: 25px;
+        font-size: 10px;
+      }
+      .nutrient-box{
+        margin: auto;
+        .nutrient-name{
+          width: 120px;
+          line-height: 20px;
+          text-align: center;
+          border-radius: 2px;
+          font-size: 13px;
+          font-family: 'Oxanium', cursive;
+        }
+        .nutrients-chart{
+          position: relative;
+          height: 80px;
+          width: 120px;
+          .inner-value{
+            position: absolute;
+            top:25px;
+            left: 37px;
+            line-height: 30px;
+            width: 45px;
+            text-align: center;
+            font-family: 'Oxanium', cursive;
+            font-size: 15px;
+          }
         }
       }
     }
-  }
-  .calorie-chart{
-    background-color: white;
-    position: relative;
-    margin-top: 30px;
-    height: 200px;
-    width: 500px;
-    border: solid 1px rgb(201, 197, 197);
-    border-radius: 2px;
-    box-shadow: 3px 3px 10px rgba(121, 115, 90, 0.17);
   }
 }
-
 
 .image-box{
   margin: auto;
   border-radius: 5px;
-  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
-  .person-image{
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
 }

@@ -21,6 +21,10 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new
   end
 
+  def search
+    @recipes = Recipe.search(params[:keyword])
+  end
+
 
   private
 

@@ -24,7 +24,7 @@
   .global-header__search
     .logo
       =link_to "CareKitchen",root_path, class: "logo1"
-    = form_with url: "#", method: 'get', local: true do |f|
+    = form_with url: search_recipes_path, method: 'get', local: true do |f|
       .search-box
-        = f.text_field :search, class: "search-box__input", placeholder: '料理名で調べる'
+        = f.text_field :keyword, class: "search-box__input", placeholder: '料理名で調べる'
         = f.submit '検索', class: "search-box__btn"

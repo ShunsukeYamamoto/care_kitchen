@@ -1,24 +1,25 @@
-# README
+# Care Kitchen
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+日々の食べたものの栄養素がグラフ化できる健康管理アプリ！！
 
-Things you may want to cover:
+## 説明
 
-* Ruby version
+- 食べたものを入力すると、摂取したカロリーや栄養素がグラフで視覚化されます。
+- 身長や体重も日々記録することで、BMI値もグラフ化！
+- 全国のユーザーが投稿した健康レシピも検索できる！！
+- CSVファイルの利用により、全ての食材を網羅！
 
-* System dependencies
+## お試し用ログインパスワード
+- email：gest@gmail.com
+- password：gestgest
+- アプリURL 製作中...
 
-* Configuration
+## デモイメージ
+<img width="1280" alt="timedemo1" src="https://user-images.githubusercontent.com/59483718/76194062-b5691c80-6228-11ea-9d37-5db18ebf8e3e.jpg">
 
-* Database creation
+<img width="1280" alt="kitchendemo2" src="https://user-images.githubusercontent.com/59483718/76194095-cb76dd00-6228-11ea-9559-24cc9e041c0b.png">
 
-* Database initialization
+<img width="1280" alt="timedemo3" src="https://user-images.githubusercontent.com/59483718/76194111-d7fb3580-6228-11ea-97fb-21996afb81d1.jpg">
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## ER図
+<img width="862" alt="kitchenerd" src="https://user-images.githubusercontent.com/59483718/76194761-3379f300-622a-11ea-9942-bff4c30f6184.png">
