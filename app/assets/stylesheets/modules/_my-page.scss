@@ -1,41 +1,4 @@
-.my-page-header{
-  height: 60px;
-  background-color: #ffd200;
-  display: flex;
-  justify-content: space-between;
-  border-bottom: solid 1px #ffae00;
-  width: 100vw;
-  .logo{
-    font-size: 30px;
-    font-weight: bold;
-    font-family: 'Prompt';
-    margin-left: 110px;
-    margin-right: 50px;
-    line-height: 70px;
-    .logo1{
-      color: white;
-      text-shadow: 0 5px 10px rgb(0, 0, 0);
-    }
-  }
-  &__nav{
-    display: flex;
-    padding-top: 20px;
-    padding-right: 100px;
-    li{
-      padding-left: 10px;
-      padding-right: 10px;
-      font-size: 13px;
-      border-left: 1px solid #ffae00;
-      line-height: 30px;
-      height: 30px;
-      &:hover{
-        transform: translateY(-2px);
-        transition: all .3s;
-      }
-    }
-  }
-}
-.information{
+.person-show{
   display: flex;
   .left-bar{
     width: 90px;
@@ -87,8 +50,27 @@
           height: 100px;
           border: solid 1px #ffae00;
           box-shadow: 5px 5px 10px rgba(204, 178, 48, 0.17);
+          position: relative;
           &__inside{
             width: 100px;
+          }
+          .edit-btn{
+            display: none;
+          }
+          &:hover{
+            .edit-btn{
+              display: inline-block;
+              width: 100px;
+              text-align: center;
+              background-color: rgba(0, 0, 0, 0.466);
+              color: white;
+              line-height: 40px;
+              border-bottom-left-radius: 5px;
+              border-bottom-left-radius: 5px;
+              position: absolute;
+              left: 0;
+              bottom: 0;
+            }
           }
         }
         &__name{
@@ -185,7 +167,7 @@
       display: flex;
       height: 200px;
       margin-top: 30px;
-      .btn-box{
+      .meal-box{
         margin-right: 20px;
         border: solid 1px rgb(201, 197, 197);
         border-radius: 2px;
@@ -200,9 +182,38 @@
           background: #fd9535;
           color: white;
           border: solid 1px #d27d00;
-          margin: 30px 5px;
+          margin: 15px 5px;
           &:hover{
             background: #fd7e35;
+          }
+        }
+        .search-box{
+          width: 190px;
+          height: 40px;
+          border: solid 1px #d27d00;
+          border-radius: 2px;
+          margin: 0 auto;
+          display: flex;
+          justify-content: space-between;
+          background-color: white;
+          &__input{
+            width: 140px;
+            line-height: 40px;
+            border: none;
+          }
+          &__btn{
+            border: none;
+            line-height: 40px;
+            background-image: linear-gradient(112deg, #fdb735, #fd9535);
+            padding: 0 10px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            outline: 0;
+            font-size: 15px;
+            &:hover{
+              background-image: linear-gradient(112deg, #fdb735, #fd7e35);
+            }
           }
         }
       }

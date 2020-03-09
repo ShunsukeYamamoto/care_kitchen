@@ -7,7 +7,11 @@ Rails.application.routes.draw do
     post 'create_first_person', to: 'users/registrations#create_first_person'
   end
   root "toppage#index"
+<<<<<<< Updated upstream
   resources :people, only: [:show] do
+=======
+  resources :people, only: [:show, :new, :create, :edit, :update] do
+>>>>>>> Stashed changes
     resources :personal_informations, only: [:create]
   end
   resources :recipes, only: [:index, :new, :create] do
