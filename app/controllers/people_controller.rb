@@ -14,6 +14,19 @@ class PeopleController < ApplicationController
     end
   end
 
+  def edit
+    @person = Person.find(params[:id])
+  end
+
+  def update
+    @person = Person.find(params[:id])
+    if @person.update(person_update_params)
+      redirect_to person_path
+    else
+      render :edit
+    end
+  end
+
   def show
     @person = Person.find(params[:id])
     informations = @person.personal_informations.order(:date).last(14) #日付をdateの昇順に並べてから最後の14つを取り出す
@@ -39,5 +52,8 @@ class PeopleController < ApplicationController
     params.require(:person).permit(:name, :gender, :birthday, :image, personal_informations_attributes: [:weight, :height, :date, :bmi]).merge(user_id: current_user.id)
   end
 
+  def person_update_params
+    params.require(:person).permit(:name, :gender, :birthday, :image).merge(user_id: current_user.id)
+  end
 
 end

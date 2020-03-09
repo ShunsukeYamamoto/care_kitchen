@@ -140,12 +140,12 @@ header{
         width: 100px;
         height: 100px;
         box-shadow: 0 2px 20px rgba(50, 50, 50, 0.17);
-        margin: 0 auto;
-        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        margin: auto;
         .person-image{
-          position: absolute;
-          top: 0;
-          left: 0;
           width: 100px;
         }
       }

@@ -1,0 +1,16 @@
+= render "shared/header"
+.form
+  %h1.form__title
+    ="#{@person.name} を編集"
+  = form_with model: @person, url: person_path(params[:id]), method: :patch, local: true do |f|
+    .field
+      = f.text_field :name, placeholder: "名前", autofocus: true, class:"field--form"
+    .field.birthday
+      = f.date_field :birthday,placeholder: "生年月日", autofocus: true, class:"birthday__form"
+      %p.birthday__title 生年月日
+    .field
+      = f.select :gender,[["性別を選択してください",""],["男性","0"],["女性","1"]], class: "select_form"
+    .field
+      = f.select :image, [["アイコンを選択してください",""],["アボガド","icon1.png"],["とうがらし","icon2.png"],["さくらんぼ","icon3.png"],["玉ねぎ","icon4.png"],["えんどう豆","icon5.png"],["バナナ","icon6.png"],["ブロッコリー","icon7.png"],["マッシュルーム","icon8.png"],["かぼちゃ","icon9.png"]], class: "select_form"
+    .actions
+      = f.submit "入力完了",class: "form--submit"
