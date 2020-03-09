@@ -1,10 +1,17 @@
 class PeopleController < ApplicationController
 
   def new
-    
+    @person = Person.new
+    @person.personal_informations.new
   end
 
   def create
+    @person = Person.new(person_params)
+    if @person.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   def edit
@@ -39,8 +46,6 @@ class PeopleController < ApplicationController
     gon.days = @days
   end
 
-<<<<<<< Updated upstream
-=======
   private
 
   def person_params
@@ -50,7 +55,5 @@ class PeopleController < ApplicationController
   def person_update_params
     params.require(:person).permit(:name, :gender, :birthday, :image).merge(user_id: current_user.id)
   end
-
->>>>>>> Stashed changes
 
 end

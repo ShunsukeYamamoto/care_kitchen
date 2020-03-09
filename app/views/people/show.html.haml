@@ -53,11 +53,27 @@
               =f.date_field :date, class:'text', value: Date.today
               .box
                 %p 身長(m)
-                = f.number_field :height, class: "input-info", placeholder: '(m)',value: @new_height,step: "0.01"
+                = f.number_field :height, class: "input-info", placeholder: '(m)',value: @new_height,step: "0.01", id: "day-height-form"
               .box
                 %p 体重(kg)
-                = f.number_field :weight, class: "input-info", placeholder: '(kg)',step: "0.1"
+                = f.number_field :weight, class: "input-info", placeholder: '(kg)',step: "0.1", id: "day-weight-form"
+                = f.number_field :bmi, step: "0.01", class:"hidden", id: "day-bmi-result"
                 = f.submit '登録', class: "post-btn"
+                :javascript
+                  $('#day-weight-form').change(function() {
+                    var height = $('#day-height-form').val();
+                    var weight = $('#day-weight-form').val();
+                    var result = Math.round(weight/height/height * 10) / 10
+                  
+                    $('#day-bmi-result').val(result)
+                  });
+                  $('#day-height-form').change(function() {
+                    var height = $('#day-height-form').val();
+                    var weight = $('#day-weight-form').val();
+                    var result = Math.round(weight/height/height * 10) / 10
+                  
+                    $('#day-bmi-result').val(result)
+                  });
           .bmi-chart
             %canvas#bmi-chart
 =======
