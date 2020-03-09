@@ -1,82 +1,3 @@
-<<<<<<< Updated upstream
-.main
-  .my-page-header
-    .logo
-      =link_to "CareKitchen",root_path, class: "logo1"
-    %ul.my-page-header__nav
-      %li
-        =link_to "#",class: "header-nav__btn" do
-          CareKitchenの使い方
-      - if user_signed_in?
-        %li
-          =link_to destroy_user_session_path,method: :delete,class: "header-nav__btn" do
-            ログアウト
-        %li
-          =link_to "#",class: "header-nav__btn" do
-            マイページ
-        %li
-          =link_to "#",class: "header-nav__btn" do
-            健康管理
-      - else
-        %li
-          =link_to new_user_session_path,class: "header-nav__btn" do
-            ログイン
-        %li
-          =link_to new_user_registration_path,class: "header-nav__btn" do
-            新規登録
-  .information
-    .left-bar
-      =link_to root_path do
-        .btn-box
-          TOP
-      =link_to "#" do
-        .btn-box
-          MY PAGE
-      .people-bar
-        -current_user.people.each do |person|
-          =link_to person_path(person.id) do
-            .btn-box.btn-box__person
-              .image-box
-                =image_tag person.image, class: "image-box__inside"
-              %p 
-                =person.name
-    .main-content
-      .upper-wrapper
-        .profile
-          .image-box
-            =image_tag @person.image, class: "image-box__inside"
-          .profile__name
-            = "name : #{@person.name}"
-        .info-container
-          = form_with model: [@person, @personalinformation], method: :post, local: true do |f|
-            .information-form
-              =f.date_field :date, class:'text', value: Date.today
-              .box
-                %p 身長(m)
-                = f.number_field :height, class: "input-info", placeholder: '(m)',value: @new_height,step: "0.01", id: "day-height-form"
-              .box
-                %p 体重(kg)
-                = f.number_field :weight, class: "input-info", placeholder: '(kg)',step: "0.1", id: "day-weight-form"
-                = f.number_field :bmi, step: "0.01", class:"hidden", id: "day-bmi-result"
-                = f.submit '登録', class: "post-btn"
-                :javascript
-                  $('#day-weight-form').change(function() {
-                    var height = $('#day-height-form').val();
-                    var weight = $('#day-weight-form').val();
-                    var result = Math.round(weight/height/height * 10) / 10
-                  
-                    $('#day-bmi-result').val(result)
-                  });
-                  $('#day-height-form').change(function() {
-                    var height = $('#day-height-form').val();
-                    var weight = $('#day-weight-form').val();
-                    var result = Math.round(weight/height/height * 10) / 10
-                  
-                    $('#day-bmi-result').val(result)
-                  });
-          .bmi-chart
-            %canvas#bmi-chart
-=======
 .person-show
   .left-bar
     =link_to root_path do
@@ -115,7 +36,6 @@
               = f.number_field :weight, class: "input-info", placeholder: '(kg)',step: "0.1", id: "day-weight-form"
               = f.number_field :bmi, step: "0.01", class:"hidden", id: "day-bmi-result"
               = f.submit '登録', class: "post-btn"
->>>>>>> Stashed changes
               :javascript
                 $('#day-weight-form').change(function() {
                   var height = $('#day-height-form').val();
