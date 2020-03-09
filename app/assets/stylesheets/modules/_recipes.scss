@@ -78,19 +78,22 @@
   .post-btn{
     padding: 0 1.5vw;
     line-height: 40px;
-    text-align: center;
     position: absolute;
     bottom: 20px;
     right: 2vw;
-    cursor: pointer;
-    border-radius: 3px;
-    box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), inset 0 -2px 0 rgba(0, 0, 0, 0.05);
-    font-weight: bold;
     background: #fd9535;
     color: white;
     border: solid 1px #d27d00;
-    &:active {
-      box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
-    }
+  }
+}
+
+.post-btn{
+  text-align: center;
+  cursor: pointer;
+  border-radius: 3px;
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), inset 0 -2px 0 rgba(0, 0, 0, 0.05);
+  font-weight: bold;
+  &:active {
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
   }
 }

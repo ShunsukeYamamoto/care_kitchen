@@ -4,6 +4,7 @@ class CreatePersonalInformations < ActiveRecord::Migration[5.2]
       t.float :weight, null:false
       t.float :height, null: false
       t.date :date,null: false
+      t.float :bmi, null: false
       t.references :person,foreign_key: true
 
       t.timestamps

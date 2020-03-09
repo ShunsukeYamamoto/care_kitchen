@@ -68,6 +68,8 @@ GEM
       image_processing (~> 1.1)
       mimemagic (>= 0.3.0)
       mini_mime (>= 0.1.3)
+    chart-js-rails (0.1.7)
+      railties (> 3.1)
     childprocess (3.0.0)
     chromedriver-helper (2.1.1)
       archive-zip (~> 0.10)
@@ -99,6 +101,11 @@ GEM
       sassc (>= 1.11)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    gon (6.3.2)
+      actionpack (>= 3.0.20)
+      i18n (>= 0.7)
+      multi_json
+      request_store (>= 1.0)
     haml (5.1.2)
       temple (>= 0.8.0)
       tilt
@@ -125,6 +132,8 @@ GEM
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
+    jquery-ui-rails (6.0.1)
+      railties (>= 3.2.16)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -143,6 +152,7 @@ GEM
     mini_portile2 (2.4.0)
     minitest (5.14.0)
     msgpack (1.3.3)
+    multi_json (1.14.1)
     mysql2 (0.5.3)
     nio4r (2.5.2)
     nokogiri (1.10.8)
@@ -176,6 +186,8 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.3.0)
       loofah (~> 2.3)
+    rails4-autocomplete (1.1.1)
+      rails (>= 3.0)
     railties (5.2.4.1)
       actionpack (= 5.2.4.1)
       activesupport (= 5.2.4.1)
@@ -187,6 +199,8 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     regexp_parser (1.6.0)
+    request_store (1.5.0)
+      rack (>= 1.4)
     responders (3.0.0)
       actionpack (>= 5.0)
       railties (>= 5.0)
@@ -253,21 +267,25 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   carrierwave
+  chart-js-rails
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise
   devise-i18n
   devise-i18n-views
   font-awesome-sass
+  gon
   haml-rails
   jbuilder (~> 2.5)
   jquery-rails
+  jquery-ui-rails
   listen (>= 3.0.5, < 3.2)
   mini_magick
   mysql2 (>= 0.4.4, < 0.6.0)
   pry-rails
   puma (~> 3.12)
   rails (~> 5.2.3)
+  rails4-autocomplete
   sass-rails (~> 5.0)
   selenium-webdriver
   spring
