@@ -27,7 +27,7 @@
       .field
         = i.number_field :weight,placeholder: "体重(kg) 例:55.5",class:"field--form",step: "0.1",id: "weight-form"
         = i.hidden_field :date,value: Date.today
-        = i.number_field :bmi, step: "0.01", class:"field--form hidden", id: "bmi-result"
+        = i.number_field :bmi, step: "0.01", class:"hidden", id: "bmi-result"
     .actions
       = f.submit "入力完了",class: "form--submit"
       :javascript
