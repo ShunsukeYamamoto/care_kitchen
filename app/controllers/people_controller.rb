@@ -1,10 +1,17 @@
 class PeopleController < ApplicationController
 
   def new
-    
+    @person = Person.new
+    @person.personal_informations.new
   end
 
   def create
+    @person = Person.new(person_params)
+    if @person.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   def show
@@ -24,6 +31,12 @@ class PeopleController < ApplicationController
 
     gon.bmis = @bmis
     gon.days = @days
+  end
+
+  private
+
+  def person_params
+    params.require(:person).permit(:name, :gender, :birthday, :image, personal_informations_attributes: [:weight, :height, :date, :bmi]).merge(user_id: current_user.id)
   end
 
 
