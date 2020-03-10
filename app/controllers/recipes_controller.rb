@@ -23,9 +23,7 @@ class RecipesController < ApplicationController
       @recipe[:dietary_fiber] = food[:dietary_fiber]
       @recipe[:salt] = food[:salt]
     end
-    binding.pry
     if @recipe.save
-      binding.pry
       redirect_to root_path
     else
       render :new
