@@ -37,9 +37,19 @@ class RecipesController < ApplicationController
 
   def search_ingredients
     ingredient = Ingredient.where(name: "#{params[:name]}").first
-    quantity = params[:quantity]
+    quantity = params[:quantity].to_i.round
     if ingredient.present? && quantity.present?
-      @data = {id: ingredient.id,name: ingredient.name,quantity: quantity}
+      energy = ingredient.energy_kcal * (quantity/100)
+      protein = ingredient.protein * (quantity/100)
+      fat = ingredient.fat * (quantity/100)
+      carbon = ingredient.carbon * (quantity/100)
+      vitaminA = ingredient.vitamin_a * (quantity/100)
+      vitaminB1 = ingredient.vitamin_b1 * (quantity/100)
+      vitaminC = ingredient.vitamin_c * (quantity/100)
+      calcium = ingredient.calcium * (quantity/100)
+      dietary_fiber = ingredient.dietary_fiber * (quantity/100)
+      salt = ingredient.salt * (quantity/100)
+      @data = {id: ingredient.id,name: ingredient.name,quantity: quantity,energy_kcal: energy.round,protein: protein.round,fat: fat.round,carbon: carbon.round,vitaminA: vitaminA.round,vitaminB1: vitaminB1.round(1),vitaminC: vitaminC.round,calcium: calcium.round,dietary_fiber: dietary_fiber.round,salt: salt.round(1)}
     end
   end
 
@@ -49,6 +59,4 @@ class RecipesController < ApplicationController
   def recipe_params
     params.require(:recipe).permit(:title, :image, :text, steps_attributes: [:image, :description], recipe_ingredients_attributes: [:ingredient_id, :quantity]).merge(user_id: current_user.id)
   end
-  
-  
 end

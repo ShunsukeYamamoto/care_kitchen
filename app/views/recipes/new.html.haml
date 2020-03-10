@@ -20,74 +20,84 @@
         .post_recipe__top__right
           -# エネルギー
           .recipe_chart
-            %p.nutrition_title エネルギー 600kcal
+            %p.nutrition_title.energy_title エネルギー 0kcal
             .recipe_chart--area
               %canvas#recipeEnergyChart{:height => "130", :width => "130"}
-              .count
-                %em #{(600 * 100) / 900}%
+              .count.energy_count
+                %em 0%
+                
           -# タンパク質
           .recipe_chart
-            %p.nutrition_title タンパク質 20g
+            %p.nutrition_title.protein_title タンパク質 0g
             .recipe_chart--area
               %canvas#recipeProteinChart{:height => "130", :width => "130"}
-              .count
-                %em #{(20 * 100) / 22}%
+              .count.protein_count
+                %em 0%
+                
           -# 脂質
           .recipe_chart
-            %p.nutrition_title 脂質 24mg
+            %p.nutrition_title.fat_title 脂質 0mg
             .recipe_chart--area
               %canvas#recipeFatChart{:height => "130", :width => "130"}
-              .count
-                %em #{(24 * 100) / 23}%
+              .count.fat_count
+                %em 0%
+                
           -# 炭水化物
           .recipe_chart
-            %p.nutrition_title 炭水化物  120g
+            %p.nutrition_title.carbon_title 炭水化物  0g
             .recipe_chart--area
               %canvas#recipeCarbonChart{:height => "130", :width => "130"}
-              .count
-                %em #{(120 * 100) / 135}%
+              .count.carbon_count
+                %em 0%
+                
           -# ビタミンA
           .recipe_chart
-            %p.nutrition_title ビタミンA  200μg
+            %p.nutrition_title.vitaminA_title ビタミンA  0μg
             .recipe_chart--area
               %canvas#recipeVitaminAChart{:height => "130", :width => "130"}
-              .count
-                %em #{(200 * 100) / 300}%
+              .count.vitaminA_count
+                %em 0%
+                
           -# ビタミンB1
           .recipe_chart
-            %p.nutrition_title ビタミンB1  0.3mg
+            %p.nutrition_title.vitaminB1_title ビタミンB1  0.0mg
             .recipe_chart--area
               %canvas#recipeVitaminB1Chart{:height => "130", :width => "130"}
-              .count
-                %em #{((0.3 * 100) / 0.4).round}%
+              .count.vitaminB1_count
+                %em 0%
+                
           -# ビタミンC
           .recipe_chart
-            %p.nutrition_title ビタミンC  30mg
+            %p.nutrition_title.vitaminC_title ビタミンC  0mg
             .recipe_chart--area
               %canvas#recipeVitaminCChart{:height => "130", :width => "130"}
-              .count
-                %em #{(30 * 100) / 33}%
+              .count.vitaminC_count
+                %em 0%
+                
           -# カルシウム
           .recipe_chart
-            %p.nutrition_title カルシウム 220mg
+            %p.nutrition_title.calcium_title カルシウム 0mg
             .recipe_chart--area
               %canvas#recipeCalciumChart{:height => "130", :width => "130"}
-              .count
-                %em #{(220 * 100) / 250}%
+              .count.calcium_count
+                %em 0%
+                
           -# 食物繊維
           .recipe_chart
-            %p.nutrition_title 食物繊維  8g
+            %p.nutrition_title.dietaryFiber_title 食物繊維  0g
             .recipe_chart--area
               %canvas#recipeDietaryFiberChart{:height => "130", :width => "130"}
-              .count
-                %em #{(8 * 100) / 8}%
+              .count.dietaryFiber_count
+                %em 0%
+                
           -# 食塩
           .recipe_chart
-            %p.nutrition_title 食塩  2.2g
+            %p.nutrition_title.salt_title 食塩  0.0g
             .recipe_chart--area
               %canvas#recipeSaltChart{:height => "130", :width => "130"}
-              .count
-                %em #{((2.2 * 100) / 2.5).round}%
+              .count.salt_count
+                %em 0%
+                
       .post_recipe__bottom
         .recipe_steps
 
