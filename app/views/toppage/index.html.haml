@@ -15,9 +15,6 @@
             =link_to "#",class: "header-nav__btn" do
               マイページ
           %li
-            =link_to "#",class: "header-nav__btn" do
-              健康管理
-          %li
             =link_to new_recipe_path,class: "header-nav__btn" do
               レシピ投稿
         - else
@@ -27,7 +24,6 @@
           %li
             =link_to new_user_registration_path,class: "header-nav__btn" do
               新規登録
-
     .content
       %h2.content__subtitle
         毎日の栄養管理を
@@ -45,18 +41,22 @@
 .main
   -if user_signed_in?
     .top-page-title 
-      %h2 Data
-      %h4 person
-    -@people.each do |person|
-      =link_to person_path(person.id) do
-        .person
+      %h2 links
+      %h4 people
+    .person
+      -@people.each do |person|
+        =link_to person_path(person.id) do
           .person-info
             .person-info__image
               =image_tag person.image, class: "person-image"
             .person-info__name
               =person.name
-          .person__grapf-nutrients
-          .person__grapf-bmi
+      =link_to new_person_path do
+        .person-info
+          .person-info__image.add-person
+            %i.fas.fa-user-plus
+          .person-info__name
+            パーソンを追加
   .new-topic
     %h3.new-topic__title
       特集
