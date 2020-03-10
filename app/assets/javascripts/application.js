@@ -10,11 +10,10 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require Chart.min
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
 //= require autocomplete-rails
-//= require Chart.min
-//
 //= require activestorage
 //= require_tree .

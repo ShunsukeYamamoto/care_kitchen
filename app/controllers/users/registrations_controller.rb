@@ -75,8 +75,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def person_params
-
-    params.require(:person).permit(:name,:birthday,:gender,personal_informations_attributes: [:height,:weight,:id])
+    params.require(:person).permit(:name,:birthday,:gender,:image,personal_informations_attributes: [:height,:weight,:date,:id])
   end
   # personal_informations_attributes: [:height,:weight,:id]
 

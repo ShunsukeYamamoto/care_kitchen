@@ -1,12 +1,12 @@
 .global-header{
-  border-bottom: 1px solid #eeece4;
+  border-top: 4px solid #ffd200;
+  border-bottom: 4px solid #ffd200;
   box-shadow: 0 2px 2px -1px #eeece4;
   background-image: url(kitchenapp8.jpg);
   //8 12 18 1 候補
   background-size: cover;
   background-position: center center;
   &__wrapper{
-    border-top: 2px solid #ffd200;
     height: 45px;
     width: 100vw;
     display: flex;

@@ -5,5 +5,11 @@ class Recipe < ApplicationRecord
   has_many :ingredients, through: :recipe_ingredients
   has_many :steps
   accepts_nested_attributes_for :steps
+  
   mount_uploader :image, ImageUploader
+
+  def self.search(search)
+    return Recipe.all unless search
+    Recipe.where('title LIKE(?)', "%#{search}%")
+  end
 end

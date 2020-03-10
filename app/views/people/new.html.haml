@@ -1,0 +1,41 @@
+= render "shared/header"
+.form
+  %h1.form__title 新規マイパーソン登録
+  = form_with model: @person, url: people_path, method: :post, local: true do |f|
+    .field
+      = f.text_field :name, placeholder: "名前", autofocus: true, class:"field--form"
+
+    .field.birthday
+      = f.date_field :birthday,placeholder: "生年月日", autofocus: true, class:"birthday__form"
+      %p.birthday__title 生年月日
+
+    .field
+      = f.select :gender,[["性別を選択してください",""],["男性","0"],["女性","1"]], class: "select_form"
+    
+    .field
+      = f.select :image, [["アイコンを選択してください",""],["アボガド","icon1.png"],["とうがらし","icon2.png"],["さくらんぼ","icon3.png"],["玉ねぎ","icon4.png"],["えんどう豆","icon5.png"],["バナナ","icon6.png"],["ブロッコリー","icon7.png"],["マッシュルーム","icon8.png"],["かぼちゃ","icon9.png"]], class: "select_form"
+
+    = f.fields_for :personal_informations,@person.personal_informations.build do |i|
+      .field
+        = i.number_field :height,placeholder: "身長(m) 例:1.65",class:"field--form",step: "0.01",id: "height-form"
+      .field
+        = i.number_field :weight,placeholder: "体重(kg) 例:55.5",class:"field--form",step: "0.1",id: "weight-form"
+        = i.hidden_field :date,value: Date.today
+        = i.number_field :bmi, step: "0.01", class:"hidden", id: "bmi-result"
+    .actions
+      = f.submit "入力完了",class: "form--submit"
+      :javascript
+        $('#weight-form').change(function() {
+          var height = $('#height-form').val();
+          var weight = $('#weight-form').val();
+          var result = Math.round(weight/height/height * 10) / 10
+        
+          $('#bmi-result').val(result)
+        });
+        $('#height-form').change(function() {
+          var height = $('#height-form').val();
+          var weight = $('#weight-form').val();
+          var result = Math.round(weight/height/height * 10) / 10
+        
+          $('#bmi-result').val(result)
+        });

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_02_065816) do
+ActiveRecord::Schema.define(version: 2020_03_06_112151) do
 
   create_table "ingredients", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -39,10 +39,41 @@ ActiveRecord::Schema.define(version: 2020_03_02_065816) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "meal_ingredients", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.float "quantity", null: false
+    t.bigint "meal_id"
+    t.bigint "ingredient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ingredient_id"], name: "index_meal_ingredients_on_ingredient_id"
+    t.index ["meal_id"], name: "index_meal_ingredients_on_meal_id"
+  end
+
+  create_table "meals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "energy_kcal"
+    t.float "protein"
+    t.float "fat"
+    t.float "carbon"
+    t.float "dietary_fiber"
+    t.integer "calcium"
+    t.integer "vitamin_a"
+    t.float "vitamin_b1"
+    t.integer "vitamin_c"
+    t.float "salt"
+    t.bigint "person_id"
+    t.integer "recipe_id"
+    t.datetime "time", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["person_id"], name: "index_meals_on_person_id"
+  end
+
   create_table "people", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "gender", null: false
     t.date "birthday", null: false
+    t.string "image", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
@@ -52,6 +83,7 @@ ActiveRecord::Schema.define(version: 2020_03_02_065816) do
   create_table "personal_informations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.float "weight", null: false
     t.float "height", null: false
+    t.date "date", null: false
     t.float "bmi", null: false
     t.bigint "person_id"
     t.datetime "created_at", null: false
@@ -112,6 +144,9 @@ ActiveRecord::Schema.define(version: 2020_03_02_065816) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "meal_ingredients", "ingredients"
+  add_foreign_key "meal_ingredients", "meals"
+  add_foreign_key "meals", "people"
   add_foreign_key "people", "users"
   add_foreign_key "personal_informations", "people"
   add_foreign_key "recipe_ingredients", "ingredients"

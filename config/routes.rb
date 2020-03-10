@@ -7,10 +7,14 @@ Rails.application.routes.draw do
     post 'create_first_person', to: 'users/registrations#create_first_person'
   end
   root "toppage#index"
-  resources :recipes, only: [:new, :create,:index] do
+  resources :people, only: [:show, :new, :create, :edit, :update] do
+    resources :personal_informations, only: [:create]
+  end
+  resources :recipes, only: [:index, :new, :create] do
     collection do
       get 'search_ingredients'
       get 'autocomplete_ingredient_name'
+      get 'search'
     end
   end
 end

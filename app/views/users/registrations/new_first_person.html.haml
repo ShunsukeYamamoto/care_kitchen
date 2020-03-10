@@ -21,12 +21,15 @@
 
     .field
       = f.select :gender,[["性別を選択してください",""],["男性","0"],["女性","1"]],class: "select_gender"
+      = f.hidden_field :image,value: "test1.png"
 
     = f.fields_for :personal_informations,@person.personal_informations.build do |i|
       .field
-        = i.number_field :height,placeholder: "身長(m)　例:1.65m",class:"field--form",step: "0.01"
+        = i.number_field :height,placeholder: "身長(m) 例:1.65",class:"field--form",step: "0.01"
       .field
-        = i.number_field :weight,placeholder: "体重(kg)　例:55.5kg",class:"field--form",step: "0.1"
+        = i.number_field :weight,placeholder: "体重(kg) 例:55.5",class:"field--form",step: "0.1"
+        = i.hidden_field :date,value: Date.today
+        
         
     .actions
       = f.submit "入力完了",class: "form--submit"

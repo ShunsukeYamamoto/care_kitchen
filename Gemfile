@@ -69,7 +69,7 @@ gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'carrierwave'
 gem 'mini_magick'
+gem "gon"
 gem 'chart-js-rails'
 gem 'rails4-autocomplete'
 gem 'jquery-ui-rails'
-gem 'gon'
