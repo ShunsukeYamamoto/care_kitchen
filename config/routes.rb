@@ -7,7 +7,8 @@ Rails.application.routes.draw do
     post 'create_first_person', to: 'users/registrations#create_first_person'
   end
   root "toppage#index"
-  resources :people, only: [:show, :new, :create, :edit, :update] do
+  resources :users, only: [:show, :edit, :update]
+  resources :people, only: [:show, :new, :create, :edit, :update, :destroy] do
     resources :personal_informations, only: [:create]
   end
   resources :recipes, only: [:index, :new, :create] do

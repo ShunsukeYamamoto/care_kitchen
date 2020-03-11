@@ -46,6 +46,12 @@ class PeopleController < ApplicationController
     gon.days = @days
   end
 
+  def destroy
+    person = Person.find(params[:id])
+    person.destroy
+    redirect_to root_path, notice: 'グループを削除しました'
+  end
+
   private
 
   def person_params

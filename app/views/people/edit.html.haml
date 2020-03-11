@@ -9,8 +9,12 @@
       = f.date_field :birthday,placeholder: "生年月日", autofocus: true, class:"birthday__form"
       %p.birthday__title 生年月日
     .field
-      = f.select :gender,[["性別を選択してください",""],["男性","0"],["女性","1"]], class: "select_form"
+      = f.select :gender, [["性別を選択してください",""],["男性"],["女性"]], class: "select_form"
     .field
-      = f.select :image, [["アイコンを選択してください",""],["アボガド","icon1.png"],["とうがらし","icon2.png"],["さくらんぼ","icon3.png"],["玉ねぎ","icon4.png"],["えんどう豆","icon5.png"],["バナナ","icon6.png"],["ブロッコリー","icon7.png"],["マッシュルーム","icon8.png"],["かぼちゃ","icon9.png"]], class: "select_form"
+      = f.select :image, [["アイコンを選択してください",""],["ニンジン","icon17.png"],["イチゴ","icon22.png"],["ナス","icon19.png"],["トマト","icon20.png"],["レモン","icon13.png"],["玉ねぎ","icon4.png"],["とうもろこし","icon16.png"],["オレンジ","icon10.png"],["バナナ","icon6.png"],["さくらんぼ","icon3.png"],["かぼちゃ","icon9.png"],["りんご","icon24.png"],["パイナップル","icon25.png"],["梨","icon11.png"],["えんどう豆","icon5.png"],["ブロッコリー","icon7.png"],["マッシュルーム","icon8.png"],["スイカ","icon12.png"],["桃","icon14.png"],["カブ","icon15.png"],["キャベツ","icon18.png"],["ぶどう","icon21.png"],["キウイ","icon23.png"],["アボガド","icon1.png"],["とうがらし","icon2.png"]], class: "select_form"
     .actions
       = f.submit "入力完了",class: "form--submit"
+  = link_to person_path(params[:id]), class: "btn-icon",method: :delete, data: { confirm: "#{@person.name}を削除しますか？" } do
+    .delete-btn
+      削除する
+= render "shared/footer"
