@@ -29,7 +29,6 @@
 
 .form{
   width: 350px;
-  height: 100vh;
   margin: 0 auto;
   &__title{
     font-size: 23px;
@@ -68,4 +67,17 @@
   .error_logs{
     padding-bottom: 30px;
   }
+}
+.delete-btn{
+  width: 250px;
+  line-height: 50px;
+  border-style: none;
+  border-radius: 50px;
+  background-color: #ff5100;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0px 0px 12px -4px grey;
+  text-align: center;
+  margin: auto;
+  margin-top: 30px;
 }
