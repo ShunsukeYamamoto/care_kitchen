@@ -1,32 +1,137 @@
 = render "shared/header"
+
 .main
-  = form_with model: @recipe, url: recipes_path, method: :post, local: true do |f|
-    .post-board
-      .left-box
-        = f.text_field :title, class: "recipe-title", placeholder: '料理名'
-        = f.label :image, class: 'recipe-image' do
-          = icon('fas', 'image', class: 'icon')
-          %p 料理の完成イメージ
-          = f.file_field :image, class: 'hidden'
-      .middle-box
-        = f.text_area :text, class: "recipe-catch", placeholder: 'キャッチコピーを入力'
-        %ul.recipe-ingredients
-          = f.fields_for :recipe_ingredients do |q|
-            %li
-              = q.number_field :ingredient_ids, class: "recipe-ingredient", placeholder: '材料'
-              = q.number_field :quantity, class: "ingredient-quantity", placeholder: '分量(g)'
-            %li
-              = q.number_field :ingredient_ids, class: "recipe-ingredient", placeholder: '材料'
-              = q.number_field :quantity, class: "ingredient-quantity", placeholder: '分量(g)'
-            = f.fields_for :recipe_ingredients do |q|
-              = q.number_field :ingredient_id, class: "recipe-ingredient", placeholder: '材料'
-              = q.number_field :quantity, class: "ingredient-quantity", placeholder: '分量(g)'
-          
-      .right-box
-        ※ここにはグラフが入ります
-      .step-box
-        = f.fields_for :steps do |s|
-          = s.file_field :image
-          = s.text_field :description
-      = f.submit '登録', class: "post-btn"
+  = form_with model: Recipe.new,local: true do |f|
+    .post_recipe
+      .post_recipe__top
+        .post_recipe__top__left
+          .recipe_title
+            = f.text_field :title ,placeholder: "料理名",class: "recipe_title--form"
+          = f.label :image do
+            .recipe_image
+              =f.file_field :image,class: "recipe_image--form"
+              .recipe_image--icon
+                %i.fas.fa-image
+                %p 料理の完成イメージ
+              -# .recipe_image--preview#recipe_image
+              -#   = image_tag 'images (2).jpeg'
+          .recipe_text
+            = f.text_area :text ,placeholder: "キャッチコピー(60文字まで)",rows: "3",maxlength: "100",class: "recipe_text--form"
+        .post_recipe__top__right
+          -# エネルギー
+          .recipe_chart
+            %p.nutrition_title.energy_title エネルギー 0kcal
+            .recipe_chart--area
+              %canvas#recipeEnergyChart{:height => "130", :width => "130"}
+              .count.energy_count
+                %em 0%
+                
+          -# タンパク質
+          .recipe_chart
+            %p.nutrition_title.protein_title タンパク質 0g
+            .recipe_chart--area
+              %canvas#recipeProteinChart{:height => "130", :width => "130"}
+              .count.protein_count
+                %em 0%
+                
+          -# 脂質
+          .recipe_chart
+            %p.nutrition_title.fat_title 脂質 0mg
+            .recipe_chart--area
+              %canvas#recipeFatChart{:height => "130", :width => "130"}
+              .count.fat_count
+                %em 0%
+                
+          -# 炭水化物
+          .recipe_chart
+            %p.nutrition_title.carbon_title 炭水化物  0g
+            .recipe_chart--area
+              %canvas#recipeCarbonChart{:height => "130", :width => "130"}
+              .count.carbon_count
+                %em 0%
+                
+          -# ビタミンA
+          .recipe_chart
+            %p.nutrition_title.vitaminA_title ビタミンA  0μg
+            .recipe_chart--area
+              %canvas#recipeVitaminAChart{:height => "130", :width => "130"}
+              .count.vitaminA_count
+                %em 0%
+                
+          -# ビタミンB1
+          .recipe_chart
+            %p.nutrition_title.vitaminB1_title ビタミンB1  0.0mg
+            .recipe_chart--area
+              %canvas#recipeVitaminB1Chart{:height => "130", :width => "130"}
+              .count.vitaminB1_count
+                %em 0%
+                
+          -# ビタミンC
+          .recipe_chart
+            %p.nutrition_title.vitaminC_title ビタミンC  0mg
+            .recipe_chart--area
+              %canvas#recipeVitaminCChart{:height => "130", :width => "130"}
+              .count.vitaminC_count
+                %em 0%
+                
+          -# カルシウム
+          .recipe_chart
+            %p.nutrition_title.calcium_title カルシウム 0mg
+            .recipe_chart--area
+              %canvas#recipeCalciumChart{:height => "130", :width => "130"}
+              .count.calcium_count
+                %em 0%
+                
+          -# 食物繊維
+          .recipe_chart
+            %p.nutrition_title.dietaryFiber_title 食物繊維  0g
+            .recipe_chart--area
+              %canvas#recipeDietaryFiberChart{:height => "130", :width => "130"}
+              .count.dietaryFiber_count
+                %em 0%
+                
+          -# 食塩
+          .recipe_chart
+            %p.nutrition_title.salt_title 食塩  0.0g
+            .recipe_chart--area
+              %canvas#recipeSaltChart{:height => "130", :width => "130"}
+              .count.salt_count
+                %em 0%
+                
+      .post_recipe__bottom
+        .recipe_steps
+
+          .recipe_step
+            -# .recipe_step--delete
+            -#   %i.fas.fa-trash-alt
+            = f.fields_for :steps,@recipe.steps.new do |s|
+              = s.label :image do
+                .recipe_step--image
+                  = s.file_field :image,class: "image_label"
+                  .recipe_step--image--icon
+                    %i.fas.fa-image
+                    %p 作り方イメージ(任意)
+                  -# .recipe_step--image--preview
+                  -#   =image_tag 'images (2).jpeg'
+              .recipe_step__description
+                = s.text_area :description,class: "recipe_step__description--form",placeholder: "作り方"
+
+          .add_recipe
+            .add_recipe--icon
+              %i.fas.fa-plus
+              %p 次の工程(最大6個)
+
+        .recipe_ingredients
+          .recipe_ingredients--form
+            = form_with url: search_ingredients_recipes_path ,local: true do |t|
+              = t.autocomplete_field :ingredient_name,autocomplete_ingredient_name_recipes_path,class: "recipe_ingredients--form--name",placeholder: "食材名"
+              = t.number_field :quantity,class: "recipe_ingredients--form--quantity",placeholder: "分量(g)"
+              %button{class: "recipe_ingredients--form--submit"}
+                %p 追加
+          .recipe_ingredients--area
+
+      = f.submit "レシピを投稿する",class: "submit_recipe"
+
+
+
 = render "shared/footer"

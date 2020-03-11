@@ -113,7 +113,7 @@
       flex-wrap: wrap;
       border: 1px dotted gray;
       .recipe_step{
-        width: 220px;
+        width: 215px;
         height: 330px;
         position: relative;
         padding: 5px;
@@ -121,7 +121,6 @@
         flex-direction: column;
         align-items: center;
         &--delete{
-          width: 100%;
           position: absolute;
           top: 9px;
           left: 7px;
@@ -234,10 +233,58 @@
       }
       &--area{
         border-top: 3px double yellowgreen;
-        height: 100%;
+        // height: 100%;
         width: 100%;
+        .recipe_ingredient{
+          height: 40px;
+          width: 100%;
+          background-color: palegoldenrod;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 0 5px;
+          &--name{
+            width: 270px;
+            overflow-x: scroll;
+            white-space: nowrap;
+          }
+          &--delete{
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .fas{
+              background-color: whitesmoke;
+              text-align: center;
+              width: 20px;
+              height: 20px;
+              padding-top: 2px;
+              cursor: pointer;
+              color: gray;
+            }
+          }
+        }
       }
     }
   }
 }
 
+.submit_recipe{
+  display: block;
+  width: 400px;
+  height: 80px;
+  background-color: orange;
+  margin: 0 auto;
+  cursor: pointer;
+  color: white;
+  margin-top: 30px;
+  font-size: 30px;
+}
+
+.ui-menu-item{
+  width: 200px;
+  border-bottom: 1px solid black;
+  background-color: white;
+  
+  
+}

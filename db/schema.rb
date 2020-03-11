@@ -106,6 +106,16 @@ ActiveRecord::Schema.define(version: 2020_03_06_112151) do
     t.string "image"
     t.text "text"
     t.bigint "user_id"
+    t.integer "energy_kcal", null: false
+    t.float "protein", null: false
+    t.float "fat", null: false
+    t.float "carbon", null: false
+    t.integer "vitamin_a", null: false
+    t.float "vitamin_b1", null: false
+    t.integer "vitamin_c", null: false
+    t.integer "calcium", null: false
+    t.float "dietary_fiber", null: false
+    t.float "salt", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["title"], name: "index_recipes_on_title"

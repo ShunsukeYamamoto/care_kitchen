@@ -4,7 +4,7 @@ window.onload = function() {
   var energyData = {
               labels:  ["エネルギー","不足分"], 
               datasets: [{
-                          data: [600,100],
+                          data: [0,900],
                           borderWidth: 1,
                           backgroundColor: ["#c54e44", "rgba(0,0,0,0)"],
                           hoverBackgroundColor: ["#df5f4a","#fff"],
@@ -28,7 +28,7 @@ window.onload = function() {
   var proteinData = {
     labels:  ["タンパク質","不足分"], 
     datasets: [{
-                data: [20,2],
+                data: [0,22],
                 borderWidth: 1,
                 backgroundColor: ["#c54e44", "rgba(0,0,0,0)"],
                 hoverBackgroundColor: ["#df5f4a","#fff"],
@@ -52,7 +52,7 @@ window.onload = function() {
   var fatData = {
     labels:  ["脂質","不足分"], 
     datasets: [{
-                data: [23,0],
+                data: [0,23],
                 borderWidth: 1,
                 backgroundColor: ["#c54e44", "rgba(0,0,0,0)"],
                 hoverBackgroundColor: ["#df5f4a","#fff"],
@@ -76,7 +76,7 @@ window.onload = function() {
   var carbonData = {
     labels:  ["炭水化物","不足分"], 
     datasets: [{
-                data: [120,15],
+                data: [0,135],
                 borderWidth: 1,
                 backgroundColor: ["#c54e44", "rgba(0,0,0,0)"],
                 hoverBackgroundColor: ["#df5f4a","#fff"],
@@ -100,7 +100,7 @@ window.onload = function() {
   var vitaminAData = {
     labels:  ["ビタミンA","不足分"], 
     datasets: [{
-                data: [200,100],
+                data: [0,300],
                 borderWidth: 1,
                 backgroundColor: ["#c54e44", "rgba(0,0,0,0)"],
                 hoverBackgroundColor: ["#df5f4a","#fff"],
@@ -124,7 +124,7 @@ window.onload = function() {
   var vitaminB1Data = {
     labels:  ["ビタミンB1","不足分"], 
     datasets: [{
-                data: [0.3,0.1],
+                data: [0.0,0.4],
                 borderWidth: 1,
                 backgroundColor: ["#c54e44", "rgba(0,0,0,0)"],
                 hoverBackgroundColor: ["#df5f4a","#fff"],
@@ -148,7 +148,7 @@ window.onload = function() {
   var vitaminCData = {
     labels:  ["ビタミンC","不足分"], 
     datasets: [{
-                data: [30,3],
+                data: [0,33],
                 borderWidth: 1,
                 backgroundColor: ["#c54e44", "rgba(0,0,0,0)"],
                 hoverBackgroundColor: ["#df5f4a","#fff"],
@@ -172,7 +172,7 @@ window.onload = function() {
   var calciumData = {
     labels:  ["カルシウム","不足分"], 
     datasets: [{
-                data: [220,30],
+                data: [0,250],
                 borderWidth: 1,
                 backgroundColor: ["#c54e44", "rgba(0,0,0,0)"],
                 hoverBackgroundColor: ["#df5f4a","#fff"],
@@ -196,7 +196,7 @@ window.onload = function() {
   var dietaryFiberData = {
     labels:  ["食物繊維","不足分"], 
     datasets: [{
-                data: [8,0],
+                data: [0,8],
                 borderWidth: 1,
                 backgroundColor: ["#c54e44", "rgba(0,0,0,0)"],
                 hoverBackgroundColor: ["#df5f4a","#fff"],
@@ -220,7 +220,7 @@ window.onload = function() {
   var saltData = {
     labels:  ["塩分","不足分"], 
     datasets: [{
-                data: [2.2,0.3],
+                data: [0.0,2.5],
                 borderWidth: 1,
                 backgroundColor: ["#c54e44", "rgba(0,0,0,0)"],
                 hoverBackgroundColor: ["#df5f4a","#fff"],
