@@ -36,6 +36,7 @@ class RecipesController < ApplicationController
 
   def search
     @recipes = Recipe.search(params[:keyword])
+    @keyword = "#{params[:keyword]}"
   end
 
 
@@ -61,6 +62,6 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:name, :image, :text, steps_attributes: [:image, :description], recipe_ingredients_attributes: [:ingredient_id, :quantity]).merge(user_id: current_user.id)
+    params.require(:recipe).permit(:title, :image, :text, steps_attributes: [:image, :description], recipe_ingredients_attributes: [:ingredient_id, :quantity]).merge(user_id: current_user.id)
   end
 end
