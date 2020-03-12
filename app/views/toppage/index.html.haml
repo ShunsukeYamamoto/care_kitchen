@@ -12,7 +12,7 @@
             =link_to destroy_user_session_path,method: :delete,class: "header-nav__btn" do
               ログアウト
           %li
-            =link_to "#",class: "header-nav__btn" do
+            =link_to user_path(current_user.id),class: "header-nav__btn" do
               マイページ
           %li
             =link_to new_recipe_path,class: "header-nav__btn" do
@@ -40,7 +40,7 @@
           = f.submit '検索', class: "search-box__btn"
 .main
   -if user_signed_in?
-    .top-page-title 
+    .page-title 
       %h2 links
       %h4 people
     .person
@@ -54,7 +54,7 @@
       =link_to new_person_path do
         .person-info
           .person-info__image.add-person
-            %i.fas.fa-user-plus
+            %i.far.fa-grin
           .person-info__name
             パーソンを追加
   .new-topic
