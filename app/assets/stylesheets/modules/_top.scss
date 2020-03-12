@@ -99,11 +99,15 @@ header{
 }
 .main{
   width: 100vw;
-  .top-page-title{
+  .page-title{
     margin-top: 30px;
     display: flex;
     border-top: solid 1px #ffd200;
     padding-top: 10px;
+    &__my-page{
+      margin-top: 10px;
+      border: none;
+    }
     h2{
       margin-left: 12vw;
       margin-bottom: 20px;
@@ -124,7 +128,7 @@ header{
     height: 200px;
     margin: 0 auto;
     display: flex;
-    border: solid 3px black;
+    border: solid 3px #f5bf1e;
     border-radius: 6px;
     box-shadow: 20px 20px 30px rgba(204, 178, 48, 0.17);
     background-color: white;
