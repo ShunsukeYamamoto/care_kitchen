@@ -45,6 +45,11 @@
       text-decoration: underline;
       overflow: hidden;
       color: rgb(145, 109, 18);
+      font-size: 17px;
+      &__text{
+        font-size: 14px;
+        line-height: 23px;
+      }
     }
   }
 }
