@@ -1,7 +1,7 @@
 = render "shared/header"
 .main
   = form_with model: @recipe, url: recipes_path, method: :post, local: true do |f|
-    .post-board
+    .recipe-board
       .left-box
         = f.text_field :title, class: "recipe-title", placeholder: '料理名'
         = f.label :image, class: 'recipe-image' do

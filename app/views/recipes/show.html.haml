@@ -1,0 +1,444 @@
+= render "shared/header"
+
+.main
+  .recipe-board.recipe-board__show
+    .recipe
+      .recipe-board__title
+        = @recipe.title
+        %p.recipe-board__title--text
+          = @recipe.text
+      .recipe__wrapper
+        .image-box
+          = image_tag "#{@recipe.image}",class: 'image-box__inside'
+        .ingredients-box
+          .ingredient-list
+            - @recipe.ingredients.each do |ingredient|
+              %ul
+                %li
+                  = ingredient.name
+          .quantity-list
+            - @recipe.recipe_ingredients.each do |recipe_ingredient|
+              %ul
+                %li
+                  = "#{recipe_ingredient.quantity}g" 
+    .nutrients-wrapper.nutrients-wrapper__recipe
+      .title
+        このレシピから取れる栄養素
+      .coment
+        ※このグラフは各栄養素の1食当たりの摂取量の基準値を100%として算出しています。
+      .nutrient-box
+        .nutrient-name.nutrient-name__recipe
+          カロリー
+        .nutrients-chart.nutrients-chart__recipe
+          .inner-value.inner-value__recipe
+            ="#{@energy_kcal_rate}%"
+          %canvas#calorie-chart__recipe
+        .nutrient-quantity
+          = "#{@recipe.energy_kcal}/270kcal"
+          :javascript
+            var w = $('.nutrients-chart__recipe').width();
+            var h = $('.nutrients-chart__recipe').height();
+            $('#calorie-chart__recipe').attr('width', w);
+            $('#calorie-chart__recipe').attr('height', h);
+            var ctx = document.getElementById("calorie-chart__recipe");
+            var myLineChart = new Chart(ctx, {
+              type: 'doughnut',
+              data: {
+                labels: ['カロリー','不足分'],
+                datasets: [
+                  { 
+                    data: [gon.calorie, 270-gon.calorie],
+                    borderWidth: 1,
+                    backgroundColor: ["#c54e44","rgba(0,0,0,0)"],
+                    hoverBackgroundColor: ["#df5f4a","#fff"],
+                    borderColor: "#2a324e",
+                  },
+                ],
+              },
+              options: {
+                cutoutPercentage:60,
+                scales:{
+                  ticks: {
+                  min: 0,
+                  },
+                },
+                title: {
+                  display: false,
+                },
+                legend: {
+                  display: false,
+                },
+              }
+            });
+      .nutrient-box
+        .nutrient-name.nutrient-name__recipe
+          タンパク質
+        .nutrients-chart.nutrients-chart__recipe
+          .inner-value.inner-value__recipe
+            ="#{@protein_rate}%"
+          %canvas#protein-chart
+        .nutrient-quantity
+          = "#{@recipe.protein}/20g"
+          :javascript
+            var w = $('.nutrients-chart__recipe').width();
+            var h = $('.nutrients-chart__recipe').height();
+            $('#protein-chart').attr('width', w);
+            $('#protein-chart').attr('height', h);
+
+            var ctx = document.getElementById("protein-chart");
+            var myLineChart = new Chart(ctx, {
+              type: 'doughnut',
+              data: {
+                labels: ['タンパク質','不足分'],
+                datasets: [
+                  {
+                    data: [gon.protein,20-gon.protein],
+                    borderWidth: 1,
+                    backgroundColor: ["#c54e44","rgba(0,0,0,0)"],
+                    hoverBackgroundColor: ["#df5f4a","#fff"],
+                    borderColor: "#2a324e",
+                  },
+                ],
+              },
+              options: {
+                cutoutPercentage:60,
+                title: {
+                  display: false,
+                },
+                legend: {
+                  display: false,
+                },
+              }
+            });
+      .nutrient-box
+        .nutrient-name.nutrient-name__recipe
+          脂質
+        .nutrients-chart.nutrients-chart__recipe
+          .inner-value.inner-value__recipe
+            ="#{@fat_rate}%"
+          %canvas#fat-chart
+        .nutrient-quantity
+          = "#{@recipe.carbon}/30g"
+          :javascript
+            var w = $('.nutrients-chart__recipe').width();
+            var h = $('.nutrients-chart__recipe').height();
+            $('#fat-chart').attr('width', w);
+            $('#fat-chart').attr('height', h);
+
+            var ctx = document.getElementById("fat-chart");
+            var myLineChart = new Chart(ctx, {
+              type: 'doughnut',
+              data: {
+                labels: ['脂質','不足分'],
+                datasets: [
+                  {
+                    data: [gon.fat,30-gon.fat],
+                    borderWidth: 1,
+                    backgroundColor: ["#c54e44","rgba(0,0,0,0)"],
+                    hoverBackgroundColor: ["#df5f4a","#fff"],
+                    borderColor: "#2a324e",
+                  },
+                ],
+              },
+              options: {
+                cutoutPercentage:60,
+                title: {
+                  display: false,
+                },
+                legend: {
+                  display: false,
+                },
+              }
+            });
+      .nutrient-box
+        .nutrient-name.nutrient-name__recipe
+          炭水化物
+        .nutrients-chart.nutrients-chart__recipe
+          .inner-value.inner-value__recipe
+            ="#{@carbon_rate}%"
+          %canvas#carbohydrate-chart
+        .nutrient-quantity
+          = "#{@recipe.carbon}/145g"
+          :javascript
+            var w = $('.nutrients-chart__recipe').width();
+            var h = $('.nutrients-chart__recipe').height();
+            $('#carbohydrate-chart').attr('width', w);
+            $('#carbohydrate-chart').attr('height', h);
+
+            var ctx = document.getElementById("carbohydrate-chart");
+            var myLineChart = new Chart(ctx, {
+              type: 'doughnut',
+              data: {
+                labels: ['炭水化物','不足分'],
+                datasets: [
+                  {
+                    data: [gon.carbon,145-gon.carbon],
+                    borderWidth: 1,
+                    backgroundColor: ["#c54e44","rgba(0,0,0,0)"],
+                    hoverBackgroundColor: ["#df5f4a","#fff"],
+                    borderColor: "#2a324e",
+                  },
+                ],
+              },
+              options: {
+                cutoutPercentage:60,
+                title: {
+                  display: false,
+                },
+                legend: {
+                  display: false,
+                },
+              }
+            });
+      .nutrient-box
+        .nutrient-name.nutrient-name__recipe
+          ビタミンA
+        .nutrients-chart.nutrients-chart__recipe
+          .inner-value.inner-value__recipe
+            ="#{@vitamin_a_rate}%"
+          %canvas#vitamina-chart
+        .nutrient-quantity
+          = "#{@recipe.vitamin_a}/300g"
+          :javascript
+            var w = $('.nutrients-chart__recipe').width();
+            var h = $('.nutrients-chart__recipe').height();
+            $('#vitamina-chart').attr('width', w);
+            $('#vitamina-chart').attr('height', h);
+
+            var ctx = document.getElementById("vitamina-chart");
+            var myLineChart = new Chart(ctx, {
+              type: 'doughnut',
+              data: {
+                labels: ['ビタミンA','不足分'],
+                datasets: [
+                  {
+                    data: [gon.vitamin_a,300-gon.vitamin_a],
+                    borderWidth: 1,
+                    backgroundColor: ["#c54e44","rgba(0,0,0,0)"],
+                    hoverBackgroundColor: ["#df5f4a","#fff"],
+                    borderColor: "#2a324e",
+                  },
+                ],
+              },
+              options: {
+                cutoutPercentage:60,
+                title: {
+                  display: false,
+                },
+                legend: {
+                  display: false,
+                },
+              }
+            });
+      .nutrient-box
+        .nutrient-name.nutrient-name__recipe
+          ビタミンB1
+        .nutrients-chart.nutrients-chart__recipe
+          .inner-value.inner-value__recipe
+            ="#{@vitamin_b1_rate}%"
+          %canvas#vitaminb1-chart
+        .nutrient-quantity
+          = "#{@recipe.vitamin_b1}/0.45g"
+          :javascript
+            var w = $('.nutrients-chart__recipe').width();
+            var h = $('.nutrients-chart__recipe').height();
+            $('#vitaminb1-chart').attr('width', w);
+            $('#vitaminb1-chart').attr('height', h);
+
+            var ctx = document.getElementById("vitaminb1-chart");
+            var myLineChart = new Chart(ctx, {
+              type: 'doughnut',
+              data: {
+                labels: ['ビタミンB1','不足分'],
+                datasets: [
+                  {
+                    data: [gon.vitamin_b1,0.45-gon.vitamin_b1],
+                    borderWidth: 1,
+                    backgroundColor: ["#c54e44","rgba(0,0,0,0)"],
+                    hoverBackgroundColor: ["#df5f4a","#fff"],
+                    borderColor: "#2a324e",
+                  },
+                ],
+              },
+              options: {
+                cutoutPercentage:60,
+                title: {
+                  display: false,
+                },
+                legend: {
+                  display: false,
+                },
+              }
+            });
+      .nutrient-box
+        .nutrient-name.nutrient-name__recipe
+          ビタミンC
+        .nutrients-chart.nutrients-chart__recipe
+          .inner-value.inner-value__recipe
+            ="#{@vitamin_c_rate}%"
+          %canvas#vitaminc-chart
+        .nutrient-quantity
+          = "#{@recipe.vitamin_c}/33g"
+          :javascript
+            var w = $('.nutrients-chart__recipe').width();
+            var h = $('.nutrients-chart__recipe').height();
+            $('#vitaminc-chart').attr('width', w);
+            $('#vitaminc-chart').attr('height', h);
+
+            var ctx = document.getElementById("vitaminc-chart");
+            var myLineChart = new Chart(ctx, {
+              type: 'doughnut',
+              data: {
+                labels: ['ビタミンC','不足分'],
+                datasets: [
+                  {
+                    data: [gon.vitamin_c,33-gon.vitamin_c],
+                    borderWidth: 1,
+                    backgroundColor: ["#c54e44","rgba(0,0,0,0)"],
+                    hoverBackgroundColor: ["#df5f4a","#fff"],
+                    borderColor: "#2a324e",
+                  },
+                ],
+              },
+              options: {
+                cutoutPercentage:60,
+                title: {
+                  display: false,
+                },
+                legend: {
+                  display: false,
+                },
+              }
+            });
+      .nutrient-box
+        .nutrient-name.nutrient-name__recipe
+          食塩
+        .nutrients-chart.nutrients-chart__recipe
+          .inner-value.inner-value__recipe
+            ="#{@salt_rate}%"
+          %canvas#salt-chart
+        .nutrient-quantity
+          = "#{@recipe.salt}/2.7g"
+          :javascript
+            var w = $('.nutrients-chart__recipe').width();
+            var h = $('.nutrients-chart__recipe').height();
+            $('#salt-chart').attr('width', w);
+            $('#salt-chart').attr('height', h);
+
+            var ctx = document.getElementById("salt-chart");
+            var myLineChart = new Chart(ctx, {
+              type: 'doughnut',
+              data: {
+                labels: ['食塩','不足分'],
+                datasets: [
+                  {
+                    data: [gon.salt,2.7-gon.salt],
+                    borderWidth: 1,
+                    backgroundColor: ["#c54e44","rgba(0,0,0,0)"],
+                    hoverBackgroundColor: ["#df5f4a","#fff"],
+                    borderColor: "#2a324e",
+                  },
+                ],
+              },
+              options: {
+                cutoutPercentage:60,
+                title: {
+                  display: false,
+                },
+                legend: {
+                  display: false,
+                },
+              }
+            });
+      .nutrient-box
+        .nutrient-name.nutrient-name__recipe
+          食物繊維
+        .nutrients-chart.nutrients-chart__recipe
+          .inner-value.inner-value__recipe
+            ="#{@dietary_fiber_rate}%"
+          %canvas#dietaryFiber-chart
+        .nutrient-quantity
+          = "#{@recipe.dietary_fiber}/7g"
+          :javascript
+            var w = $('.nutrients-chart__recipe').width();
+            var h = $('.nutrients-chart__recipe').height();
+            $('#dietaryFiber-chart').attr('width', w);
+            $('#dietaryFiber-chart').attr('height', h);
+
+            var ctx = document.getElementById("dietaryFiber-chart");
+            var myLineChart = new Chart(ctx, {
+              type: 'doughnut',
+              data: {
+                labels: ['食物繊維','不足分'],
+                datasets: [
+                  {
+                    data: [gon.dietary_fiber,7-gon.dietary_fiber],
+                    borderWidth: 1,
+                    backgroundColor: ["#c54e44","rgba(0,0,0,0)"],
+                    hoverBackgroundColor: ["#df5f4a","#fff"],
+                    borderColor: "#2a324e",
+                  },
+                ],
+              },
+              options: {
+                cutoutPercentage:60,
+                title: {
+                  display: false,
+                },
+                legend: {
+                  display: false,
+                },
+              }
+            });
+      .nutrient-box
+        .nutrient-name.nutrient-name__recipe
+          カルシウム
+        .nutrients-chart.nutrients-chart__recipe
+          .inner-value.inner-value__recipe
+            ="#{@calcium_rate}%"
+          %canvas#calcium-chart
+        .nutrient-quantity
+          = "#{@recipe.calcium}/270g"
+          :javascript
+            var w = $('.nutrients-chart__recipe').width();
+            var h = $('.nutrients-chart__recipe').height();
+            $('#calcium-chart').attr('width', w);
+            $('#calcium-chart').attr('height', h);
+
+            var ctx = document.getElementById("calcium-chart");
+            var myLineChart = new Chart(ctx, {
+              type: 'doughnut',
+              data: {
+                labels: ['カルシウム','不足分'],
+                datasets: [
+                  {
+                    data: [gon.calcium,270-gon.calcium],
+                    borderWidth: 1,
+                    backgroundColor: ["#c54e44","rgba(0,0,0,0)"],
+                    hoverBackgroundColor: ["#df5f4a","#fff"],
+                    borderColor: "#2a324e",
+                  },
+                ],
+              },
+              options: {
+                cutoutPercentage:60,
+                title: {
+                  display: false,
+                },
+                legend: {
+                  display: false,
+                },
+              }
+            });
+    .steps-wrapper
+      - number = 0
+      - @recipe.steps.each do |step|
+        - number += 1
+        .steps-box
+          .order
+            = number
+          .image-box
+            = image_tag "#{step.image}",class: 'image-box__inside'
+          .steps-box__description
+            = step.description
+= render "shared/footer"
