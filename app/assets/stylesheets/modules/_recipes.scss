@@ -1,4 +1,4 @@
-.post-board{
+.recipe-board{
   width: 80vw;
   border-radius: 5px;
   border: solid 1px #e1e1e1;
@@ -8,6 +8,10 @@
   display: flex;
   flex-wrap: wrap;
   position: relative;
+  margin-top: 50px;
+  &__show{
+    width: 90vw;
+  }
   .left-box{
     width: 20vw;
     margin-right: 1vw;

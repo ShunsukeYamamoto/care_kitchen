@@ -6,12 +6,11 @@
       %p のレシピ検索結果
     - @recipes.each do |recipe|
       .recipe-container
-        =link_to "#" do
+        =link_to "#{recipe_path(recipe.id)}" do
           .image-box
             =image_tag "#{recipe.image}", class: 'image-box__inside'
-          =link_to "#" do
-            .text-box
-              =recipe.title
-              %p.text-box__text
-                =recipe.text
+          .text-box
+            =recipe.title
+            %p.text-box__text
+              =recipe.text
 = render "shared/footer"
