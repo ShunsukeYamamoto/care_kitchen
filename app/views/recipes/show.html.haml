@@ -25,7 +25,7 @@
       .title
         このレシピから取れる栄養素
       .coment
-        ※このグラフは各栄養素の1食当たりの摂取量の基準値を100%として算出しています
+        ※このグラフは各栄養素の1食当たりの摂取量の基準値を100%として算出しています。
       .nutrient-box
         .nutrient-name.nutrient-name__recipe
           カロリー
@@ -430,4 +430,15 @@
                 },
               }
             });
-    .process
+    .steps-wrapper
+      - number = 0
+      - @recipe.steps.each do |step|
+        - number += 1
+        .steps-box
+          .order
+            = number
+          .image-box
+            = image_tag "#{step.image}",class: 'image-box__inside'
+          .steps-box__description
+            = step.description
+= render "shared/footer"
