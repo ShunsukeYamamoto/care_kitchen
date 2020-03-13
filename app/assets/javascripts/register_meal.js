@@ -8,5 +8,6 @@ $(function(){
     e.preventDefault();
     e.stopImmediatePropagation();
     var dom = $(document).find('.register_meal')
+    $(dom).show();
   })
 })
