@@ -108,7 +108,7 @@
         =link_to "#" do
           .post-btn.post-btn__meal
             食べたものを入力
-        =link_to "#" do
+        =link_to new_recipe_path do
           .post-btn.post-btn__recipe
             レシピを投稿する
         = form_with url: search_recipes_path, method: 'get', local: true do |f|
@@ -501,3 +501,12 @@
                   },
                 }
               });
+  .register_meal
+    = form_with model: [@person,Meal.new],local: true do |f|
+      .register_meal__area
+        %i.far.fa-window-close
+        .text_wrapper
+          = f.text_field :name ,placeholder: "名前"
+          = f.datetime_field :time, {value: DateTime.now}
+
+      -# = f.button

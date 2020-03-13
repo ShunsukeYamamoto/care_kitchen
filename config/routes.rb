@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update]
   resources :people, only: [:show, :new, :create, :edit, :update, :destroy] do
     resources :personal_informations, only: [:create]
+    resources :meals ,only: :create
   end
   resources :recipes, only: [:index, :new, :create] do
     collection do
