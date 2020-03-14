@@ -93,6 +93,7 @@ class RecipesController < ApplicationController
     @dietary_fiber_rate = (@recipe.dietary_fiber/0.07).round
     @calcium_rate = (@recipe.calcium/2.7).round
     
+    @favorite = Favorite.new
   end
 
   def search
