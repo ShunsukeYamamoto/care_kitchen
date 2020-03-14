@@ -1,0 +1,15 @@
+= render "shared/header"
+.main
+  .search-board
+    .search-text
+      = "#{current_user.name}の投稿したレシピ"
+    - @recipes.each do |recipe|
+      .recipe-container
+        =link_to "#{recipe_path(recipe.id)}" do
+          .image-box
+            =image_tag "#{recipe.image}", class: 'image-box__inside'
+          .text-box
+            =recipe.title
+            %p.text-box__text
+              =recipe.text
+= render "shared/footer"

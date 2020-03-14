@@ -1,6 +1,9 @@
 class RecipesController < ApplicationController
   autocomplete :ingredient,:name,full: true
 
+  def index
+    @recipes = current_user.recipes
+  end
   def new
     @recipe = current_user.recipes.new
     @recipe.steps.new
