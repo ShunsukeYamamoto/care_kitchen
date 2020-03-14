@@ -442,3 +442,14 @@
           .steps-box__description
             = step.description
 = render "shared/footer"
+
+%h3
+  = "いいね件数: #{@recipe.favorites.count}"
+- if current_user.already_favorite?(@recipe)
+  = button_to 'いいねを取り消す', recipe_favorite_path(@recipe), method: :delete
+- else
+  = button_to 'いいね', recipe_favorites_path(@recipe)
+%h2 いいねしたユーザー
+- @recipe.favorite_users.each do |user|
+  %li
+    = user.email

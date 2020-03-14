@@ -10,4 +10,10 @@ class User < ApplicationRecord
   has_many :recipes
   validates :email,presence: true,format: { with: VALID_EMAIL_REGEX}
   validates :name,presence: true
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_recipes, through: :favorites, source: :recipe
+
+  def already_favorite?(recipe)
+    self.favorites.exists?(recipe_id: recipe.id)
+  end
 end
