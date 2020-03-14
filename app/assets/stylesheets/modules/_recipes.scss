@@ -11,6 +11,37 @@
   margin-top: 50px;
   &__show{
     width: 90vw;
+    position: relative;
+    .favorite{
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      &__btn{
+        padding: 0 10px;
+        border-radius: 5px;
+        margin-right: 10px;
+        line-height: 35px;
+        overflow: hidden;
+        font-weight: bold;
+        background: linear-gradient(#ffd200 0%, #ffbb00 100%);
+        text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.28);
+        border: none;
+        color: rgb(78, 78, 78);
+        &:active {
+          -webkit-transform: translateY(2px);
+          transform: translateY(2px);/*沈むように*/
+          box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+          background-image: linear-gradient(#fed6e3 0%, #ffbcbc 100%);/*グラデーションを明るく*/
+        }
+      }
+      &__text{
+        font-size: 13px;
+        line-height: 35px;
+        vertical-align: bottom;
+      }
+    }
   }
   .left-box{
     width: 20vw;
