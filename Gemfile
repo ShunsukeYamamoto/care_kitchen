@@ -85,3 +85,4 @@ gem "gon"
 gem 'chart-js-rails'
 gem 'rails4-autocomplete'
 gem 'jquery-ui-rails'
+gem 'fog-aws'
