@@ -2,6 +2,13 @@
 
 .main
   .recipe-board.recipe-board__show
+    .favorite
+      - if current_user.already_favorite?(@recipe)
+        = button_to 'お気に入り解除', recipe_favorite_path(@recipe), method: :delete, class: "favorite__btn"
+      - else
+        = button_to 'お気に入り登録', recipe_favorites_path(@recipe), class: "favorite__btn"
+      %h3.favorite__text
+        = "お気に入り数: #{@recipe.favorites.count}件"
     .recipe
       .recipe-board__title
         = @recipe.title
@@ -21,6 +28,7 @@
               %ul
                 %li
                   = "#{recipe_ingredient.quantity}g" 
+        .eat-box
     .nutrients-wrapper.nutrients-wrapper__recipe
       .title
         このレシピから取れる栄養素
@@ -442,3 +450,14 @@
           .steps-box__description
             = step.description
 = render "shared/footer"
+
+%h3
+  = "いいね件数: #{@recipe.favorites.count}"
+- if current_user.already_favorite?(@recipe)
+  = button_to 'いいねを取り消す', recipe_favorite_path(@recipe), method: :delete
+- else
+  = button_to 'いいね', recipe_favorites_path(@recipe)
+%h2 いいねしたユーザー
+- @recipe.favorite_users.each do |user|
+  %li
+    = user.email
