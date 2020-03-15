@@ -1,4 +1,8 @@
 class FavoritesController < ApplicationController
+  def index
+    @recipes = current_user.favorite_recipes
+  end
+
   def create
     @favorite = current_user.favorites.create(recipe_id: params[:recipe_id])
     redirect_to recipe_path(params[:recipe_id])
