@@ -21,6 +21,7 @@
           -# エネルギー
           .recipe_chart
             %p.nutrition_title.energy_title エネルギー 0kcal
+            = f.hidden_field :total_energy,value: ""
             .recipe_chart--area
               %canvas#recipeEnergyChart{:height => "130", :width => "130"}
               .count.energy_count
@@ -29,46 +30,57 @@
           -# タンパク質
           .recipe_chart
             %p.nutrition_title.protein_title タンパク質 0g
+            = f.hidden_field :total_protein,value: ""
             .recipe_chart--area
               %canvas#recipeProteinChart{:height => "130", :width => "130"}
               .count.protein_count
                 %em 0%
+
                 
           -# 脂質
           .recipe_chart
             %p.nutrition_title.fat_title 脂質 0mg
+            = f.hidden_field :total_fat,value: ""
             .recipe_chart--area
               %canvas#recipeFatChart{:height => "130", :width => "130"}
               .count.fat_count
                 %em 0%
+
                 
           -# 炭水化物
           .recipe_chart
             %p.nutrition_title.carbon_title 炭水化物  0g
+            = f.hidden_field :total_carbon,value: ""
             .recipe_chart--area
               %canvas#recipeCarbonChart{:height => "130", :width => "130"}
               .count.carbon_count
                 %em 0%
+
                 
           -# ビタミンA
           .recipe_chart
             %p.nutrition_title.vitaminA_title ビタミンA  0μg
+            = f.hidden_field :total_vitaminA,value: ""
             .recipe_chart--area
               %canvas#recipeVitaminAChart{:height => "130", :width => "130"}
               .count.vitaminA_count
                 %em 0%
+
                 
           -# ビタミンB1
           .recipe_chart
             %p.nutrition_title.vitaminB1_title ビタミンB1  0.0mg
+            = f.hidden_field :total_vitaminB1,value: ""
             .recipe_chart--area
               %canvas#recipeVitaminB1Chart{:height => "130", :width => "130"}
               .count.vitaminB1_count
                 %em 0%
+
                 
           -# ビタミンC
           .recipe_chart
             %p.nutrition_title.vitaminC_title ビタミンC  0mg
+            = f.hidden_field :total_vitaminC,value: ""
             .recipe_chart--area
               %canvas#recipeVitaminCChart{:height => "130", :width => "130"}
               .count.vitaminC_count
@@ -77,26 +89,32 @@
           -# カルシウム
           .recipe_chart
             %p.nutrition_title.calcium_title カルシウム 0mg
+            = f.hidden_field :total_calcium,value: ""
             .recipe_chart--area
               %canvas#recipeCalciumChart{:height => "130", :width => "130"}
               .count.calcium_count
                 %em 0%
+
                 
           -# 食物繊維
           .recipe_chart
             %p.nutrition_title.dietaryFiber_title 食物繊維  0g
+            = f.hidden_field :total_dietaryFiber,value: ""
             .recipe_chart--area
               %canvas#recipeDietaryFiberChart{:height => "130", :width => "130"}
               .count.dietaryFiber_count
                 %em 0%
+
                 
           -# 食塩
           .recipe_chart
             %p.nutrition_title.salt_title 食塩  0.0g
+            = f.hidden_field :total_salt,value: ""
             .recipe_chart--area
               %canvas#recipeSaltChart{:height => "130", :width => "130"}
               .count.salt_count
                 %em 0%
+
                 
       .post_recipe__bottom
         .recipe_steps

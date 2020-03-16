@@ -13,16 +13,17 @@ $(function(){
   var total_salt = 0.0;
 
   function updateValue(){
-    var energyHTML =`エネルギー ${total_energy}kcal` 
+    var energyHTML =`エネルギー ${total_energy}kcal`
     var proteinHTML = `タンパク質 ${total_protein}g`
     var fatHTML =`脂質 ${total_fat}mg`
     var carbonHTML =`炭水化物  ${total_carbon}g`
     var vitaminAHTML =`ビタミンA  ${total_vitaminA}μg`
-    var vitaminB1HTML =`ビタミンB1  ${total_vitaminB1}mg`
+    var vitaminB1HTML =`ビタミンB1  ${Math.floor(total_vitaminB1*10)/10}mg`
     var vitaminCHTML =`ビタミンC  ${total_vitaminC}mg`
     var calciumHTML =`カルシウム ${total_calcium}mg`
     var dietaryFiberHTML =`食物繊維  ${total_dietaryFiber}g`
-    var saltHTML =`食塩  ${total_salt}g`
+    var saltHTML =`食塩  ${Math.floor(total_salt*10)/10}g`
+
     var energyPercentageHTML =`<em>${Math.round(total_energy*100/900)}%</em>`
     var proteinPercentageHTML =`<em>${Math.round(total_protein*100/22)}%</em>`
     var fatPercentageHTML =`<em>${Math.round(total_fat*100/23)}%</em>`
@@ -33,26 +34,37 @@ $(function(){
     var calciumPercentageHTML =`<em>${Math.round(total_calcium*100/250)}%</em>`
     var dietaryFiberPercentageHTML =`<em>${Math.round(total_dietaryFiber*100/8)}%</em>`
     var saltPercentageHTML =`<em>${Math.round(total_salt*100/2.5)}%</em>`
+
     $(document).find('.energy_title').text(energyHTML)
     $(document).find('.energy_count').html(energyPercentageHTML)
+    $('#recipe_total_energy').attr('value',total_energy)
     $(document).find('.protein_title').text(proteinHTML)
     $(document).find('.protein_count').html(proteinPercentageHTML)
+    $('#recipe_total_protein').attr('value',total_protein)
     $(document).find('.fat_title').text(fatHTML)
     $(document).find('.fat_count').html(fatPercentageHTML)
+    $('#recipe_total_fat').attr('value',total_fat)
     $(document).find('.carbon_title').text(carbonHTML)
     $(document).find('.carbon_count').html(carbonPercentageHTML)
+    $('#recipe_total_carbon').attr('value',total_carbon)
     $(document).find('.vitaminA_title').text(vitaminAHTML)
     $(document).find('.vitaminA_count').html(vitaminAPercentageHTML)
+    $('#recipe_total_vitaminA').attr('value',total_vitaminA)
     $(document).find('.vitaminB1_title').text(vitaminB1HTML)
     $(document).find('.vitaminB1_count').html(vitaminB1PercentageHTML)
+    $('#recipe_total_vitaminB1').attr('value',Math.floor(total_vitaminB1*10)/10)
     $(document).find('.vitaminC_title').text(vitaminCHTML)
     $(document).find('.vitaminC_count').html(vitaminCPercentageHTML)
+    $('#recipe_total_vitaminC').attr('value',total_vitaminC)
     $(document).find('.calcium_title').text(calciumHTML)
     $(document).find('.calcium_count').html(calciumPercentageHTML)
+    $('#recipe_total_calcium').attr('value',total_calcium)
     $(document).find('.dietaryFiber_title').text(dietaryFiberHTML)
     $(document).find('.dietaryFiber_count').html(dietaryFiberPercentageHTML)
+    $('#recipe_total_dietaryFiber').attr('value',total_dietaryFiber)
     $(document).find('.salt_title').text(saltHTML)
     $(document).find('.salt_count').html(saltPercentageHTML)
+    $('#recipe_total_salt').attr('value',Math.floor(total_salt*10)/10)
   }
 
   function updateChart(){
@@ -390,14 +402,15 @@ $(function(){
       total_fat += data.fat
       total_carbon += data.carbon
       total_vitaminA += data.vitaminA
-      total_vitaminB1 += data.vitaminB1
+      total_vitaminB1 += Math.round(data.vitaminB1*10)/10
       total_vitaminC += data.vitaminC
       total_calcium += data.calcium
       total_dietaryFiber += data.dietaryFiber
-      total_salt += data.salt
+      total_salt += Math.round(data.salt*10)/10
       appendIngredient(data);
       updateChart()
       updateValue()
+      debugger
     })
     .fail(function(){
       alert('食材がない、もしくは分量の値が適切ではありません');
@@ -423,11 +436,11 @@ $(function(){
       total_fat -= data.fat
       total_carbon -= data.carbon
       total_vitaminA -= data.vitaminA
-      total_vitaminB1 -= data.vitaminB1
+      total_vitaminB1 -= Math.round(data.vitaminB1*10)/10
       total_vitaminC -= data.vitaminC
       total_calcium -= data.calcium
       total_dietaryFiber -= data.dietaryFiber
-      total_salt -= data.salt
+      total_salt -= Math.round(data.salt*10)/10
       updateChart()
       updateValue()
     })
