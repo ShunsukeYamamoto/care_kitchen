@@ -57,6 +57,35 @@
             %i.far.fa-grin
           .person-info__name
             パーソンを追加
+  -else
+    .image-wrapper
+      .demo-image.demo-image__first
+      .first-description
+        %h2
+          日々の健康を 
+          %br
+            可視化して管理！
+        %h4
+          食べたものを登録することで、日々の摂取した栄養素がグラフ化されます。
+          %br
+            さらに日々の体重BMIも一緒に管理できます。
+        %h5
+          忙しい生活を送るあなたに。"集中力"も"質の高い睡眠"も、日々の健康管理が大切です。
+    .image-wrapper
+      .first-description
+        %h2
+          全国の健康レシピを
+          %br
+            共有できます！
+        %h4
+          料理名を検索し、レシピをお気に入り登録しましょう！
+          %br 投稿されたレシピには、含まれる栄養素のデータも一緒に登録されます。
+        %h5
+          食べたレシピを選ぶことで、摂取した栄養素が簡単にデータ化されます！
+      .demo-image.demo-image__second
+    .image-wrapper.image-wrapper__third
+      =link_to new_user_registration_path, class: "registration-btn" do
+        Let's try!
   .new-topic
     %h3.new-topic__title
       特集
