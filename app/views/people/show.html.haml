@@ -509,4 +509,196 @@
           = f.text_field :name ,placeholder: "名前"
           = f.datetime_field :time, {value: DateTime.now}
 
-      -# = f.button
+        .nutrition_charts
+          .recipe_chart
+            %p.nutrition_title.energy_title エネルギー 1200kcal
+            .recipe_chart--area
+              %canvas#recipeEnergyChart{:height => "100", :width => "120"}
+              .count.energy_count
+                %em 0%
+
+          .recipe_chart
+            %p.nutrition_title.protein_title タンパク質 20g
+            .recipe_chart--area
+              %canvas#recipeProteinChart{:height => "100", :width => "120"}
+              .count.energy_count
+                %em 0%
+
+          .recipe_chart
+            %p.nutrition_title.fat_title 脂質 20mg
+            .recipe_chart--area
+              %canvas#recipeFatChart{:height => "100", :width => "120"}
+              .count.energy_count
+                %em 0%
+
+          .recipe_chart
+            %p.nutrition_title.carbon_title 炭水化物  120g
+            .recipe_chart--area
+              %canvas#recipeCarbonChart{:height => "100", :width => "120"}
+              .count.energy_count
+                %em 0%
+
+          .recipe_chart
+            %p.nutrition_title.vitaminA_title ビタミンA  200μg
+            .recipe_chart--area
+              %canvas#recipeVitaminAChart{:height => "100", :width => "120"}
+              .count.energy_count
+                %em 0%
+
+          .recipe_chart
+            %p.nutrition_title.vitaminB1_title ビタミンB1  0.0mg
+            .recipe_chart--area
+              %canvas#recipeVitaminB1Chart{:height => "100", :width => "120"}
+              .count.energy_count
+                %em 0%
+
+          .recipe_chart
+            %p.nutrition_title.vitaminC_title ビタミンC  33mg
+            .recipe_chart--area
+              %canvas#recipeVitaminCChart{:height => "100", :width => "120"}
+              .count.energy_count
+                %em 0%
+
+          .recipe_chart
+            %p.nutrition_title.calcium_title カルシウム 200mg
+            .recipe_chart--area
+              %canvas#recipeCalciumChart{:height => "100", :width => "120"}
+              .count.energy_count
+                %em 0%
+
+          .recipe_chart
+            %p.nutrition_title.dietaryFiber_title 食物繊維  2g
+            .recipe_chart--area
+              %canvas#recipeDietaryFiberChart{:height => "100", :width => "120"}
+              .count.energy_count
+                %em 0%
+
+          .recipe_chart
+            %p.nutrition_title.salt_title 食塩  0.0g
+            .recipe_chart--area
+              %canvas#recipeSaltChart{:height => "100", :width => "120"}
+              .count.energy_count
+                %em 0%
+
+        .ingredient_wrapper
+          .recipe_ingredients--form
+            = form_with url: search_ingredients_recipes_path ,local: true do |t|
+              = t.autocomplete_field :ingredient_name,autocomplete_ingredient_name_recipes_path,class: "recipe_ingredients--form--name",placeholder: "食材名"
+              = t.number_field :quantity,class: "recipe_ingredients--form--quantity",placeholder: "分量(g)"
+              %button{class: "recipe_ingredients--form--submit",id: "person_ingredient_search"}
+                %p 追加
+          .recipe_ingredients--area
+            .recipe_ingredient
+              .recipe_ingredient--name
+                %p あまのり ほしのり
+              .recipe_ingredient--quantity
+                %p 100g
+              .recipe_ingredient--delete#person_ingredient_delete
+                %i.fas.fa-trash-alt.delete_ingredient
+            .recipe_ingredient
+              .recipe_ingredient--name
+                %p あまのり ほしのり
+              .recipe_ingredient--quantity
+                %p 100g
+              .recipe_ingredient--delete#person_ingredient_delete
+                %i.fas.fa-trash-alt.delete_ingredient
+            .recipe_ingredient
+              .recipe_ingredient--name
+                %p あまのり ほしのり
+              .recipe_ingredient--quantity
+                %p 100g
+              .recipe_ingredient--delete#person_ingredient_delete
+                %i.fas.fa-trash-alt.delete_ingredient
+            .recipe_ingredient
+              .recipe_ingredient--name
+                %p あまのり ほしのり
+              .recipe_ingredient--quantity
+                %p 100g
+              .recipe_ingredient--delete#person_ingredient_delete
+                %i.fas.fa-trash-alt.delete_ingredient
+            .recipe_ingredient
+              .recipe_ingredient--name
+                %p あまのり ほしのり
+              .recipe_ingredient--quantity
+                %p 100g
+              .recipe_ingredient--delete#person_ingredient_delete
+                %i.fas.fa-trash-alt.delete_ingredient
+            .recipe_ingredient
+              .recipe_ingredient--name
+                %p あまのり ほしのり
+              .recipe_ingredient--quantity
+                %p 100g
+              .recipe_ingredient--delete#person_ingredient_delete
+                %i.fas.fa-trash-alt.delete_ingredient
+            .recipe_ingredient
+              .recipe_ingredient--name
+                %p あまのり ほしのり
+              .recipe_ingredient--quantity
+                %p 100g
+              .recipe_ingredient--delete#person_ingredient_delete
+                %i.fas.fa-trash-alt.delete_ingredient
+            .recipe_ingredient
+              .recipe_ingredient--name
+                %p あまのり ほしのり
+              .recipe_ingredient--quantity
+                %p 100g
+              .recipe_ingredient--delete#person_ingredient_delete
+                %i.fas.fa-trash-alt.delete_ingredient
+            .recipe_ingredient
+              .recipe_ingredient--name
+                %p あまのり ほしのり
+              .recipe_ingredient--quantity
+                %p 100g
+              .recipe_ingredient--delete#person_ingredient_delete
+                %i.fas.fa-trash-alt.delete_ingredient
+            .recipe_ingredient
+              .recipe_ingredient--name
+                %p あまのり ほしのり
+              .recipe_ingredient--quantity
+                %p 100g
+              .recipe_ingredient--delete#person_ingredient_delete
+                %i.fas.fa-trash-alt.delete_ingredient
+            .recipe_ingredient
+              .recipe_ingredient--name
+                %p あまのり ほしのり
+              .recipe_ingredient--quantity
+                %p 100g
+              .recipe_ingredient--delete#person_ingredient_delete
+                %i.fas.fa-trash-alt.delete_ingredient
+            .recipe_ingredient
+              .recipe_ingredient--name
+                %p あまのり ほしのり
+              .recipe_ingredient--quantity
+                %p 100g
+              .recipe_ingredient--delete#person_ingredient_delete
+                %i.fas.fa-trash-alt.delete_ingredient
+            .recipe_ingredient
+              .recipe_ingredient--name
+                %p あまのり ほしのり
+              .recipe_ingredient--quantity
+                %p 100g
+              .recipe_ingredient--delete#person_ingredient_delete
+                %i.fas.fa-trash-alt.delete_ingredient
+            .recipe_ingredient
+              .recipe_ingredient--name
+                %p あまのり ほしのり
+              .recipe_ingredient--quantity
+                %p 100g
+              .recipe_ingredient--delete#person_ingredient_delete
+                %i.fas.fa-trash-alt.delete_ingredient
+            .recipe_ingredient
+              .recipe_ingredient--name
+                %p あまのり ほしのり
+              .recipe_ingredient--quantity
+                %p 100g
+              .recipe_ingredient--delete#person_ingredient_delete
+                %i.fas.fa-trash-alt.delete_ingredient
+            .recipe_ingredient
+              .recipe_ingredient--name
+                %p あまのり ほしのり
+              .recipe_ingredient--quantity
+                %p 100g
+              .recipe_ingredient--delete#person_ingredient_delete
+                %i.fas.fa-trash-alt.delete_ingredient
+          
+      = f.button
