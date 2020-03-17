@@ -44,6 +44,8 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    airbrussh (1.4.0)
+      sshkit (>= 1.6.1, != 1.7.0)
     archive-zip (0.12.0)
       io-like (~> 0.3.0)
     arel (9.0.0)
@@ -53,6 +55,21 @@ GEM
       msgpack (~> 1.0)
     builder (3.2.4)
     byebug (11.1.1)
+    capistrano (3.12.1)
+      airbrussh (>= 1.0.0)
+      i18n
+      rake (>= 10.0.0)
+      sshkit (>= 1.9.0)
+    capistrano-bundler (1.6.0)
+      capistrano (~> 3.1)
+    capistrano-rails (1.4.0)
+      capistrano (~> 3.1)
+      capistrano-bundler (~> 1.1)
+    capistrano-rbenv (2.1.6)
+      capistrano (~> 3.1)
+      sshkit (~> 1.3)
+    capistrano3-unicorn (0.2.1)
+      capistrano (~> 3.1, >= 3.1.0)
     capybara (3.31.0)
       addressable
       mini_mime (>= 0.1.3)
@@ -95,10 +112,28 @@ GEM
     devise-i18n-views (0.3.7)
     erubi (1.9.0)
     erubis (2.7.0)
+    excon (0.72.0)
     execjs (2.7.0)
     ffi (1.12.2)
+    fog-aws (3.5.2)
+      fog-core (~> 2.1)
+      fog-json (~> 1.1)
+      fog-xml (~> 0.1)
+      ipaddress (~> 0.8)
+    fog-core (2.2.0)
+      builder
+      excon (~> 0.71)
+      formatador (~> 0.2)
+      mime-types
+    fog-json (1.2.0)
+      fog-core
+      multi_json (~> 1.10)
+    fog-xml (0.1.3)
+      fog-core
+      nokogiri (>= 1.5.11, < 2.0.0)
     font-awesome-sass (5.12.0)
       sassc (>= 1.11)
+    formatador (0.2.5)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     gon (6.3.2)
@@ -126,6 +161,7 @@ GEM
       mini_magick (>= 4.9.5, < 5)
       ruby-vips (>= 2.0.17, < 3)
     io-like (0.3.1)
+    ipaddress (0.8.3)
     jbuilder (2.10.0)
       activesupport (>= 5.0.0)
     jquery-rails (4.3.5)
@@ -134,6 +170,7 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
+    kgio (2.11.3)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -146,6 +183,9 @@ GEM
     marcel (0.3.3)
       mimemagic (~> 0.3.2)
     method_source (0.9.2)
+    mime-types (3.3.1)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2019.1009)
     mimemagic (0.3.4)
     mini_magick (4.10.1)
     mini_mime (1.0.2)
@@ -154,6 +194,9 @@ GEM
     msgpack (1.3.3)
     multi_json (1.14.1)
     mysql2 (0.5.3)
+    net-scp (2.0.0)
+      net-ssh (>= 2.6.5, < 6.0.0)
+    net-ssh (5.2.0)
     nio4r (2.5.2)
     nokogiri (1.10.8)
       mini_portile2 (~> 2.4.0)
@@ -164,7 +207,7 @@ GEM
     pry-rails (0.3.9)
       pry (>= 0.10.4)
     public_suffix (4.0.3)
-    puma (3.12.3)
+    puma (3.12.4)
     rack (2.2.2)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -194,6 +237,7 @@ GEM
       method_source
       rake (>= 0.8.7)
       thor (>= 0.19.0, < 2.0)
+    raindrops (0.19.1)
     rake (13.0.1)
     rb-fsevent (0.10.3)
     rb-inotify (0.10.1)
@@ -238,6 +282,9 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    sshkit (1.21.0)
+      net-scp (>= 1.1.2)
+      net-ssh (>= 2.8.0)
     temple (0.8.2)
     thor (1.0.1)
     thread_safe (0.3.6)
@@ -246,6 +293,9 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
+    unicorn (5.4.1)
+      kgio (~> 2.6)
+      raindrops (~> 0.7)
     warden (1.2.8)
       rack (>= 2.0.6)
     web-console (3.7.0)
@@ -265,6 +315,11 @@ PLATFORMS
 DEPENDENCIES
   bootsnap (>= 1.1.0)
   byebug
+  capistrano
+  capistrano-bundler
+  capistrano-rails
+  capistrano-rbenv
+  capistrano3-unicorn
   capybara (>= 2.15)
   carrierwave
   chart-js-rails
@@ -273,6 +328,7 @@ DEPENDENCIES
   devise
   devise-i18n
   devise-i18n-views
+  fog-aws
   font-awesome-sass
   gon
   haml-rails
@@ -283,7 +339,7 @@ DEPENDENCIES
   mini_magick
   mysql2 (>= 0.4.4, < 0.6.0)
   pry-rails
-  puma (~> 3.12)
+  puma (~> 3.12.4)
   rails (~> 5.2.3)
   rails4-autocomplete
   sass-rails (~> 5.0)
@@ -292,6 +348,7 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
   tzinfo-data
   uglifier (>= 1.3.0)
+  unicorn (= 5.4.1)
   web-console (>= 3.3.0)
 
 RUBY VERSION

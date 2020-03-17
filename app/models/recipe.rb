@@ -5,6 +5,8 @@ class Recipe < ApplicationRecord
   has_many :ingredients, through: :recipe_ingredients
   has_many :steps
   accepts_nested_attributes_for :steps
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_users, through: :favorites, source: :user
   
   mount_uploader :image, ImageUploader
 

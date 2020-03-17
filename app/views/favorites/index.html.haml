@@ -2,8 +2,7 @@
 .main
   .search-board
     .search-text
-      = @keyword
-      %p のレシピ検索結果
+      = "#{current_user.name}のお気に入りレシピ"
     - @recipes.each do |recipe|
       .recipe-container
         =link_to "#{recipe_path(recipe.id)}" do

@@ -1,1 +1,50 @@
 = render "shared/header"
+.main
+  .page-title.page-title__my-page
+    %h2 MY PAGE
+    %h4 #{current_user.name}
+  .person
+    -@people.each do |person|
+      =link_to person_path(person.id) do
+        .person-info
+          .person-info__image
+            =image_tag person.image, class: "person-image"
+          .person-info__name
+            =person.name
+    =link_to new_person_path do
+      .person-info
+        .person-info__image.add-person
+          %i.far.fa-grin
+        .person-info__name
+          パーソンを追加
+  .edit-nav
+    =link_to recipes_path do
+      .link-box
+        .link-box__icon
+          %i.fas.fa-book
+        .link-box__text
+          マイレシピ
+    =link_to favorites_path do
+      .link-box
+        .link-box__icon
+          %i.far.fa-bookmark
+        .link-box__text
+          お気に入りレシピ
+    =link_to new_recipe_path do
+      .link-box
+        .link-box__icon
+          %i.fas.fa-pencil-alt
+        .link-box__text
+          レシピを投稿
+    =link_to "#" do
+      .link-box
+        .link-box__icon
+          %i.fas.fa-cookie-bite
+        .link-box__text
+          食べたもの履歴
+    =link_to "#" do
+      .link-box
+        .link-box__icon
+          %i.fas.fa-cog
+        .link-box__text
+          ユーザー編集

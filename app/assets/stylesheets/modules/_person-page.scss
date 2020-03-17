@@ -1,0 +1,322 @@
+.person-show{
+  display: flex;
+  .left-bar{
+    width: 90px;
+    height: 100vh;
+    .people-bar{
+      overflow-y: scroll;
+      max-height: 600px
+    }
+    .btn-box{
+      height: 80px;
+      width: 80px;
+      background-color: #ffd200;
+      border-bottom: solid 1px #ffae00;
+      border-right: solid 1px #ffae00;
+      line-height: 80px;
+      text-align: center;
+      color: white;
+      font-weight: bold;
+      &:hover{
+        background-color: #ffbb00;
+        width: 90px;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+      }
+      &__person{
+        padding-top: 10px;
+        .image-box{
+          width: 40px;
+          height: 40px;
+          border: dashed 2px #ffae00;
+          &__inside{
+            width: 40px;
+          }
+        }
+        p{
+          line-height: 25px;
+        }
+      }
+    } 
+  }
+  .main-content{
+    padding: 20px;
+    .upper-wrapper{
+      display: flex;
+      height: 155px;
+      .profile{
+        .image-box{
+          width: 100px;
+          height: 100px;
+          border: solid 1px #ffae00;
+          box-shadow: 5px 5px 10px rgba(204, 178, 48, 0.17);
+          position: relative;
+          &__inside{
+            width: 100px;
+          }
+          .edit-btn{
+            display: none;
+          }
+          &:hover{
+            .edit-btn{
+              display: inline-block;
+              width: 100px;
+              text-align: center;
+              background-color: rgba(0, 0, 0, 0.466);
+              color: white;
+              line-height: 40px;
+              border-bottom-left-radius: 5px;
+              border-bottom-left-radius: 5px;
+              position: absolute;
+              left: 0;
+              bottom: 0;
+            }
+          }
+        }
+        &__name{
+          font-weight: bold;
+          font-size: 15px;
+          text-align: center;
+          line-height: 37px;
+          width: 200px;
+          border: solid 1px rgb(201, 197, 197);
+          border-radius: 2px;
+          box-shadow: 3px 3px 10px rgba(59, 55, 35, 0.17);
+          margin-top: 15px;
+        }
+      }
+      .info-container{
+        border: solid 1px rgb(201, 197, 197);
+        border-radius: 2px;
+        display: flex;
+        margin-left: 20px;
+        .information-form{
+          height: 150px;
+          margin-left: 15px;
+          padding: 5px 0;
+          .text{
+            width: 190px;
+            font-size: 20px;
+            line-height: 35px;
+            text-align: left;
+            margin-bottom: 2px;
+            padding-left: 10px;
+            border: solid 1px rgb(201, 197, 197);
+            background-color: white;
+            border-radius: 2px;
+            font-family: 'Oxanium', cursive;
+          }
+          .box{
+            .input-info{
+              line-height: 28px;
+              width: 80px;
+              font-family: 'Oxanium', cursive;
+              font-size: 20px;
+            }
+            p{
+              font-size: 14px;
+              padding-left: 5px;
+            }
+            .post-btn{
+              padding: 0 20px;
+              line-height: 28px;
+              background: #fd9535;
+              color: white;
+              border: solid 1px #d27d00;
+              margin-left: 25px;
+              &:hover{
+                background: #fd7e35;
+              }
+            }
+          }
+        }
+        .bmi-chart{
+          background-color: white;
+          position: relative;
+          margin: auto;
+          margin-left: 15px;
+          height: 145px;
+          width: 490px;
+          border: solid 1px rgb(201, 197, 197);
+          border-radius: 2px;
+          box-shadow: 3px 3px 10px rgba(121, 115, 90, 0.17);
+        }
+        .right-box{
+          padding-top: 10px;
+          margin-left: 15px;
+          margin-right: 15px;
+          .text-box{
+            font-family: 'Oxanium', cursive;
+            margin: 0 auto;
+            text-align: center;
+            border: solid 1px rgb(201, 197, 197);
+            border-radius: 2px;
+            width: 120px;
+            margin-bottom: 20px;
+            line-height: 30px;
+            background-color: white;
+            box-shadow: 3px 3px 10px rgba(121, 115, 90, 0.17);
+            &__title{
+              width: 155px;
+            }
+          }
+        }  
+      }  
+    }
+    .middle-wrapper{
+      display: flex;
+      height: 200px;
+      margin-top: 30px;
+      .meal-box{
+        margin-right: 20px;
+        border: solid 1px rgb(201, 197, 197);
+        border-radius: 2px;
+        background-color: white;
+        padding-top: 10px;
+        .post-btn{
+          line-height: 40px;
+          height: 40px;
+          width: 190px;
+          bottom: 20px;
+          right: 2vw;
+          background: #fd9535;
+          color: white;
+          border: solid 1px #d27d00;
+          margin: 15px 5px;
+          &:hover{
+            background: #fd7e35;
+          }
+        }
+        .search-box{
+          width: 190px;
+          height: 40px;
+          border: solid 1px #d27d00;
+          border-radius: 2px;
+          margin: 0 auto;
+          display: flex;
+          justify-content: space-between;
+          background-color: white;
+          &__input{
+            width: 140px;
+            line-height: 40px;
+            border: none;
+          }
+          &__btn{
+            border: none;
+            line-height: 40px;
+            background-image: linear-gradient(112deg, #fdb735, #fd9535);
+            padding: 0 10px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            outline: 0;
+            font-size: 15px;
+            &:hover{
+              background-image: linear-gradient(112deg, #fdb735, #fd7e35);
+            }
+          }
+        }
+      }
+      .calorie-chart{
+        background-color: white;
+        position: relative;
+        height: 200px;
+        width: 900px;
+        border: solid 1px rgb(201, 197, 197);
+        border-radius: 2px;
+        box-shadow: 3px 3px 10px rgba(121, 115, 90, 0.17);
+      }
+    }
+  }
+}
+
+.image-box{
+  margin: auto;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.nutrients-wrapper{
+  margin-top: 30px;
+  display: flex;
+  border: solid 1px rgb(201, 197, 197);
+  border-radius: 2px;
+  box-shadow: 3px 3px 10px rgba(121, 115, 90, 0.17);
+  background-color: white;
+  padding: 50px 0 40px 0;
+  position: relative;
+  &__recipe{
+    width: 100%;
+    box-shadow: none;
+    display: flex;
+    justify-content: space-between;
+    margin: 20px auto;
+    overflow-x: scroll;
+  }
+  .title{
+    position: absolute;
+    top: 13px;
+    left: 25px;
+    display: flex;
+    font-size: 20px;
+    p{
+      padding-top: 5px;
+      font-size: 15px;
+      padding-left: 5px;
+    }
+  }
+  .coment{
+    position: absolute;
+    bottom: 10px;
+    right: 25px;
+    font-size: 10px;
+  }
+  .nutrient-box{
+    margin: auto;
+    .nutrient-name{
+      width: 120px;
+      line-height: 20px;
+      text-align: center;
+      border-radius: 2px;
+      font-size: 13px;
+      font-family: 'Oxanium', cursive;
+      &__recipe{
+        width: 105px;
+      }
+    }
+    .nutrients-chart{
+      position: relative;
+      height: 80px;
+      width: 120px;
+      .inner-value{
+        position: absolute;
+        top:25px;
+        left: 37px;
+        line-height: 30px;
+        width: 45px;
+        text-align: center;
+        font-family: 'Oxanium', cursive;
+        font-size: 15px;
+        &__recipe{
+          top:28px;
+          left: 38px;
+          line-height: 25px;
+          width: 30px;
+          font-size: 13px;
+        }
+      }
+      &__recipe{
+        height: 80px;
+        width: 105px;
+      }
+    }
+    .nutrient-quantity{
+      text-align: center;
+      margin-top: 3px;
+      font-size: 12px;
+    }
+  }
+}

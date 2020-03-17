@@ -12,11 +12,13 @@ Rails.application.routes.draw do
     resources :personal_informations, only: [:create]
     resources :meals ,only: :create
   end
-  resources :recipes, only: [:index, :new, :create] do
+  resources :recipes, only: [:index, :new, :create, :show] do
+    resources :favorites, only: [:create, :destroy]
     collection do
       get 'search_ingredients'
       get 'autocomplete_ingredient_name'
       get 'search'
     end
   end
+  resources :favorites, only: [:index]
 end

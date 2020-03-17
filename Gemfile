@@ -8,7 +8,7 @@ gem 'rails', '~> 5.2.3'
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 # Use Puma as the app server
-gem 'puma', '~> 3.12'
+gem 'puma', '~> 3.12.4'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -58,6 +58,18 @@ group :test do
   gem 'chromedriver-helper'
 end
 
+group :production do
+  gem 'unicorn', '5.4.1'
+end
+
+group :development, :test do
+  gem 'capistrano'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano3-unicorn'
+end
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
@@ -73,3 +85,4 @@ gem "gon"
 gem 'chart-js-rails'
 gem 'rails4-autocomplete'
 gem 'jquery-ui-rails'
+gem 'fog-aws'

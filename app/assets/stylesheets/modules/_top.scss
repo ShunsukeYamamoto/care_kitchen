@@ -3,7 +3,7 @@ header{
   .head-vidual{
     width: 100vw;
     height: 500px;
-    background-image: url(kitchenapp16.jpg);
+    background-image: image-url('kitchenapp16.jpg');
     // 11 8 5 1 12 13 14 16
     background-size: cover;
     background-position: center center;
@@ -99,11 +99,87 @@ header{
 }
 .main{
   width: 100vw;
-  .top-page-title{
+  .image-wrapper{
+    width: 100vw;
+    height: 550px;
+    display: flex;
+    &__third{
+      margin-top: 30px;
+      background-image: image-url("carekitchen2.jpg");
+      background-size: cover;
+      height: 650px;
+      text-align: center;
+      padding-top: 300px;
+      .registration-btn{
+        height: 70px;
+        line-height: 70px;
+        width: 250px;
+        background-color: #ffd200;
+        margin: 0 auto;
+        font-weight: bold;
+        font-size: 30px;
+        border-radius: 5px;
+        color: white;
+        font-weight: bold;
+        box-shadow: 20px 20px 30px rgba(167, 167, 167, 0.17);
+        &:hover{
+          background-color: #ffa600;
+        }
+      }
+    }
+    .demo-image{
+      margin-top: 100px;
+      margin-left: 20px;
+      width: 60vw;
+      height: 400px;
+      background-size: cover;
+      border: solid 1px rgb(204, 204, 204);
+      box-shadow: 20px 20px 30px rgba(167, 167, 167, 0.17);
+      border-radius: 5px;
+      &__first{
+        background-image: image-url("carekitchen1.png");
+      }
+      &__second{
+        background-image: image-url("kitchendemo3.jpg");
+        margin-left: 40px;
+      }
+    }
+    .first-description{
+      margin-top: 50px;
+      width: 30vw;
+      height: 500px;
+      margin-left: 40px;
+      padding: 50px 40px;
+      background-color: white;
+      color: #2f4252;
+      h2{
+        font-size: 25px;
+        font-weight: bold;
+        padding-bottom: 20px;
+      }
+      h4{
+        padding-top: 20px;
+        font-size: 20px;
+        padding-bottom: 20px;
+        border-top: solid 1px #2f4252;
+      }
+      h5{
+        padding-top: 20px;
+        font-size: 15px;
+        padding-bottom: 20px;
+        border-top: solid 1px #2f4252;
+      }
+    }
+  }
+  .page-title{
     margin-top: 30px;
     display: flex;
     border-top: solid 1px #ffd200;
     padding-top: 10px;
+    &__my-page{
+      margin-top: 10px;
+      border: none;
+    }
     h2{
       margin-left: 12vw;
       margin-bottom: 20px;
@@ -124,7 +200,7 @@ header{
     height: 200px;
     margin: 0 auto;
     display: flex;
-    border: solid 3px black;
+    border: solid 3px #f5bf1e;
     border-radius: 6px;
     box-shadow: 20px 20px 30px rgba(204, 178, 48, 0.17);
     background-color: white;
