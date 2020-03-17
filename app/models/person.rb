@@ -9,7 +9,7 @@ class Person < ApplicationRecord
     validates :gender
     validates :birthday
     validates :image
-
+  end
   enum gender: {
     "男性": "0",
     "女性": "1"

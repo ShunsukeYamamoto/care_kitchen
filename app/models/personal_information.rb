@@ -6,5 +6,5 @@ class PersonalInformation < ApplicationRecord
     validates :weight
     validates :height
     validates :bmi
-    
+  end
 end
