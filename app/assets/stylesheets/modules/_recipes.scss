@@ -41,9 +41,9 @@
         }
         &:active {
           -webkit-transform: translateY(2px);
-          transform: translateY(2px);/*沈むように*/
+          transform: translateY(2px);
           box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
-          background-image: linear-gradient(#fed6e3 0%, #ffbcbc 100%);/*グラデーションを明るく*/
+          background-image: linear-gradient(#ffee00 0%, #ffd000 100%);
         }
       }
       &__text{
