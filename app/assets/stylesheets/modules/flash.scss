@@ -1,0 +1,17 @@
+.notification {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  line-height: 40px;
+  .notice {
+    background-color: #ffbb00;
+    color: white;
+    text-align: center;
+  }
+
+  .alert {
+    background-color: Darkgray;
+    color: white;
+    text-align: center;
+  }
+}

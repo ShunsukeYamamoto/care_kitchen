@@ -17,3 +17,7 @@
 //= require autocomplete-rails
 //= require activestorage
 //= require_tree .
+
+$(function(){
+  setTimeout("$('.notification').fadeOut('slow')", 1000) 
+})
