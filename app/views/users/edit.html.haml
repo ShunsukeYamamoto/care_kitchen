@@ -1,0 +1,17 @@
+= render "shared/header"
+.form
+  %h1.form__title ユーザー編集
+  = form_for(current_user, url: user_path) do |f|
+    .field
+      = f.text_field :name,placeholder: "アカウント名", autofocus: true,class:"field--form"
+    .field
+      = f.email_field :email,placeholder: "メールアドレス", autofocus: true, autocomplete: "email",class:"field--form"
+    .field
+      = f.password_field :password, placeholder: "パスワード（半角英数字６文字以上）", class:"field--form"
+    .field
+      = f.password_field :password_confirmation, placeholder: "パスワード（確認）", class:"field--form"
+    .actions
+      = f.submit "更新",class: "form--submit"
+  = link_to user_path(current_user), class: "btn-icon",method: :delete, data: { confirm: "#{current_user.name}を削除しますか？" } do
+    .delete-btn
+      削除する
