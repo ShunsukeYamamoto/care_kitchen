@@ -1,9 +1,11 @@
 class RecipesController < ApplicationController
   autocomplete :ingredient,:name,full: true
+  before_action :authenticate_user!, except: [:show, :search]
 
   def index
     @recipes = current_user.recipes
   end
+
   def new
     @recipe = current_user.recipes.new
     @recipe.steps.new

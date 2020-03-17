@@ -1,7 +1,6 @@
 class DevelopController < ApplicationController
   before_action :move_to_sign_up
 
-
   private
 
   def move_to_sign_up

@@ -1,4 +1,5 @@
 class PersonalInformationsController < ApplicationController
+  before_action :authenticate_user!
 
   def create
     person = Person.find(params[:person_id])

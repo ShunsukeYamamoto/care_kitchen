@@ -2,16 +2,18 @@
 
 .main
   .recipe-board.recipe-board__show
-    .favorite
-      - if current_user.already_favorite?(@recipe)
-        %i.fas.fa-star
-        = link_to recipe_favorite_path(@recipe), method: :delete, class: "favorite__btn favorite__btn--on" do
-          %p お気に入り解除
-      - else
-        = link_to recipe_favorites_path(@recipe), method: :post, class: "favorite__btn" do
-          %p お気に入り登録
-      %h3.favorite__text
-        = "お気に入り数: #{@recipe.favorites.count}件"
+    - if user_signed_in?
+      .favorite
+        - if current_user.already_favorite?(@recipe)
+          %i.fas.fa-star
+          = link_to recipe_favorite_path(@recipe), method: :delete, class: "favorite__btn favorite__btn--on" do
+            %p お気に入り解除
+        - else
+          = link_to recipe_favorites_path(@recipe), method: :post, class: "favorite__btn" do
+            %p お気に入り登録
+        %h3.favorite__text
+          = "お気に入り数: #{@recipe.favorites.count}件"
+    -else
     .recipe
       .recipe-board__title
         = @recipe.title
@@ -453,14 +455,3 @@
           .steps-box__description
             = step.description
 = render "shared/footer"
-
-%h3
-  = "いいね件数: #{@recipe.favorites.count}"
-- if current_user.already_favorite?(@recipe)
-  = button_to 'いいねを取り消す', recipe_favorite_path(@recipe), method: :delete
-- else
-  = button_to 'いいね', recipe_favorites_path(@recipe)
-%h2 いいねしたユーザー
-- @recipe.favorite_users.each do |user|
-  %li
-    = user.email
