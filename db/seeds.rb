@@ -29,3 +29,4 @@ end
 
 User.create(id: 1,name: "testuser",email: "shun@gmail.com",password: "shun0113")
 Person.create(id: 1,name: "testperson1",gender: "0",birthday: "1990-01-01",user_id: 1,image: "icon1.png")
+PersonalInformation.create(id: 1,weight: 72.3,height: 1.75,date: Date.today,bmi: 23.6,person_id: 1)
