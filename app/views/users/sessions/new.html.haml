@@ -1,11 +1,4 @@
-.form_header
-  .form_header--title
-    =link_to "CARE KITCHEN",root_path
-  .form_header--icon
-    =link_to new_user_registration_path do
-      %i.fas.fa-door-open
-      %p 新規登録
-
+= render "shared/header"
 .form
   %h2.form__title ログインページ
   .error_logs
@@ -18,3 +11,5 @@
     
     .actions
       = f.submit "ログイン",class: "form--submit"
+
+= render "shared/footer"
