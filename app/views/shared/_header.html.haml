@@ -1,9 +1,6 @@
 .global-header
   .global-header__wrapper
     %ul.global-header__wrapper--nav
-      %li
-        =link_to "#",class: "header-nav__btn" do
-          CareKitchenの使い方
       - if user_signed_in?
         %li
           =link_to destroy_user_session_path,method: :delete,class: "header-nav__btn" do
