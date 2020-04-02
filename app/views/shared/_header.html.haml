@@ -6,7 +6,7 @@
           =link_to destroy_user_session_path,method: :delete,class: "header-nav__btn" do
             ログアウト
         %li
-          =link_to "#",class: "header-nav__btn" do
+          =link_to user_path(current_user.id),class: "header-nav__btn" do
             マイページ
       - else
         %li

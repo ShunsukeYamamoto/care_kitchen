@@ -1,6 +1,6 @@
 = render "shared/header"
 .form
-  %h2.form__title ログインページ
+  %h2.form__title ログイン
   .error_logs
     = flash[:alert]
   = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|

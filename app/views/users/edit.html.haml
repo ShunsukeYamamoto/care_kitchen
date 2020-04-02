@@ -1,6 +1,7 @@
 = render "shared/header"
 .form
-  %h1.form__title ユーザー編集
+  %h1.form__title
+    ="#{current_user.name} を編集"
   = form_for(current_user, url: user_path) do |f|
     .field
       = f.text_field :name,placeholder: "アカウント名", autofocus: true,class:"field--form"
