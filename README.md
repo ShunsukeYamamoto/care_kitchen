@@ -12,7 +12,7 @@ URL: http://18.180.1.58/
 ## お試し用ログインパスワード
 - email：gest@gmail.com
 - password：gestgest
-- アプリURL 製作中...
+- アプリURL URL: http://18.180.1.58/
 
 ## 実装した機能
 
