@@ -1,6 +1,6 @@
 class FavoritesController < ApplicationController
   before_action :authenticate_user!
-  
+
   def index
     @recipes = current_user.favorite_recipes
   end
@@ -15,5 +15,4 @@ class FavoritesController < ApplicationController
     @favorite.destroy
     redirect_to recipe_path(params[:recipe_id])
   end
-  
 end

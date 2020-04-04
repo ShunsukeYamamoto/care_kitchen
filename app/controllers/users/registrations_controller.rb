@@ -14,34 +14,32 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new(sign_up_params)
     unless @user.valid?
       flash.now[:alert] = @user.errors.full_messages
-      render :new and return
+      render(:new) && return
     end
-    session["create_acount"] = { user: @user.attributes}
-    session["create_acount"][:user]["password"] = params[:user][:password] 
+    session['create_acount'] = { user: @user.attributes }
+    session['create_acount'][:user]['password'] = params[:user][:password]
     @person = @user.people.build
     render :new_first_person
   end
 
   def create_first_person
-    @user = User.new(session["create_acount"]["user"])
+    @user = User.new(session['create_acount']['user'])
     @person = Person.new(person_params)
     @personal_information = PersonalInformation.new(@person.personal_informations[0].attributes)
     weight = @personal_information[:weight]
     height = @personal_information[:height]
-    bmi = (weight/height/height).round(1)
+    bmi = (weight / height / height).round(1)
     @personal_information[:bmi] = bmi
     @user.people.build(@person.attributes)
     @user.people[0].personal_informations.build(@personal_information.attributes)
     unless @person.valid? && @personal_information.valid?
-      flash[:alert] = "入力が誤っています"
-      render :new_first_person and return
+      flash[:alert] = '入力が誤っています'
+      render(:new_first_person) && return
     end
     @user.save
     sign_in(:user, @user)
     redirect_to root_path
   end
-
-
 
   # GET /resource/edit
   # def edit
@@ -75,7 +73,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def person_params
-    params.require(:person).permit(:name,:birthday,:gender,:image,personal_informations_attributes: [:height,:weight,:date,:id])
+    params.require(:person).permit(:name, :birthday, :gender, :image, personal_informations_attributes: %i[height weight date id])
   end
   # personal_informations_attributes: [:height,:weight,:id]
 
