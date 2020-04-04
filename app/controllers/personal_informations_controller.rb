@@ -16,5 +16,4 @@ class PersonalInformationsController < ApplicationController
   def personal_information_params
     params.require(:personal_information).permit(:weight, :height, :date, :bmi)
   end
-
 end

@@ -1,7 +1,5 @@
 class ToppageController < ApplicationController
   def index
-    if user_signed_in?
-      @people = current_user.people
-    end
+    @people = current_user.people if user_signed_in?
   end
 end
